@@ -50,7 +50,7 @@ Captain Nemo expects to see themes throughout the application that radiate the c
 * As a user, I should be able to read all my log entries.
 * As a user, I should be able to edit my log entries.
 * As a user, I should be able to delete my log entries.
-* As a user, I should be able to share my long entries.
+* As a user, I should be able to share my log entries.
 
 #### Environmental Data
 * As a user, I should be able to add environmental readings (latitude, longitude, temperature, depth, current, pressure).
