@@ -1,26 +1,22 @@
-<!--- Provide a general summary of the issue in the Title above -->
-<!--- DELETE ALL COMMENTS BEFORE CREATING ISSUE -->
+## Feature Summary
 
-# User Story
+<!-- EXAMPLE:
+As an authenticated user
+I want to `create` authors
+So that I can add books to my inventory -->
 
-<!-- Write a description of what the user should see and experience based on THIS ticket -->
+## Acceptance Criteria
 
-# Acceptance Criteria
+<!-- EXAMPLE:
+Given the user is on the authors page
+When the user clicks the `Add New Author` button on the DOM
+Then they are redirected to a form with these fields: `firstName: lastName: email:`
+And when the user submits the form the data should be saved
+And the form should be reset -->
 
-<!-- The Acceptance Criteria of a User Story consists of a set of Test Scenarios that are to be met to confirm that the software is working as expected. The Acceptance Criteria illustrates the scope of the individual ticket and expectations from the team and client. -->
+## Technical Requirements
 
-<!-- The Acceptance Criteria is applicable to specific User Story. Acceptance Criteria of each User Story will be different based on the requirements of that User Story. -->
-
-<!-- EXAMPLE -->
-<!-- WHEN the user visits any page -->
-<!-- THEN I should see a Bootstrap NavBar -->
-<!-- AND there should be links to the other pages -->
-<!-- AND the current page should be In Bold -->
-
-# Dependencies
-
-<!-- List out all of the dev work that needs to be completed for this ticket and what other tickets are impacted or blocking this ticket's start/finish -->
-
-# Dev Notes
-
-<!-- List out all of the dev work that needs to be completed for this ticket and what other tickets are impacted or blocking this ticket's start/finish -->
+<!-- EXAMPLE:
+- [ ] Add an event listener on the add button
+- [ ] Create an axios request to post a new author
+- [ ] Add other items to this list that you deem are necessary to complete this feature -->
