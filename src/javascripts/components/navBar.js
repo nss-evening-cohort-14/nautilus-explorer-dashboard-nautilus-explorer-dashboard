@@ -34,9 +34,9 @@ const navBar = () => {
 <a class="nav-link" href="#" id="readExcursions"><img src=${excursions}></a>
 </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn" type="submit" id="loginLogoutButton"></button>
-    </form>
+    <div class="form-inline my-2 my-lg-0">
+      <button class="btn" id="loginLogoutButton"></button>
+    </div>
   </div>
 </nav>`;
 };
