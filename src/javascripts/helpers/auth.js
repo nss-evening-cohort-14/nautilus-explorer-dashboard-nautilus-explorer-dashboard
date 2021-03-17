@@ -6,7 +6,6 @@ import startApp from './startApp';
 const checkLoginStatus = () => {
   firebase.initializeApp(firebaseConfig);
   firebase.auth().onAuthStateChanged((user) => {
-    console.warn(user);
     startApp(user);
   });
 };

@@ -1,8 +1,7 @@
 const dashboardView = (user) => {
   $('#page').html(`<h1>Nautilus Explorer Dashboard</h1>
-                  ${user ? '<h2>Welcome Aboard, Captain!</h2>' : ''}
-
-                  <div class="d-flex flex-wrap" id="pageCardsContainer">
+                  ${user ? `<h2>Welcome Aboard, Captain!</h2>` : ''}
+                  <div class="d-flex flex-wrap justify-content-around" id="pageCardsContainer">
                     <div class="card dashboard-card">
                       <div class="card-body">
                         <h3 class="card-title">Crew Members</h3>
