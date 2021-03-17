@@ -1,6 +1,6 @@
 const showCrew = (crewArray, user) => {
   // CREATE TEMPORARY DIV TO HOLD CREW DATA
-  document.querySelector('#app').innerHTML = '<div id="crewPlaceholder" class="row justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
+  document.querySelector('#mainContainer').innerHTML = '<div id="crewPlaceholder" class="row justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
 
   // BUILD CREW CARDS
   crewArray.forEach((member) => {

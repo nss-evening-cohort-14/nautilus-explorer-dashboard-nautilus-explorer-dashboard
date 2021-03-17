@@ -1,7 +1,7 @@
 // import firebase from 'firebase/app';
 import 'firebase/auth';
 import axios from 'axios';
-import firebaseConfig from '../apiKeys';
+import firebaseConfig from '../auth/apiKeys';
 
 // API CALLS FOR CREW
 const dbUrl = firebaseConfig.databaseURL;
