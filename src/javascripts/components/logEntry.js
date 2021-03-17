@@ -1,11 +1,11 @@
 const showLogEntry = (logArray, user) => {
-  document.querySelector('#button').innerHTML = '<button type="button class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
+  document.querySelector('#button').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
   document.querySelector('#seeCrew').innerHTML = '';
   document.querySelector('#readLogEntry').innerHTML = '';
 
   logArray.forEach((element) => {
     document.querySelector('#readLogEntry').innerHTML += `<div class="card">
-    <div class="card-body" style="height: 250px;">
+    <div class="card-body" style="height: 300px;">
       <h5 id="log-title--${element.firebaseKey}" class="card-title">${element.title}</h5>
       <p class="card-text" id="log-body">${element.body}</p>
       <p class="card-text" id="log-timestamp">${element.timestamp}</p>
@@ -15,8 +15,8 @@ const showLogEntry = (logArray, user) => {
       <label class="form-check-label" for="defaultCheck1">
       Private
       </label>
-      ${user ? '<button type="button" class="btn btn-info">Edit Log</button>' : ''}
-      ${user ? '<button type="button" class="btn btn-danger">Delete Log</button>' : ''}
+      ${user ? `<button type="button" class="btn btn-info" data-toggle="modal" data-target="#formModal" id="edit-log--${element.firebaseKey}">Update Log</button>
+      <button type="button" class="btn btn-danger" id="delete-log--${element.firebaseKey}">Delete Log</button>` : ''}
     </div>
     </div>`;
   });

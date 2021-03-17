@@ -10,7 +10,7 @@ import startApp from '../views/startApp';
 const checkLoginStatus = () => {
   firebase.initializeApp(firebaseConfig);
   firebase.auth().onAuthStateChanged((user) => {
-    startApp();
+    startApp(user);
     if (user) {
       logoutButton();
     } else {

@@ -2,10 +2,10 @@ import domBuilder from '../components/domBuilder';
 import navBar from '../components/navBar';
 import navigationEvents from '../events/navigationEvents';
 
-const startApp = () => {
+const startApp = (user) => {
   domBuilder();
   navBar();
-  navigationEvents();
+  navigationEvents(user);
 };
 
 export default startApp;

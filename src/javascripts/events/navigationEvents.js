@@ -1,6 +1,4 @@
-import showCrew from '../components/crew';
 import { emptyLogEntry, showLogEntry } from '../components/logEntry';
-import getCrew from '../helpers/data/crewData';
 import getLogEntry from '../helpers/data/logEntryData';
 
 const navigationEvents = (user) => {
@@ -8,17 +6,9 @@ const navigationEvents = (user) => {
   document.querySelector('#readLogEntries').addEventListener('click', () => {
     getLogEntry(user).then((logArray) => {
       if (logArray.length) {
-        showLogEntry(logArray);
+        showLogEntry(logArray, user);
       } else {
         emptyLogEntry();
-      }
-    });
-  });
-
-  document.querySelector('#readCrew').addEventListener('click', () => {
-    getCrew(user).then((crewArray) => {
-      if (crewArray.length) {
-        showCrew(crewArray);
       }
     });
   });
