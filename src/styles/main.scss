@@ -2,8 +2,21 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
-  background-color: antiquewhite;
-  color: brown;
-  text-align: center;
-  margin-top: 100px;
+  background-color: #03403a;
+  color: #d99d55;
+  
+}
+
+.dashboard-card {
+  background-color: #f2e8df;
+  color: #262223;
+
+  button {
+    background-color: #d99d55;
+    border-color: #262223;
+
+    :hover, :focus, :active, .active {
+      background-color: #ae7e44
+    }
+  }
 }
