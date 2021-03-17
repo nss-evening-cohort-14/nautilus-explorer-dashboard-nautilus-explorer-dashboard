@@ -1,6 +1,6 @@
 const dashboardView = (user) => {
   $('#page').html(`<h1>Nautilus Explorer Dashboard</h1>
-                  ${user ? `<h2>Welcome Aboard, Captain!</h2>` : ''}
+                  ${user ? '<h2>Welcome Aboard, Captain!</h2>' : ''}
                   <div id="pageCardsContainer">
                     <div class="width-50">
                       <div class="card dashboard-card">
