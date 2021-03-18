@@ -1,4 +1,6 @@
+import showCrew from '../components/crew';
 import { emptyLogEntry, showLogEntry } from '../components/logEntry';
+import { getCrew } from '../helpers/data/crewData';
 import getLogEntry from '../helpers/data/logEntryData';
 
 const navigationEvents = (user) => {
@@ -11,6 +13,10 @@ const navigationEvents = (user) => {
         emptyLogEntry();
       }
     });
+  });
+  // GO TO CREW MEMBERS PAGE
+  document.querySelector('#readCrew').addEventListener('click', () => {
+    getCrew(user).then((crewArray) => showCrew(crewArray));
   });
 };
 
