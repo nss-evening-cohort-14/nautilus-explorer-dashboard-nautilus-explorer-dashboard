@@ -1,4 +1,5 @@
 const addLogForm = () => {
+  document.querySelector('#readLogEntry').innerHTML = '';
   document.querySelector('#formContainer').innerHTML = `
   <form id="add-log-form" class="mb-4">
   <div class="form-group">
