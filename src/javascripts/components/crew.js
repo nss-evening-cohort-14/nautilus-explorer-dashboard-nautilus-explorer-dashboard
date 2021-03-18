@@ -4,6 +4,11 @@ const showCrew = (crewArray, user) => {
 
   // BUILD CREW CARDS
   crewArray.forEach((member) => {
+    document.querySelector('#addButton').innerHTML = '';
+    document.querySelector('#formContainer').innerHTML = '';
+    document.querySelector('#readLogEntry').innerHTML = '';
+    document.querySelector('#cardContainer').innerHTML = '';
+
     document.querySelector('#seeCrew').innerHTML += `
     <div class="col-sm-3">
       <div class="card v-25 m-3 p-4 shadow-lg rounded">

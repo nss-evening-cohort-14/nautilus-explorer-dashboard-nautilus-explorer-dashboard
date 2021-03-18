@@ -1,7 +1,7 @@
 const showLogEntry = (logArray, user) => {
-  document.querySelector('#button').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
+  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
   document.querySelector('#seeCrew').innerHTML = '';
-  document.querySelector('#readLogEntry').innerHTML = '';
+  document.querySelector('#cardContainer').innerHTML = '';
 
   logArray.forEach((element) => {
     document.querySelector('#readLogEntry').innerHTML += `<div class="card">
