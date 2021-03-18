@@ -21,3 +21,35 @@ body {
 #google-auth img {
   width: 3em;
 }
+
+#addSpeciesBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+#speciesCard {
+  background-color: #F2E8DF;
+  border-color: black;
+  .view-species-btn {
+    background-color: #D99D55;
+    color: #F2E8DF;
+  }
+  .delete-species-btn {
+    background-color: #297365;
+    color: #F2E8DF;
+  }
+  .card-title  {
+    padding-top: 2em;
+    img {
+      width: 1.5em;
+      padding-bottom: .25em;
+    }
+  }
+  .card-text img {
+    width: 1em;
+    padding-bottom: .2em;
+  }
+  .card-body {
+    padding-left: 5em;
+  }
+}
