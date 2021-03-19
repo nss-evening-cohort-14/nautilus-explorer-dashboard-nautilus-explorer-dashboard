@@ -6,7 +6,7 @@ import logoutButton from '../components/buttons/logoutButton';
 import firebaseConfig from './auth/apiKeys';
 import getCrew from './data/crewData';
 import startApp from '../views/startApp';
-import getSpecies from './data/crudSpecies';
+import { getSpecies } from './data/crudSpecies';
 import { showReadSpecies } from '../components/species';
 
 const checkLoginStatus = () => {

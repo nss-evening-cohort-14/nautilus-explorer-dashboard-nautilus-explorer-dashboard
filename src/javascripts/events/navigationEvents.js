@@ -1,5 +1,5 @@
 import getCrew from '../helpers/data/crewData';
-import getSpecies from '../helpers/data/crudSpecies';
+import { getSpecies } from '../helpers/data/crudSpecies';
 import showCrew from '../components/crew';
 import { showReadSpecies, noReadSpecies } from '../components/species';
 import { emptyLogEntry, showLogEntry } from '../components/logEntry';
