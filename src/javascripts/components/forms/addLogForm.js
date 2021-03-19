@@ -10,10 +10,6 @@ const addLogForm = () => {
     <label for="Textarea">Log Body</label>
     <textarea class="form-control" id="body" rows="3"></textarea>
   </div>
-  <div class="form-group">
-    <label for="timestamp">Timestamp</label>
-    <input type="text" class="form-control" id="timestamp" placeholder="Timestamp" required>
-  </div>
     <div class="form-group">
     <label for="timezone">Timezone</label>
     <input type="text" class="form-control" id="timezone" placeholder="Timezone" required>

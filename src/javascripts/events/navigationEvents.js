@@ -3,7 +3,7 @@ import getSpecies from '../helpers/data/crudSpecies';
 import showCrew from '../components/crew';
 import { showReadSpecies, noReadSpecies } from '../components/species';
 import { emptyLogEntry, showLogEntry } from '../components/logEntry';
-import getLogEntry from '../helpers/data/logEntryData';
+import { getLogEntry } from '../helpers/data/logEntryData';
 
 const navigationEvents = (user) => {
   document.querySelector('#readCrew').addEventListener('click', () => {
