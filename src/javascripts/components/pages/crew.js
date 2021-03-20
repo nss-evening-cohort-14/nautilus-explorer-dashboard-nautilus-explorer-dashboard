@@ -1,6 +1,6 @@
 const showCrew = (crewArray, user) => {
   // BUILD CREW CARDS
-  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal" id="addCrewButton">Add Crew Member</button>';
+  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal" id="addCrewButton">Enroll Crew</button>';
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="crewPlaceholder" class="row d-flex justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
 
@@ -14,8 +14,8 @@ const showCrew = (crewArray, user) => {
           <span>${member.job}</span> <br>
           <span>Tenure: ${member.months_tenure} months</span>
           <hr>
-          ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-board-btn--${member.firebaseKey}">Update Info</button>
-          <button class="btn btn-danger shadow-lg" id="delete-crew--${member.firebaseKey}">Remove Personnel</button>` : ''}
+          ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-crew--${member.firebaseKey}">Details</button>
+          <button class="btn btn-danger shadow-lg" id="delete-crew--${member.firebaseKey}">Disembark</button>` : ''}
         </div>
       </div>
     </div>
