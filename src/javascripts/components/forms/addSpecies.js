@@ -2,7 +2,7 @@
 
 const addSpeciesForm = () => {
   document.querySelector('#modal-body').innerHTML = `
-    <form id="submit-pin-form" class="mb-4">
+    <form id="submit-species-form" class="mb-4">
     <div class="form-group">
     <label for="addSpeciesName">Species Name</label>
     <input type="text" class="form-control" id="addSpeciesName" aria-describedby="addSpeciesName" placeholder="Enter Name" required>

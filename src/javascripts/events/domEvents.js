@@ -13,7 +13,7 @@ import destinationsView from '../components/pages/destinationsView';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
-    if (e.target.id.includes('addSpeciesBtn')) {
+    if (e.target.id.includes('addNewSpeciesBtn')) {
       formModal('Add Species');
       addSpeciesForm();
     }
