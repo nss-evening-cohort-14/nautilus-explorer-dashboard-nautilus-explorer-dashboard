@@ -8,6 +8,8 @@ import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import getLogEntry from '../helpers/data/logEntryData';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
+import getDestinations from '../helpers/data/destinationsData';
+import destinationsView from '../components/pages/destinationsView';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -36,6 +38,12 @@ const domEvents = (user) => {
         } else {
           emptyCrew();
         }
+      });
+    }
+
+    if (e.target.id.includes('destinationsView')) {
+      getDestinations().then((destinationsArray) => {
+        destinationsView(destinationsArray);
       });
     }
 
