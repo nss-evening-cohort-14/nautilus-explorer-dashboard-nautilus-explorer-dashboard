@@ -1,5 +1,4 @@
 const showCrew = (crewArray, user) => {
-  // BUILD CREW CARDS
   if (user) {
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
   }
