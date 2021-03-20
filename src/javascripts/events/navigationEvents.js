@@ -1,3 +1,4 @@
+import dashboardView from '../components/pages/dashboardView';
 import getCrew from '../helpers/data/crewData';
 import getSpecies from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
@@ -6,6 +7,10 @@ import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getLogEntry } from '../helpers/data/logEntryData';
 
 const navigationEvents = (user) => {
+  $('#navbarLogo').on('click', () => {
+    dashboardView();
+  });
+
   document.querySelector('#readCrew').addEventListener('click', () => {
     getCrew(user).then((crewArray) => {
       if (crewArray.length) {
