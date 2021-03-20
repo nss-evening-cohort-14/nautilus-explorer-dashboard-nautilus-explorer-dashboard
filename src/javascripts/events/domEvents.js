@@ -17,19 +17,6 @@ const domEvents = (user) => {
       formModal('Add Species');
       addSpeciesForm();
     }
-    if (e.target.id.includes('submit-species')) {
-      e.preventDefault();
-      const speciesObject = {
-        description: document.querySelector('#addSpeciesDescription').value,
-        img: document.querySelector('#addSpeciesImage').value,
-        name: document.querySelector('#addSpeciesName').value,
-        // destination_id: document.querySelector('#selectDestinationForSpecies').value,
-        uid: firebase.auth().currentUser.uid,
-      };
-      createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
-
-      $('#formModal').modal('toggle');
-    }
 
     if (e.target.id.includes('crewView')) {
       getCrew(user).then((crewArray) => {
@@ -65,6 +52,22 @@ const domEvents = (user) => {
           noReadSpecies();
         }
       });
+    }
+  });
+
+  document.querySelector('body').addEventListener('submit', (e) => {
+    if (e.target.id.includes('submit-species')) {
+      e.preventDefault();
+      const speciesObject = {
+        description: document.querySelector('#addSpeciesDescription').value,
+        img: document.querySelector('#addSpeciesImage').value,
+        name: document.querySelector('#addSpeciesName').value,
+        // destination_id: document.querySelector('#selectDestinationForSpecies').value,
+        uid: firebase.auth().currentUser.uid,
+      };
+      createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
+
+      $('#formModal').modal('toggle');
     }
   });
 };

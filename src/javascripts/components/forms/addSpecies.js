@@ -17,7 +17,7 @@ const addSpeciesForm = () => {
       </div>
       <div class="form-group" id="select-destination">
       </div>
-      <button type="submit" id="submit-species" class="btn">Submit Species</button>
+      <button type="submit" id="submit-species" class="btn submitSpeciesBtn">Submit Species</button>
     </form>`;
 
   // selectDestination();

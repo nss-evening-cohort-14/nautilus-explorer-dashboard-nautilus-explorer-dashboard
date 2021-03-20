@@ -31,7 +31,7 @@ const showReadSpecies = (speciesArray, user) => {
 };
 
 const noReadSpecies = () => {
-  // document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addNewSpeciesBtn">Add Species</button>';
+  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addNewSpeciesBtn">Add Species</button>';
   document.querySelector('#cardContainer').innerHTML = '<h1>I seek the white whale.</h1>';
 };
 
