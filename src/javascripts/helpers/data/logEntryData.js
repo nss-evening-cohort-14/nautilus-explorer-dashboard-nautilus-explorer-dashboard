@@ -15,4 +15,15 @@ const getLogEntry = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default getLogEntry;
+const seePublicLogs = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/logEntry.json?orderBy="shared"&equalTo=false`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
+
+export { getLogEntry, seePublicLogs };
