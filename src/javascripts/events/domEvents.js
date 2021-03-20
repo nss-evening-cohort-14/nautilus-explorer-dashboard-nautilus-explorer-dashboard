@@ -22,7 +22,7 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('destinationsView')) {
       getDestinations().then((destinationsArray) => {
-        destinationsView(destinationsArray);
+        destinationsView(user, destinationsArray);
       });
     }
 

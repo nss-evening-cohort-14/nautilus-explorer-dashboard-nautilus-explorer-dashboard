@@ -25,7 +25,7 @@ const navigationEvents = (user) => {
 
   $('#readDestinations').on('click', () => {
     getDestinations().then((destinationsArray) => {
-      destinationsView(destinationsArray);
+      destinationsView(user, destinationsArray);
     });
   });
 
