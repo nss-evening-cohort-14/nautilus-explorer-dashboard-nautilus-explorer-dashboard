@@ -1,4 +1,6 @@
 import axios from 'axios';
+import 'firebase/auth';
+import firebase from 'firebase';
 import firebaseConfig from '../auth/apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
@@ -15,4 +17,16 @@ const getLogEntry = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default getLogEntry;
+const getSingleLogEntry = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/logEntry/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+const editLogEntry = (firebaseKey, logObject) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/logEntry/${firebaseKey}.json`, logObject)
+    .then(() => getLogEntry(firebase.auth().currentUser.uid)).then((logArray) => resolve(logArray))
+    .catch((error) => reject(error));
+});
+
+export { getLogEntry, editLogEntry, getSingleLogEntry };
