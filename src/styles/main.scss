@@ -2,7 +2,45 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
-  background-color: #03403A;
+  background-color: #03403a;
+  color: #d99d55;
+}
+
+#cardContainer {
+  text-align: center;
+  width: 100%;
+}
+
+#dashboardHeader {
+  margin-top: -50px;
+}
+
+#pageCardsContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.width-50 {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.width-100 {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.dashboard-card {
+  background-color: #f2e8df;
+  color: #262223;
+  width: 300px;
+  height: 150px;
+  margin: auto;
+
+  button {
+    background-color: #d99d55;
+    border-color: #262223;
+  }
 }
 
 .navbar {

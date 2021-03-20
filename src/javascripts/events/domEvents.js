@@ -2,10 +2,14 @@ import 'firebase/auth';
 import firebase from 'firebase';
 import addSpeciesForm from '../components/forms/addSpecies';
 import formModal from '../components/forms/formModal';
-import { showReadSpecies } from '../components/pages/species';
-import { createSpecies } from '../helpers/data/crudSpecies';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
+import getCrew from '../helpers/data/crewData';
+import { showCrew, emptyCrew } from '../components/pages/crew';
+import getLogEntry from '../helpers/data/logEntryData';
+import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 
-const domEvents = (uid) => {
+const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
     if (e.target.id.includes('addSpeciesBtn')) {
       formModal('Add Species');
@@ -20,9 +24,39 @@ const domEvents = (uid) => {
         // destination_id: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createSpecies(speciesObject, uid).then((speciesArray) => showReadSpecies((speciesArray)));
+      createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
 
       $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('crewView')) {
+      getCrew(user).then((crewArray) => {
+        if (crewArray.length) {
+          showCrew(crewArray, user);
+        } else {
+          emptyCrew();
+        }
+      });
+    }
+
+    if (e.target.id.includes('logsView')) {
+      getLogEntry(user).then((logArray) => {
+        if (logArray.length) {
+          showLogEntry(logArray, user);
+        } else {
+          emptyLogEntry();
+        }
+      });
+    }
+
+    if (e.target.id.includes('speciesView')) {
+      getSpecies(user).then((speciesArray) => {
+        if (speciesArray.length) {
+          showReadSpecies(speciesArray, user);
+        } else {
+          noReadSpecies();
+        }
+      });
     }
   });
 };
