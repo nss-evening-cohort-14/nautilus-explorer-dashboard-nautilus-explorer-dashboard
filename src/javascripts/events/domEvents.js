@@ -2,7 +2,7 @@ import 'firebase/auth';
 import crewForm from '../components/forms/addCrew';
 import formModal from '../components/forms/formModal';
 import { showCrew } from '../components/pages/crew';
-import { createCrew } from '../helpers/data/crewData';
+import { createCrew, deleteCrew } from '../helpers/data/crewData';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -24,6 +24,13 @@ const domEvents = (user) => {
       };
       createCrew(crewObject).then((crewArray) => showCrew(crewArray, user));
       $('#formModal').modal('toggle');
+    }
+    // CLICK EVENT FOR DELETING CREW CARD
+    if (e.target.id.includes('delete-crew')) {
+      if (window.confirm('Want to delete?')) {
+        const crewId = e.target.id.split('--')[1];
+        deleteCrew(crewId).then((crewArray) => showCrew(crewArray));
+      }
     }
   });
 };
