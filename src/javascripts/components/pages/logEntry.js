@@ -1,5 +1,7 @@
 const showLogEntry = (logArray, user) => {
-  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addLogEntryBtn" data-toggle="modal" data-target="#formModal">Add Log Entry</button>';
+  if (user) {
+    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
+  }
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="readLogEntry"></div>';
 
