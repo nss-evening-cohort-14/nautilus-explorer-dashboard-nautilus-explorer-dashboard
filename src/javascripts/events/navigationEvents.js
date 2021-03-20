@@ -5,6 +5,8 @@ import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getLogEntry } from '../helpers/data/logEntryData';
+import getDestinations from '../helpers/data/destinationsData';
+import destinationsView from '../components/pages/destinationsView';
 
 const navigationEvents = (user) => {
   $('#navbarLogo').on('click', () => {
@@ -18,6 +20,12 @@ const navigationEvents = (user) => {
       } else {
         emptyCrew();
       }
+    });
+  });
+
+  $('#readDestinations').on('click', () => {
+    getDestinations().then((destinationsArray) => {
+      destinationsView(destinationsArray);
     });
   });
 
