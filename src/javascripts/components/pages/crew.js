@@ -1,15 +1,11 @@
 const showCrew = (crewArray, user) => {
-  // CREATE TEMPORARY DIV TO HOLD CREW DATA
-  // document.querySelector('#mainContainer').innerHTML = '<div id="crewPlaceholder" class="row justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
-
   // BUILD CREW CARDS
+  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
+  document.querySelector('#formContainer').innerHTML = '';
+  document.querySelector('#cardContainer').innerHTML = '<div id="crewPlaceholder" class="row d-flex justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
+  // document.querySelector('#cardContainer').innerHTML = '<div id="crewPlaceholder"></div>';
   crewArray.forEach((member) => {
-    document.querySelector('#addButton').innerHTML = '';
-    document.querySelector('#formContainer').innerHTML = '';
-    document.querySelector('#readLogEntry').innerHTML = '';
-    document.querySelector('#cardContainer').innerHTML = '';
-
-    document.querySelector('#seeCrew').innerHTML += `
+    document.querySelector('#crewPlaceholder').innerHTML += `
     <div class="col-sm-3">
       <div class="card v-25 m-3 p-4 shadow-lg rounded">
         <h5 class="card-title">${member.firstname} ${member.lastname}</h5>
@@ -27,4 +23,9 @@ const showCrew = (crewArray, user) => {
   });
 };
 
-export default showCrew;
+const emptyCrew = () => {
+  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
+  document.querySelector('#cardContainer').innerHTML = '<h1>Abandon ship!</h1>';
+};
+
+export { showCrew, emptyCrew };
