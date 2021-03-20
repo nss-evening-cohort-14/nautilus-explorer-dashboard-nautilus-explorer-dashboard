@@ -1,10 +1,10 @@
 const showLogEntry = (logArray, user) => {
   document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
-  document.querySelector('#seeCrew').innerHTML = '';
-  document.querySelector('#cardContainer').innerHTML = '';
+  document.querySelector('#formContainer').innerHTML = '';
+  document.querySelector('#cardContainer').innerHTML = '<div id="seeLogEntry"></div>';
 
   logArray.forEach((element) => {
-    document.querySelector('#readLogEntry').innerHTML += `<div class="card">
+    document.querySelector('#seeLogEntry').innerHTML += `<div class="card" id="log-entry-card">
     <div class="card-body" style="height: 300px;">
       <h5 id="log-title--${element.firebaseKey}" class="card-title">${element.title}</h5>
       <p class="card-text" id="log-body">${element.body}</p>
@@ -22,8 +22,8 @@ const showLogEntry = (logArray, user) => {
 };
 
 const emptyLogEntry = () => {
-  document.querySelector('#button').innerHTML = '<button type="button class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
-  document.querySelector('#readLogEntry').innerHTML = '<h1>Log, lest you get decked</h1>';
+  document.querySelector('#addbutton').innerHTML = '<button type="button class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
+  document.querySelector('#cardContainer').innerHTML = '<h1>Log, lest you get decked</h1>';
 };
 
 export { showLogEntry, emptyLogEntry };
