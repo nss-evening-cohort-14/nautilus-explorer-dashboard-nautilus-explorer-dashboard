@@ -3,7 +3,7 @@ import speciesDescription from '../../../assets/speciesDescription.png';
 import speciesDestination from '../../../assets/speciesDestination.png';
 
 const showReadSpecies = (speciesArray, user) => {
-  document.querySelector('#addButton').innerHTML = `${user ? '<button class="btn btn-sm mb-4" id="addSpeciesBtn" data-toggle="modal" data-target="#formModal">Add Species</button>' : ''} `;
+  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addSpeciesBtn" data-toggle="modal" data-target="#formModal">Add Species</button>';
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="speciesContainer"></div>';
 
