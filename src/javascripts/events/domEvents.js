@@ -2,10 +2,17 @@ import 'firebase/auth';
 import crewForm from '../components/forms/addCrew';
 import editCrewForm from '../components/forms/editCrew';
 import formModal from '../components/forms/formModal';
-import { showCrew } from '../components/pages/crew';
 import {
   createCrew, deleteCrew, getSingleCrew, updateCrew
 } from '../helpers/data/crewData';
+import getCrew from '../helpers/data/crewData';
+import { showCrew, emptyCrew } from '../components/pages/crew';
+import getLogEntry from '../helpers/data/logEntryData';
+import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
+import getSpecies from '../helpers/data/crudSpecies';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import getDestinations from '../helpers/data/destinationsData';
+import destinationsView from '../components/pages/destinationsView';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -55,6 +62,54 @@ const domEvents = (user) => {
       };
       updateCrew(firebaseKey, crewObject).then((crewArray) => showCrew(crewArray, user));
       $('#formModal').modal('toggle');
+    }
+
+    // HOMEPAGE EVENTS
+    // GO TO CREW
+    if (e.target.id.includes('crewView')) {
+      getCrew(user).then((crewArray) => {
+        if (crewArray.length) {
+          showCrew(crewArray, user);
+        } else {
+          emptyCrew();
+        }
+      });
+    }
+    // GO TO DESTINATIONS
+    if (e.target.id.includes('destinationsView')) {
+      getDestinations().then((destinationsArray) => {
+        destinationsView(destinationsArray);
+      });
+    }
+    // GO TO LOGS
+    if (e.target.id.includes('logsView')) {
+      getLogEntry(user).then((logArray) => {
+        if (logArray.length) {
+          showLogEntry(logArray, user);
+        } else {
+          emptyLogEntry();
+        }
+      });
+    }
+    // GO TO ENVIRONMENTAL VARIABLES
+    if (e.target.id.includes('')) {
+      getEnvVars(user).then((envVarsArray) => {
+        if (envVarsArray.length) {
+          showEnvVards(envVarsArray, user);
+        } else {
+          emptyEnvVars();
+        }
+      });
+    }
+    // GO TO SPECIES
+    if (e.target.id.includes('speciesView')) {
+      getSpecies(user).then((speciesArray) => {
+        if (speciesArray.length) {
+          showReadSpecies(speciesArray, user);
+        } else {
+          noReadSpecies();
+        }
+      });
     }
   });
 };
