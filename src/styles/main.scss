@@ -60,7 +60,19 @@ body {
   width: 3em;
 }
 
-#addSpeciesBtn {
+#addNewSpeciesBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+
+#addCrewBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+
+#addLogEntryBtn {
   background-color: #D99D55;
   color: #F2E8DF;
 }
@@ -97,4 +109,9 @@ body {
   justify-content: center;
   margin-top: 75px;
   margin-bottom: 75px;
+}
+
+.submitSpeciesBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
 }
