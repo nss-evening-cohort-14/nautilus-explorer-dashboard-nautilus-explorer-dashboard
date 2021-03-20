@@ -1,7 +1,9 @@
+import firebase from 'firebase';
 import 'firebase/auth';
 import addLogForm from '../components/forms/addLogForm';
-import { showLogEntry } from '../components/logEntry';
+import { showLogEntry } from '../components/pages/logEntry';
 import { createNewLog } from '../helpers/data/logEntryData';
+// import formModal from '../components/forms/formModal';
 
 const domEvents = (uid) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -19,9 +21,9 @@ const domEvents = (uid) => {
         timestamp: new Date(),
         timezone: document.querySelector('#timezone').value,
         shared: document.querySelector('#log-private').checked,
-        uid
+        uid: firebase.auth().currentUser.uid,
       };
-      createNewLog(logObject, uid).then((logArray) => showLogEntry(logArray, uid));
+      createNewLog(logObject).then((logArray) => showLogEntry(logArray, uid));
     }
   });
 };

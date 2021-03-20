@@ -1,5 +1,5 @@
 const formModal = (modalTitle) => {
-  document.querySelector('#form-container').innerHTML = `
+  document.querySelector('#formContainer').innerHTML = `
   <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

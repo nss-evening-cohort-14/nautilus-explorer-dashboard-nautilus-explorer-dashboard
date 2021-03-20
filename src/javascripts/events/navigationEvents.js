@@ -1,8 +1,8 @@
 import getCrew from '../helpers/data/crewData';
 import getSpecies from '../helpers/data/crudSpecies';
-import showCrew from '../components/crew';
-import { showReadSpecies, noReadSpecies } from '../components/species';
-import { emptyLogEntry, showLogEntry } from '../components/logEntry';
+import { showCrew, emptyCrew } from '../components/pages/crew';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getLogEntry } from '../helpers/data/logEntryData';
 
 const navigationEvents = (user) => {
@@ -10,6 +10,8 @@ const navigationEvents = (user) => {
     getCrew(user).then((crewArray) => {
       if (crewArray.length) {
         showCrew(crewArray, user);
+      } else {
+        emptyCrew();
       }
     });
   });
