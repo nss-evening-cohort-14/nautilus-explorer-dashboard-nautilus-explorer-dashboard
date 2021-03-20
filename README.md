@@ -1,5 +1,9 @@
 # Nautilus Explorer Dashboard
 
+### [ERD](https://dbdiagram.io/d/604d0f78fcdcb6230b240157)
+### [Workflow Diagram](https://docs.google.com/presentation/d/1lBstv8ilRRyP87Sqn62cQ8Q2JMju-SF3ofdo6_suoSs/edit?usp=sharing)
+### [Wireframe](https://www.figma.com/file/j9kRS7JW3I9rVwHrCYtbfy/NAUTILUS?node-id=0%3A1)
+
 ### Product Owner
 Your PO is assigned as an approver and feedback for your application. They are not there to guide you through code. If you have code related needs, submit a completed issue ticket.
 
