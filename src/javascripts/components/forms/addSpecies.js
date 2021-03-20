@@ -5,7 +5,7 @@ const addSpeciesForm = () => {
     <form id="submit-pin-form" class="mb-4">
     <div class="form-group">
     <label for="addSpeciesName">Species Description</label>
-    <input type="text" class="form-control" id="addSpeciesName" aria-describedby="addSpeciesName" placeholder="Enter Description" required>
+    <input type="text" class="form-control" id="addSpeciesName" aria-describedby="addSpeciesName" placeholder="Enter Name" required>
   </div>
       <div class="form-group">
         <label for="addSpeciesDescription">Species Description</label>

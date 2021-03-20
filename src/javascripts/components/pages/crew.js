@@ -1,6 +1,6 @@
 const showCrew = (crewArray, user) => {
   // BUILD CREW CARDS
-  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
+  document.querySelector('#addButton').innerHTML = `${user ? '<button class="btn btn-sm mb-4" id="addCrewBtn" data-toggle="modal" data-target="#formModal">Add Crew Member</button>' : ''} `;
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="crewPlaceholder" class="row d-flex justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
   // document.querySelector('#cardContainer').innerHTML = '<div id="crewPlaceholder"></div>';
