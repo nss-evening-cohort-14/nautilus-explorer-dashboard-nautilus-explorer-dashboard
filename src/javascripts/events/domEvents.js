@@ -1,12 +1,14 @@
-import 'firebase/auth';
 import firebase from 'firebase';
+import 'firebase/auth';
+import addLogForm from '../components/forms/addLogForm';
+import { getLogEntry, createNewLog } from '../helpers/data/logEntryData';
+// import formModal from '../components/forms/formModal';
 import addSpeciesForm from '../components/forms/addSpecies';
 import formModal from '../components/forms/formModal';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
 import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
-import getLogEntry from '../helpers/data/logEntryData';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import getDestinations from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
@@ -53,6 +55,11 @@ const domEvents = (user) => {
         }
       });
     }
+
+    // CLICK TO SHOW ADD NEW LOG
+    if (e.target.id.includes('addLogEntry')) {
+      addLogForm();
+    }
   });
 
   document.querySelector('body').addEventListener('submit', (e) => {
@@ -68,6 +75,20 @@ const domEvents = (user) => {
       createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
 
       $('#formModal').modal('toggle');
+    }
+
+    // CLICK TO SUBMIT NEW LOG
+    if (e.target.id.includes('add-log')) {
+      e.preventDefault();
+      const logObject = {
+        title: document.querySelector('#title').value,
+        body: document.querySelector('#body').value,
+        timestamp: new Date(),
+        timezone: document.querySelector('#timezone').value,
+        shared: document.querySelector('#log-private').checked,
+        uid: firebase.auth().currentUser.uid,
+      };
+      createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
     }
   });
 };
