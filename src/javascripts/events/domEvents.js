@@ -5,6 +5,8 @@ import getLogEntry from '../helpers/data/logEntryData';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import getSpecies from '../helpers/data/crudSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import getDestinations from '../helpers/data/destinationsData';
+import destinationsView from '../components/pages/destinationsView';
 
 const domEvents = (user) => {
   $('body').on('click', (e) => {
@@ -15,6 +17,12 @@ const domEvents = (user) => {
         } else {
           emptyCrew();
         }
+      });
+    }
+
+    if (e.target.id.includes('destinationsView')) {
+      getDestinations().then((destinationsArray) => {
+        destinationsView(destinationsArray);
       });
     }
 
