@@ -1,15 +1,14 @@
-import speciesName from '../../assets/speciesName.png';
-import speciesDescription from '../../assets/speciesDescription.png';
-import speciesDestination from '../../assets/speciesDestination.png';
+import speciesName from '../../../assets/speciesName.png';
+import speciesDescription from '../../../assets/speciesDescription.png';
+import speciesDestination from '../../../assets/speciesDestination.png';
 
 const showReadSpecies = (speciesArray, user) => {
-  document.querySelector('#addButton').innerHTML = `${user ? '<button class="btn btn-sm mb-4" id="addSpeciesBtn">Add Species</button>' : ''} `;
+  document.querySelector('#addButton').innerHTML = `${user ? '<button class="btn btn-sm mb-4" id="addSpeciesBtn" data-toggle="modal" data-target="#formModal">Add Species</button>' : ''} `;
   document.querySelector('#formContainer').innerHTML = '';
-  document.querySelector('#seeCrew').innerHTML = '';
-  document.querySelector('#readLogEntry').innerHTML = '';
+  document.querySelector('#cardContainer').innerHTML = '<div id="speciesContainer"></div>';
 
   speciesArray.forEach((creature) => {
-    document.querySelector('#cardContainer').innerHTML += `
+    document.querySelector('#speciesContainer').innerHTML += `
     <div class="card mb-3" style="max-width: 540px;" id="speciesCard">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -30,6 +29,7 @@ const showReadSpecies = (speciesArray, user) => {
 };
 
 const noReadSpecies = () => {
+  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addSpeciesBtn">Add Species</button>';
   document.querySelector('#cardContainer').innerHTML = '<h1>I seek the white whale.</h1>';
 };
 
