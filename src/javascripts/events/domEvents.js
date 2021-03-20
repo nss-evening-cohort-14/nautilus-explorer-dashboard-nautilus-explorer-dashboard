@@ -23,7 +23,7 @@ const domEvents = (uid) => {
         shared: document.querySelector('#log-private').checked,
         uid: firebase.auth().currentUser.uid,
       };
-      createNewLog(logObject, uid).then((logArray) => showLogEntry(logArray));
+      createNewLog(logObject, uid).then((logArray) => showLogEntry(logArray, uid));
     }
   });
 };
