@@ -39,23 +39,6 @@ const domEvents = (user) => {
       });
     }
 
-    if (e.target.id.includes('newDestinationButton')) {
-      $('#newDestinationForm').on('submit', (e2) => {
-        e2.preventDefault();
-
-        const newDestination = {
-          name: $('#destinationName').val(),
-          image: $('#destinationImage').val(),
-        };
-
-        $('#destinationModal').modal('hide');
-
-        createDestination(newDestination).then((destinationsArray) => {
-          destinationsView(user, destinationsArray);
-        });
-      });
-    }
-
     if (e.target.id.includes('logsView')) {
       getLogEntry(user).then((logArray) => {
         if (logArray.length) {
@@ -83,6 +66,21 @@ const domEvents = (user) => {
   });
 
   document.querySelector('body').addEventListener('submit', (e) => {
+    if (e.target.id.includes('newDestinationForm')) {
+      e.preventDefault();
+
+      const newDestination = {
+        name: $('#destinationName').val(),
+        image: $('#destinationImage').val(),
+      };
+
+      $('#destinationModal').modal('hide');
+
+      createDestination(newDestination).then((destinationsArray) => {
+        destinationsView(user, destinationsArray);
+      });
+    }
+
     if (e.target.id.includes('submit-species')) {
       e.preventDefault();
       const speciesObject = {
@@ -92,7 +90,9 @@ const domEvents = (user) => {
         // destination_id: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
+      createSpecies(speciesObject, user).then((speciesArray) => {
+        showReadSpecies(speciesArray);
+      });
 
       $('#formModal').modal('toggle');
     }
@@ -108,7 +108,9 @@ const domEvents = (user) => {
         shared: document.querySelector('#log-private').checked,
         uid: firebase.auth().currentUser.uid,
       };
-      createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
+      createNewLog(logObject, user).then((logArray) => {
+        showLogEntry(logArray, user);
+      });
     }
   });
 };
