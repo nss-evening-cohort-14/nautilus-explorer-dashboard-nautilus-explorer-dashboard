@@ -1,5 +1,5 @@
 import dashboardView from '../components/pages/dashboardView';
-import getCrew from '../helpers/data/crewData';
+import { getCrew } from '../helpers/data/crewData';
 import getDestinations from '../helpers/data/destinationsData';
 import getLogEntry from '../helpers/data/logEntryData';
 import getEnvironmental from '../helpers/data/environmentalData';
@@ -14,23 +14,23 @@ const navigationEvents = (user) => {
   $('#navbarLogo').on('click', () => {
     dashboardView();
   });
-
+  // GO TO CREW
   document.querySelector('#readCrew').addEventListener('click', () => {
     getCrew(user).then((crewArray) => {
       if (crewArray.length) {
         showCrew(crewArray, user);
       } else {
-        emptyCrew();
+        emptyCrew(user);
       }
     });
   });
-
+  // GO TO DESTINATIONS
   $('#readDestinations').on('click', () => {
     getDestinations().then((destinationsArray) => {
       destinationsView(destinationsArray);
     });
   });
-
+  // GO TO LOGS
   document.querySelector('#readLogEntries').addEventListener('click', () => {
     getLogEntry(user).then((logArray) => {
       if (logArray.length) {
@@ -40,7 +40,7 @@ const navigationEvents = (user) => {
       }
     });
   });
-
+  // GO TO ENVIRONMENTAL VARIABLES
   $('#readEnvironmentalVariables').on('click', () => {
     getEnvironmental(user).then((environmentalArray) => {
       if (environmentalArray.length) {
@@ -50,7 +50,7 @@ const navigationEvents = (user) => {
       }
     });
   });
-
+  // GO TO SPECIES
   document.querySelector('#readSpecies').addEventListener('click', () => {
     getSpecies(user).then((speciesArray) => {
       if (speciesArray.length) {
