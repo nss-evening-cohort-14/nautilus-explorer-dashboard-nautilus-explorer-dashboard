@@ -4,15 +4,21 @@ const destinationsView = (user, destinationsArray) => {
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="destinationModalLabel">Destination Form</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h5 class="modal-title" id="destinationModalLabel">New Destination</h5>
                 </div>
                 <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary">Add Destination</button>
+                  <form id="newDestinationForm">
+                    <div class="mb-3">
+                      <label for="destinationName" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="destinationName" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="destinationImage" class="form-label">Image URL</label>
+                      <input type="url" class="form-control" id="destinationImage" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Destination</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -20,7 +26,7 @@ const destinationsView = (user, destinationsArray) => {
 
   $('#addButton').html(
     user
-      ? '<button type="button" class="btn btn-new-destination" data-bs-toggle="modal" data-bs-target="#destinationModal">Add New Destination</button>'
+      ? '<button type="button" class="btn btn-hj-primary" data-toggle="modal" data-target="#destinationModal" id="newDestinationButton">Add New Destination</button>'
       : '',
   );
 
