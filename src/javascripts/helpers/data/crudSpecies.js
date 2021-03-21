@@ -1,4 +1,5 @@
 import 'firebase/auth';
+import firebase from 'firebase';
 import axios from 'axios';
 import firebaseConfig from '../auth/apiKeys';
 
@@ -32,4 +33,18 @@ const deleteSpecies = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { getSpecies, createSpecies, deleteSpecies };
+const getSpecificSpecies = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/species/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
+const updateSpecificSpecies = (firebaseKey, speciesObject) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/species/${firebaseKey}.json`, speciesObject)
+    .then(() => getSpecies(firebase.auth().currentUser.user)).then((speciesArray) => resolve(speciesArray))
+    .catch((error) => reject(error));
+});
+
+export {
+  getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
+};
