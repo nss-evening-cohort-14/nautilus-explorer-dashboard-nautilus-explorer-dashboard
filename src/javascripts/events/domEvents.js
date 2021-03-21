@@ -76,7 +76,7 @@ const domEvents = (user) => {
         if (crewArray.length) {
           showCrew(crewArray, user);
         } else {
-          emptyCrew();
+          emptyCrew(user);
         }
       });
     }

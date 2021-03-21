@@ -1,5 +1,5 @@
 const showEnvironmental = (environmentalArray, user) => {
-  // BUILD CREW CARDS
+  // BUILD ENVIRONMENT CARDS
   if (user) {
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addEnvironmentalButton">Add Environmental Data</button>';
   }
@@ -19,8 +19,8 @@ const showEnvironmental = (environmentalArray, user) => {
           <span>Temperature: ${entry.temperature}</span> <br>
           <span>Entry Date: ${entry.timestamp} months</span>
           <hr>
-          ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-environmental--${entry.firebaseKey}">Details</button>
-          <button class="btn btn-danger shadow-lg" id="delete-environmental--${entry.firebaseKey}">Disembark</button>` : ''}
+          ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-environmental--${entry.firebaseKey}">Variables</button>
+          <button class="btn btn-danger shadow-lg" id="delete-environmental--${entry.firebaseKey}">Delete</button>` : ''}
         </div>
       </div>
     </div>

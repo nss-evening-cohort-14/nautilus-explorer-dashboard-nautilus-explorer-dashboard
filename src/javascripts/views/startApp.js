@@ -9,10 +9,7 @@ const startApp = (user) => {
   navBar(); // populates #navigation with nav bar items
   navigationEvents(user); // enables clicks from #navigation
   domEvents(user); // listens for button clicks inside #mainContainer
-<<<<<<< HEAD
-=======
   dashboardView(user);
->>>>>>> development
 };
 
 export default startApp;

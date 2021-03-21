@@ -25,8 +25,10 @@ const showCrew = (crewArray, user) => {
   });
 };
 
-const emptyCrew = () => {
-  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
+const emptyCrew = (user) => {
+  if (user) {
+    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
+  }
   document.querySelector('#cardContainer').innerHTML = '<h1>Abandon ship!</h1>';
 };
 
