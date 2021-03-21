@@ -9,9 +9,12 @@ import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
 import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
-import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
-import getDestinations from '../helpers/data/destinationsData';
+import {
+  getDestinations,
+  createDestination,
+} from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
+import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -32,7 +35,7 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('destinationsView')) {
       getDestinations().then((destinationsArray) => {
-        destinationsView(destinationsArray);
+        destinationsView(user, destinationsArray);
       });
     }
 
@@ -63,6 +66,21 @@ const domEvents = (user) => {
   });
 
   document.querySelector('body').addEventListener('submit', (e) => {
+    if (e.target.id.includes('newDestinationForm')) {
+      e.preventDefault();
+
+      const newDestination = {
+        name: $('#destinationName').val(),
+        image: $('#destinationImage').val(),
+      };
+
+      $('#destinationModal').modal('hide');
+
+      createDestination(newDestination).then((destinationsArray) => {
+        destinationsView(user, destinationsArray);
+      });
+    }
+
     if (e.target.id.includes('submit-species')) {
       e.preventDefault();
       const speciesObject = {
@@ -72,7 +90,9 @@ const domEvents = (user) => {
         // destination_id: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
+      createSpecies(speciesObject, user).then((speciesArray) => {
+        showReadSpecies(speciesArray);
+      });
 
       $('#formModal').modal('toggle');
     }
@@ -88,7 +108,9 @@ const domEvents = (user) => {
         shared: document.querySelector('#log-private').checked,
         uid: firebase.auth().currentUser.uid,
       };
-      createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
+      createNewLog(logObject, user).then((logArray) => {
+        showLogEntry(logArray, user);
+      });
     }
   });
 };
