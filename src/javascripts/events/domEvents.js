@@ -16,6 +16,22 @@ import getEnvinromental from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const domEvents = (user) => {
+  document.querySelector('body').addEventListener('submit', (e) => {
+  // CLICK EVENT FOR SUBMITTING 'EDIT CREW FORM' TO UPDATE CREW MEMBER
+    if (e.target.id.includes('submit-edit-crew')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const crewObject = {
+        firstname: document.querySelector('#firstName').value,
+        lastname: document.querySelector('#lastName').value,
+        job: document.querySelector('#title').value,
+        months_tenure: document.querySelector('#tenure').value,
+        image: document.querySelector('#image').value,
+      };
+      updateCrew(firebaseKey, crewObject).then((crewArray) => showCrew(crewArray, user));
+      $('#formModal').modal('toggle');
+    }
+  });
   document.querySelector('body').addEventListener('click', (e) => {
     // ---------------
     // ---------------
@@ -53,20 +69,6 @@ const domEvents = (user) => {
       formModal('Edit Crew Member');
       getSingleCrew(firebaseKey).then((crewObject) => editCrewForm(crewObject));
     }
-    // CLICK EVENT FOR SUBMITTING 'EDIT CREW FORM' TO UPDATE CREW MEMBER
-    if (e.target.id.includes('submit-edit-crew')) {
-      const firebaseKey = e.target.id.split('--')[1];
-      e.preventDefault();
-      const crewObject = {
-        firstname: document.querySelector('#firstName').value,
-        lastname: document.querySelector('#lastName').value,
-        job: document.querySelector('#title').value,
-        months_tenure: document.querySelector('#tenure').value,
-        image: document.querySelector('#image').value,
-      };
-      updateCrew(firebaseKey, crewObject).then((crewArray) => showCrew(crewArray, user));
-      $('#formModal').modal('toggle');
-    }
     // ---------------
     // ---------------
     // HOMEPAGE EVENTS
@@ -97,7 +99,7 @@ const domEvents = (user) => {
       });
     }
     // GO TO ENVIRONMENTAL VARIABLES
-    if (e.target.id.includes('')) {
+    if (e.target.id.includes('variablesView')) {
       getEnvinromental(user).then((environmentalArray) => {
         if (environmentalArray.length) {
           showEnvironmental(environmentalArray, user);
