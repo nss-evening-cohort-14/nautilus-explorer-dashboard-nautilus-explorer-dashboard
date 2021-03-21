@@ -1,19 +1,14 @@
-<<<<<<< HEAD
-=======
 import dashboardView from '../components/pages/dashboardView';
 import getCrew from '../helpers/data/crewData';
->>>>>>> development
+import getDestinations from '../helpers/data/destinationsData';
+import getLogEntry from '../helpers/data/logEntryData';
+import getEnvironmental from '../helpers/data/environmentalData';
 import getSpecies from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
-import { showReadSpecies, noReadSpecies } from '../components/pages/species';
-import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
-import getLogEntry from '../helpers/data/logEntryData';
-<<<<<<< HEAD
-import { getCrew } from '../helpers/data/crewData';
-=======
-import getDestinations from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
->>>>>>> development
+import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
+import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 
 const navigationEvents = (user) => {
   $('#navbarLogo').on('click', () => {
@@ -42,6 +37,16 @@ const navigationEvents = (user) => {
         showLogEntry(logArray, user);
       } else {
         emptyLogEntry();
+      }
+    });
+  });
+
+  $('#readEnvironmentalVariables').on('click', () => {
+    getEnvironmental(user).then((environmentalArray) => {
+      if (environmentalArray.length) {
+        showEnvironmental(environmentalArray, user);
+      } else {
+        emptyEnvironmental(user);
       }
     });
   });

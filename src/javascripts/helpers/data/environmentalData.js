@@ -6,7 +6,7 @@ import firebaseConfig from '../auth/apiKeys';
 // API CALLS FOR ENVIRONMENTAL DATA
 const dbUrl = firebaseConfig.databaseURL;
 // GET ENVIRONMENTAL
-const getEnvVars = () => new Promise((resolve, reject) => {
+const getEnvironmental = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/environmentalVariable.json`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
@@ -44,4 +44,4 @@ const getEnvVars = () => new Promise((resolve, reject) => {
 //     .catch((error) => reject(error));
 // });
 
-export default getEnvVars;
+export default getEnvironmental;

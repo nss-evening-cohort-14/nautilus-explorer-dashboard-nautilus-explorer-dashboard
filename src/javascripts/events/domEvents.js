@@ -1,11 +1,10 @@
 import 'firebase/auth';
+import formModal from '../components/forms/formModal';
 import crewForm from '../components/forms/addCrew';
 import editCrewForm from '../components/forms/editCrew';
-import formModal from '../components/forms/formModal';
 import {
-  createCrew, deleteCrew, getSingleCrew, updateCrew
+  getCrew, createCrew, deleteCrew, getSingleCrew, updateCrew
 } from '../helpers/data/crewData';
-import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import getLogEntry from '../helpers/data/logEntryData';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
@@ -13,9 +12,14 @@ import getSpecies from '../helpers/data/crudSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import getDestinations from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
+import getEnvinromental from '../helpers/data/environmentalData';
+import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
+    // ---------------
+    // ---------------
+    // CREW EVENTS
     // CLICK EVENT FOR SHOWING 'ADD CREW' FORM
     if (e.target.id.includes('addCrewButton')) {
       formModal('Add Crew');
@@ -43,7 +47,7 @@ const domEvents = (user) => {
         deleteCrew(crewId).then((crewArray) => showCrew(crewArray, user));
       }
     }
-    // CLICK EVENT FOR SHOWING EDIT FORM
+    // CLICK EVENT FOR SHOWING 'EDIT CREW FORM'
     if (e.target.id.includes('update-crew')) {
       const firebaseKey = e.target.id.split('--')[1];
       formModal('Edit Crew Member');
@@ -63,7 +67,8 @@ const domEvents = (user) => {
       updateCrew(firebaseKey, crewObject).then((crewArray) => showCrew(crewArray, user));
       $('#formModal').modal('toggle');
     }
-
+    // ---------------
+    // ---------------
     // HOMEPAGE EVENTS
     // GO TO CREW
     if (e.target.id.includes('crewView')) {
@@ -93,11 +98,11 @@ const domEvents = (user) => {
     }
     // GO TO ENVIRONMENTAL VARIABLES
     if (e.target.id.includes('')) {
-      getEnvVars(user).then((envVarsArray) => {
-        if (envVarsArray.length) {
-          showEnvVards(envVarsArray, user);
+      getEnvinromental(user).then((environmentalArray) => {
+        if (environmentalArray.length) {
+          showEnvironmental(environmentalArray, user);
         } else {
-          emptyEnvVars();
+          emptyEnvironmental(user);
         }
       });
     }
