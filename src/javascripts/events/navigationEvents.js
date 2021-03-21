@@ -1,10 +1,10 @@
 import dashboardView from '../components/pages/dashboardView';
 import getCrew from '../helpers/data/crewData';
-import getSpecies from '../helpers/data/crudSpecies';
+import { getSpecies } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
-import getLogEntry from '../helpers/data/logEntryData';
+import { getLogEntry } from '../helpers/data/logEntryData';
 import { getDestinations } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 

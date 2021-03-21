@@ -1,4 +1,12 @@
+import firebase from 'firebase';
 import 'firebase/auth';
+import addLogForm from '../components/forms/addLogForm';
+import { getLogEntry, createNewLog } from '../helpers/data/logEntryData';
+// import formModal from '../components/forms/formModal';
+import addSpeciesForm from '../components/forms/addSpecies';
+import formModal from '../components/forms/formModal';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
 import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import {
@@ -6,13 +14,15 @@ import {
   createDestination,
 } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
-import getLogEntry from '../helpers/data/logEntryData';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
-import getSpecies from '../helpers/data/crudSpecies';
-import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 
 const domEvents = (user) => {
-  $('body').on('click', (e) => {
+  document.querySelector('body').addEventListener('click', (e) => {
+    if (e.target.id.includes('addNewSpeciesBtn')) {
+      formModal('Add Species');
+      addSpeciesForm();
+    }
+
     if (e.target.id.includes('crewView')) {
       getCrew(user).then((crewArray) => {
         if (crewArray.length) {
@@ -64,6 +74,41 @@ const domEvents = (user) => {
           noReadSpecies();
         }
       });
+    }
+
+    // CLICK TO SHOW ADD NEW LOG
+    if (e.target.id.includes('addLogEntry')) {
+      addLogForm();
+    }
+  });
+
+  document.querySelector('body').addEventListener('submit', (e) => {
+    if (e.target.id.includes('submit-species')) {
+      e.preventDefault();
+      const speciesObject = {
+        description: document.querySelector('#addSpeciesDescription').value,
+        img: document.querySelector('#addSpeciesImage').value,
+        name: document.querySelector('#addSpeciesName').value,
+        // destination_id: document.querySelector('#selectDestinationForSpecies').value,
+        uid: firebase.auth().currentUser.uid,
+      };
+      createSpecies(speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
+
+      $('#formModal').modal('toggle');
+    }
+
+    // CLICK TO SUBMIT NEW LOG
+    if (e.target.id.includes('add-log')) {
+      e.preventDefault();
+      const logObject = {
+        title: document.querySelector('#title').value,
+        body: document.querySelector('#body').value,
+        timestamp: new Date(),
+        timezone: document.querySelector('#timezone').value,
+        shared: document.querySelector('#log-private').checked,
+        uid: firebase.auth().currentUser.uid,
+      };
+      createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
     }
   });
 };
