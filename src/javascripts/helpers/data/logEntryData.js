@@ -29,4 +29,21 @@ const editLogEntry = (firebaseKey, logObject) => new Promise((resolve, reject) =
     .catch((error) => reject(error));
 });
 
-export { getLogEntry, editLogEntry, getSingleLogEntry };
+// CREATE NEW LOG
+const createNewLog = (logObject, uid) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/logEntry.json`, logObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/logEntry/${response.data.name}.json`, body)
+        .then(() => {
+          getLogEntry(uid).then((logArray) => resolve(logArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+export {
+  getLogEntry,
+  editLogEntry,
+  getSingleLogEntry,
+  createNewLog
+};
