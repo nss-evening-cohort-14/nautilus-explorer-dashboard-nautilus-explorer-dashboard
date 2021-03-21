@@ -6,7 +6,7 @@ import { getLogEntry, createNewLog } from '../helpers/data/logEntryData';
 import addSpeciesForm from '../components/forms/addSpecies';
 import formModal from '../components/forms/formModal';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
-import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
+import { getSpecies, createSpecies, deleteSpecies } from '../helpers/data/crudSpecies';
 import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
@@ -18,6 +18,11 @@ const domEvents = (user) => {
     if (e.target.id.includes('addNewSpeciesBtn')) {
       formModal('Add Species');
       addSpeciesForm();
+    }
+
+    if (e.target.id.includes('delete-species-btn')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      deleteSpecies(firebaseKey, user).then((speciesArray) => showReadSpecies(speciesArray));
     }
 
     if (e.target.id.includes('crewView')) {
