@@ -37,7 +37,7 @@ const destinationsView = (user, destinationsArray) => {
                       <img src="${destination.image}" class="card-img-top" alt="${destination.name}">
                       <div class="card-body">
                         <h5 class="card-title">${destination.name}</h5>
-                        <button type="button" class="btn btn-hj-danger" id="deleteDestination--${destination.firebaseKey}">Delete</button>
+                        ${user ? `<button type="button" class="btn btn-hj-danger" id="deleteDestination--${destination.firebaseKey}">Delete</button>` : ''}
                       </div>
                     </div>`;
     });
