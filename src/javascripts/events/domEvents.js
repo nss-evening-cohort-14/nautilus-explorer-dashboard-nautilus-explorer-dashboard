@@ -102,7 +102,7 @@ const domEvents = (user) => {
       createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
     }
     // EDIT LOG ENTRY
-    if (e.target.id.includes('update-log')) {
+    if (e.target.id.includes('edit-log-form')) {
       const firebaseKey = e.target.id.split('--')[1];
       e.preventDefault();
       const logObject = {

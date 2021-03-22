@@ -1,5 +1,5 @@
 const editLogForm = (logObject) => {
-  document.querySelector('#modal-body').innerHTML = `<form id="edit-log-form" class="mb-4">
+  document.querySelector('#modal-body').innerHTML = `<form id="edit-log-form--${logObject.firebaseKey}" class="mb-4">
   <div class="form-group">
     <label for="title">Log Title</label>
     <input type="text" class="form-control" id="title" aria-describedby="logTitle" placeholder="Enter Log Title" value="${logObject.title}" required>
