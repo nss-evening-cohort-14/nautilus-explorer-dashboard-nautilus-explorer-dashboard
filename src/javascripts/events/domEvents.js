@@ -1,11 +1,10 @@
 import firebase from 'firebase';
 import 'firebase/auth';
-import { deleteLogEntry } from '../helpers/data/logEntryData';
 import crewForm from '../components/forms/addCrew';
 import formModal from '../components/forms/formModal';
 import { getCrew, createCrew } from '../helpers/data/crewData';
 import addLogForm from '../components/forms/addLogForm';
-import { getLogEntry, createNewLog } from '../helpers/data/logEntryData';
+import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
 import addSpeciesForm from '../components/forms/addSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
@@ -17,22 +16,6 @@ import {
 } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
-
-const domEvents = (user) => {
-  document.querySelector('body').addEventListener('click', (e) => {
-    if (e.target.id.includes('delete-log')) {
-      // eslint-disable-next-line no-alert
-      if (window.confirm('Want to delete?'));
-      const firebaseKey = e.target.id.split('--')[1];
-      deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray));
-    }
-
-    // if (e.target.id.includes('delete-evData')) {
-    //   // eslint-disable-next-line no-alert
-    //   if (window.confirm('Want to delete?'));
-    //   const firebaseKey = e.target.id.split('--')[1];
-    //   deleteEVData(firebaseKey, user).then((EVDataArray) => showEVDAta(EVDataArray));
-    // }
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -94,6 +77,13 @@ const domEvents = (user) => {
     // CLICK TO SHOW ADD NEW LOG
     if (e.target.id.includes('addLogEntry')) {
       addLogForm();
+    }
+    // DELETE LOGS
+    if (e.target.id.includes('delete-log')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?'));
+      const firebaseKey = e.target.id.split('--')[1];
+      deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray));
     }
   });
 

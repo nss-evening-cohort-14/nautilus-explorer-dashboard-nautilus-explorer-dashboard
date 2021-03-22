@@ -22,12 +22,6 @@ const deleteLogEntry = (firebaseKey, uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-// DELETE ENVIRONMENTAL Variable
-// const deleteEnvirontalVariable = (firebaseKey, uid) => new Promise((resolve, reject) => {
-//   axios.delete(`${dbUrl}/environmentalVariable.json`)
-//   .then(() => //getEV data(uid).then((EVarray) => resolve(EVarray)))
-// }).catch((error) => reject(error));
-
 // CREATE NEW LOG
 const createNewLog = (logObject, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/logEntry.json`, logObject)
