@@ -1,13 +1,21 @@
-import addLogForm from '../components/forms/addLogForm';
-import { getLogEntry, createNewLog } from '../helpers/data/logEntryData';
-import addSpeciesForm from '../components/forms/addSpecies';
+import firebase from 'firebase';
+import 'firebase/auth';
+import editLogForm from '../components/forms/editLogForm';
 import formModal from '../components/forms/formModal';
+import {
+  editLogEntry,
+  getSingleLogEntry,
+  getLogEntry,
+  createNewLog
+} from '../helpers/data/logEntryData';
+import addLogForm from '../components/forms/addLogForm';
+import addSpeciesForm from '../components/forms/addSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
 import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
-import getDestinations from '../helpers/data/destinationsData';
+import { getDestinations } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 
 const domEvents = (user) => {
@@ -91,11 +99,23 @@ const domEvents = (user) => {
         shared: document.querySelector('#log-private').checked,
         uid: firebase.auth().currentUser.uid,
       };
-      editLogEntry(firebaseKey, logObject, uid).then((logArray) => showLogEntry(logArray, uid));
-      $('#formModal').modal('toggle');
+      createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
+    }
+    // EDIT LOG ENTRY
+    if (e.target.id.includes('update-log')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const logObject = {
+        title: document.querySelector('#title').value,
+        body: document.querySelector('#body').value,
+        timestamp: new Date(),
+        timezone: document.querySelector('#timezone').value,
+        shared: document.querySelector('#log-private').checked,
       };
-    });
-  };
+      editLogEntry(firebaseKey, logObject, user).then((logArray) => showLogEntry(logArray, user));
+      $('#formModal').modal('toggle');
+    }
+  });
 };
 
 export default domEvents;
