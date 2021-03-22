@@ -14,7 +14,7 @@ const getLogEntry = () => new Promise((resolve, reject) => {
       }
     }).catch((error) => reject(error));
 });
-
+// SEE ONLY PUBLIC LOGS WHEN LOGGED OUT
 const seePublicLogs = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/logEntry.json?orderBy="shared"&equalTo=false`)
     .then((response) => {
@@ -26,4 +26,16 @@ const seePublicLogs = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export { getLogEntry, seePublicLogs };
+// CREATE NEW LOG
+const createNewLog = (logObject, uid) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/logEntry.json`, logObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/logEntry/${response.data.name}.json`, body)
+        .then(() => {
+          getLogEntry(uid).then((logArray) => resolve(logArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+export { getLogEntry, createNewLog, seePublicLogs };
