@@ -1,5 +1,5 @@
 import dashboardView from '../components/pages/dashboardView';
-import getCrew from '../helpers/data/crewData';
+import { getCrew } from '../helpers/data/crewData';
 import { getSpecies } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
