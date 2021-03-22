@@ -13,4 +13,17 @@ const getCrew = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getCrew;
+// CREATE NEW CREW MEMBER
+const createCrew = (crewObject) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/crew.json`, crewObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/crew/${response.data.name}.json`, body)
+        .then(() => {
+          getCrew().then((crewArray) => resolve(crewArray));
+        });
+    }).catch((error) => reject(error));
+});
+  // DELETE CREW MEMBER
+  // UPDATE CREW MEMBER
+export { getCrew, createCrew };

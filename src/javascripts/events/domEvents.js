@@ -1,13 +1,13 @@
 import firebase from 'firebase';
 import 'firebase/auth';
+import crewForm from '../components/forms/addCrew';
+import formModal from '../components/forms/formModal';
+import { getCrew, createCrew } from '../helpers/data/crewData';
 import addLogForm from '../components/forms/addLogForm';
 import { getLogEntry, createNewLog } from '../helpers/data/logEntryData';
-// import formModal from '../components/forms/formModal';
 import addSpeciesForm from '../components/forms/addSpecies';
-import formModal from '../components/forms/formModal';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getSpecies, createSpecies } from '../helpers/data/crudSpecies';
-import getCrew from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import {
   getDestinations,
@@ -18,6 +18,12 @@ import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
+    // CLICK EVENT FOR SHOWING 'ADD CREW' FORM
+    if (e.target.id.includes('addCrewButton')) {
+      formModal('Add Crew');
+      crewForm();
+    }
+
     if (e.target.id.includes('addNewSpeciesBtn')) {
       formModal('Add Species');
       addSpeciesForm();
@@ -66,6 +72,21 @@ const domEvents = (user) => {
   });
 
   document.querySelector('body').addEventListener('submit', (e) => {
+    // CLICK EVENT FOR SUBMITTING 'ADD CREW' FORM
+    if (e.target.id.includes('submit-crew')) {
+      e.preventDefault();
+      const crewObject = {
+        firstname: document.querySelector('#firstName').value,
+        lastname: document.querySelector('#lastName').value,
+        job: document.querySelector('#title').value,
+        months_tenure: document.querySelector('#tenure').value,
+        image: document.querySelector('#image').value,
+        user
+      };
+      createCrew(crewObject).then((crewArray) => showCrew(crewArray, user));
+      $('#formModal').modal('toggle');
+    }
+
     if (e.target.id.includes('newDestinationForm')) {
       e.preventDefault();
 
