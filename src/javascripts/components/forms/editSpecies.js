@@ -2,7 +2,7 @@
 
 const editSpeciesForm = (speciesObject) => {
   document.querySelector('#modal-body').innerHTML = `
-    <form id="edit-species-form" class="mb-4">
+    <form id="edit-species-form--${speciesObject.firebaseKey}" class="mb-4">
     <div class="form-group">
     <label for="editSpeciesName">Species Name</label>
     <input type="text" class="form-control" id="editSpeciesName" aria-describedby="editSpeciesName" placeholder="Enter Name" value="${speciesObject.name}" required>
@@ -17,7 +17,7 @@ const editSpeciesForm = (speciesObject) => {
       </div>
       <div class="form-group" id="select-destination">
       </div>
-      <button type="submit" id="submit-edit-existing-species--${speciesObject.firebaseKey}" class="btn submitSpeciesBtn">Update Species</button>
+      <button type="submit" id="submit-edit-existing-species" class="btn submitSpeciesBtn">Update Species</button>
     </form>`;
 
   // selectDestination();

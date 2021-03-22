@@ -41,7 +41,7 @@ const getSpecificSpecies = (firebaseKey) => new Promise((resolve, reject) => {
 
 const updateSpecificSpecies = (firebaseKey, speciesObject) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/species/${firebaseKey}.json`, speciesObject)
-    .then(() => getSpecies(firebase.auth().currentUser.user)).then((speciesArray) => resolve(speciesArray))
+    .then(() => getSpecies(firebase.auth().currentUser)).then((speciesArray) => resolve(speciesArray))
     .catch((error) => reject(error));
 });
 

@@ -91,7 +91,7 @@ const domEvents = (user) => {
       $('#formModal').modal('toggle');
     }
 
-    if (e.target.id.includes('submit-edit-existing-species')) {
+    if (e.target.id.includes('edit-species-form')) {
       const firebaseKey = e.target.id.split('--')[1];
       e.preventDefault();
       const speciesObject = {
@@ -99,9 +99,9 @@ const domEvents = (user) => {
         img: document.querySelector('#editSpeciesImage').value,
         name: document.querySelector('#editSpeciesName').value,
         // destination_id: document.querySelector('#selectDestinationForSpecies').value,
-        uid: firebase.auth().currentUser.uid,
+        // uid: firebase.auth().currentUser.uid,
       };
-      updateSpecificSpecies(firebaseKey, speciesObject, user).then((speciesArray) => showReadSpecies((speciesArray)));
+      updateSpecificSpecies(firebaseKey, speciesObject, user).then((speciesArray) => showReadSpecies(speciesArray, user));
 
       $('#formModal').modal('toggle');
     }
