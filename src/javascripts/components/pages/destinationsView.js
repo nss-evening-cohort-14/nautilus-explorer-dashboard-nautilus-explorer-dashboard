@@ -33,10 +33,11 @@ const destinationsView = (user, destinationsArray) => {
   if (destinationsArray) {
     let domString = '<div class="d-flex flex-wrap justify-content-around">';
     destinationsArray.forEach((destination) => {
-      domString += `<div class="card m-2" style="width: 18rem;">
+      domString += `<div class="card m-2 destination-card" style="width: 18rem;">
                       <img src="${destination.image}" class="card-img-top" alt="${destination.name}">
                       <div class="card-body">
                         <h5 class="card-title">${destination.name}</h5>
+                        ${user ? `<button type="button" class="btn btn-hj-danger" id="deleteDestination--${destination.firebaseKey}">Delete</button>` : ''}
                       </div>
                     </div>`;
     });

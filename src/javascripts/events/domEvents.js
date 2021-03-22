@@ -13,6 +13,7 @@ import { showCrew, emptyCrew } from '../components/pages/crew';
 import {
   getDestinations,
   createDestination,
+  deleteDestination,
 } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
@@ -62,6 +63,14 @@ const domEvents = (user) => {
       });
     }
 
+    if (e.target.id.includes('deleteDestination')) {
+      const firebaseKey = e.target.id.split('--')[1];
+
+      deleteDestination(firebaseKey).then((destinationsArray) => {
+        destinationsView(user, destinationsArray);
+      });
+    }
+
     if (e.target.id.includes('logsView')) {
       getLogEntry(user).then((logArray) => {
         if (logArray.length) {
@@ -98,7 +107,7 @@ const domEvents = (user) => {
         job: document.querySelector('#title').value,
         months_tenure: document.querySelector('#tenure').value,
         image: document.querySelector('#image').value,
-        user
+        user,
       };
       createCrew(crewObject).then((crewArray) => showCrew(crewArray, user));
       $('#formModal').modal('toggle');
