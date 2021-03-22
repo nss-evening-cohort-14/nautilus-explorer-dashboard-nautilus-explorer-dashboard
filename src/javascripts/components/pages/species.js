@@ -3,7 +3,9 @@ import speciesDescription from '../../../assets/speciesDescription.png';
 import speciesDestination from '../../../assets/speciesDestination.png';
 
 const showReadSpecies = (speciesArray, user) => {
-  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addSpeciesBtn">Add Species</button>';
+  if (user) {
+    document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewSpeciesBtn">Add Species</button>';
+  }
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="speciesContainer"></div>';
 
@@ -19,8 +21,8 @@ const showReadSpecies = (speciesArray, user) => {
           <div class="card-body">
             <p class="card-text" id="speciesDescription"><img src="${speciesDescription}">  : ${creature.description}</p>
             <p class="card-text" id="speciesDestination"><img src="${speciesDestination}">  : ${creature.destination_id}</p>
-            ${user ? `<button class="btn btn-sm border-dark view-species-btn" data-toggle="modal" data-target="#formModal" id="update-species-btn--${creature.firebasKey}">Update Species</button>
-            <button class="btn btn-sm border-dark delete-species-btn" id="delete-species--${creature.firebasKey}">Delete Species</button>` : ''}
+            ${user ? `<button class="btn btn-sm border-dark view-species-btn" id="update-existing-species-btn--${creature.firebasKey}">Update Species</button>
+            <button class="btn btn-sm border-dark delete-species-btn" id="delete-species-btn--${creature.firebasKey}">Delete Species</button>` : ''}
           </div>
         </div>
       </div>
@@ -29,7 +31,7 @@ const showReadSpecies = (speciesArray, user) => {
 };
 
 const noReadSpecies = () => {
-  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addSpeciesBtn">Add Species</button>';
+  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addNewSpeciesBtn">Add Species</button>';
   document.querySelector('#cardContainer').innerHTML = '<h1>I seek the white whale.</h1>';
 };
 
