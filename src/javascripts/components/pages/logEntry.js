@@ -23,8 +23,10 @@ const showLogEntry = (logArray, user) => {
   });
 };
 
-const emptyLogEntry = () => {
-  document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
+const emptyLogEntry = (user) => {
+  if (user) {
+    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addLogEntry">Add Log Entry</button>';
+  }
   document.querySelector('#cardContainer').innerHTML = '<h1>Log, lest you get decked</h1>';
 };
 
