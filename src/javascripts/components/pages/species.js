@@ -14,15 +14,15 @@ const showReadSpecies = (speciesArray, user) => {
     <div class="card mb-3" style="max-width: 540px;" id="speciesCard">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="" class="card-img" alt=${creature.name}>
+          <img src="${creature.img}" class="card-img" alt=${creature.name}>
           <h6 class="card-title" id="speciesName"><img src="${speciesName}">  : ${creature.name}</h6>
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <p class="card-text" id="speciesDescription"><img src="${speciesDescription}">  : ${creature.description}</p>
             <p class="card-text" id="speciesDestination"><img src="${speciesDestination}">  : ${creature.destination_id}</p>
-            ${user ? `<button class="btn btn-sm border-dark view-species-btn" id="update-existing-species-btn--${creature.firebasKey}">Update Species</button>
-            <button class="btn btn-sm border-dark delete-species-btn" id="delete-species-btn--${creature.firebasKey}">Delete Species</button>` : ''}
+            ${user ? `<button class="btn btn-sm border-dark view-species-btn" id="update-existing-species-btn--${creature.firebaseKey}">Update Species</button>
+            <button class="btn btn-sm border-dark delete-species-btn" id="delete-species-btn--${creature.firebaseKey}">Delete Species</button>` : ''}
           </div>
         </div>
       </div>
@@ -30,8 +30,10 @@ const showReadSpecies = (speciesArray, user) => {
   });
 };
 
-const noReadSpecies = () => {
-  document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addNewSpeciesBtn">Add Species</button>';
+const noReadSpecies = (user) => {
+  if (user) {
+    document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addNewSpeciesBtn">Add Species</button>';
+  }
   document.querySelector('#cardContainer').innerHTML = '<h1>I seek the white whale.</h1>';
 };
 
