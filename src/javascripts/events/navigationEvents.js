@@ -52,7 +52,7 @@ const navigationEvents = (user) => {
       if (speciesArray.length) {
         showReadSpecies(speciesArray, user);
       } else {
-        noReadSpecies();
+        noReadSpecies(user);
       }
     });
   });

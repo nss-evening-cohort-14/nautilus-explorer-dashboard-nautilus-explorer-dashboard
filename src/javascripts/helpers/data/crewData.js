@@ -24,6 +24,12 @@ const createCrew = (crewObject) => new Promise((resolve, reject) => {
         });
     }).catch((error) => reject(error));
 });
-  // DELETE CREW MEMBER
+
+// DELETE CREW MEMBER
+const deleteCrew = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/crew/${firebaseKey}.json`)
+    .then(() => getCrew().then((crewArray) => resolve(crewArray)))
+    .catch((error) => reject(error));
+});
   // UPDATE CREW MEMBER
-export { getCrew, createCrew };
+export { getCrew, createCrew, deleteCrew };
