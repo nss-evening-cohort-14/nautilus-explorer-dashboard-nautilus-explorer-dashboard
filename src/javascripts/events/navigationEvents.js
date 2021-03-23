@@ -34,7 +34,7 @@ const navigationEvents = (user) => {
       if (logArray.length) {
         showLogEntry(logArray, user);
       } else {
-        emptyLogEntry();
+        emptyLogEntry(user);
       }
     });
   });
@@ -44,7 +44,7 @@ const navigationEvents = (user) => {
       if (speciesArray.length) {
         showReadSpecies(speciesArray, user);
       } else {
-        noReadSpecies();
+        noReadSpecies(user);
       }
     });
   });

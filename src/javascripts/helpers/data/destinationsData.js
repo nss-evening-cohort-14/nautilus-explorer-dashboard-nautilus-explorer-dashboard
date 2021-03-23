@@ -32,4 +32,13 @@ const createDestination = (newDestination) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export { getDestinations, createDestination };
+const deleteDestination = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .delete(`${dbUrl}/destination/${firebaseKey}.json`)
+    .then(() => {
+      getDestinations().then((destinationsArray) => resolve(destinationsArray));
+    })
+    .catch((error) => reject(error));
+});
+
+export { getDestinations, createDestination, deleteDestination };
