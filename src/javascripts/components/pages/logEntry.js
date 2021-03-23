@@ -7,7 +7,7 @@ const showLogEntry = (logArray, user) => {
 
   logArray.forEach((element) => {
     document.querySelector('#readLogEntry').innerHTML += `<div class="card" id="log-entry-card">
-    <div class="card-body" style="height: 300px;">
+    <div class="card-body">
       <h5 id="log-title--${element.firebaseKey}" class="card-title">${element.title}</h5>
       <p class="card-text" id="log-body">${element.body}</p>
       <p class="card-text" id="log-timestamp">${element.timestamp}</p>
