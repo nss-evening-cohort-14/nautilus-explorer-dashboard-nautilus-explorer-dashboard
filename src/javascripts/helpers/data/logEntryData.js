@@ -16,6 +16,17 @@ const getLogEntry = () => new Promise((resolve, reject) => {
       }
     }).catch((error) => reject(error));
 });
+// SEE ONLY PUBLIC LOGS WHEN LOGGED OUT
+const seePublicLogs = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/logEntry.json?orderBy="shared"&equalTo=false`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
 
 const getSingleLogEntry = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/logEntry/${firebaseKey}.json`)
@@ -45,5 +56,6 @@ export {
   getLogEntry,
   editLogEntry,
   getSingleLogEntry,
-  createNewLog
+  createNewLog,
+  seePublicLogs
 };
