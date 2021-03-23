@@ -57,11 +57,11 @@ const destinationsView = (user, destinationsArray) => {
                                 id="deleteDestination--${destination.firebaseKey}"
                               >
                                 Delete</button
-                              >
-                      </div>
-                    </div>`
+                              >`
                             : ''
-                        }`;
+                        }
+                      </div>
+                    </div>`;
     });
     domString += '</div>';
     $('#cardContainer').html(domString);
