@@ -1,24 +1,27 @@
 import firebase from 'firebase';
 import 'firebase/auth';
-import crewForm from '../components/forms/addCrew';
 import formModal from '../components/forms/formModal';
-import { getCrew, createCrew } from '../helpers/data/crewData';
+import crewForm from '../components/forms/addCrew';
 import addLogForm from '../components/forms/addLogForm';
-import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
 import addSpeciesForm from '../components/forms/addSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import {
   getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
 } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
+import { getCrew, createCrew, deleteCrew } from '../helpers/data/crewData';
+import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
 import {
   getDestinations,
+  getSingleDestination,
   createDestination,
   deleteDestination,
+  updateDestination,
 } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
+import updateDestinationForm from '../components/forms/updateDestinationForm';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -49,7 +52,7 @@ const domEvents = (user) => {
         if (crewArray.length) {
           showCrew(crewArray, user);
         } else {
-          emptyCrew();
+          emptyCrew(user);
         }
       });
     }
@@ -57,6 +60,14 @@ const domEvents = (user) => {
     if (e.target.id.includes('destinationsView')) {
       getDestinations().then((destinationsArray) => {
         destinationsView(user, destinationsArray);
+      });
+    }
+
+    if (e.target.id.includes('updateDestination')) {
+      const firebaseKey = e.target.id.split('--')[1];
+
+      getSingleDestination(firebaseKey).then((destinationObject) => {
+        updateDestinationForm(destinationObject);
       });
     }
 
@@ -99,6 +110,15 @@ const domEvents = (user) => {
       const firebaseKey = e.target.id.split('--')[1];
       deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray, user));
     }
+
+    // CLICK EVENT FOR DELETING CREW CARD
+    if (e.target.id.includes('delete-crew')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?')) {
+        const crewId = e.target.id.split('--')[1];
+        deleteCrew(crewId).then((crewArray) => showCrew(crewArray, user));
+      }
+    }
   });
 
   document.querySelector('body').addEventListener('submit', (e) => {
@@ -130,6 +150,23 @@ const domEvents = (user) => {
       createDestination(newDestination).then((destinationsArray) => {
         destinationsView(user, destinationsArray);
       });
+    }
+
+    if (e.target.id.includes('updateDestinationForm')) {
+      e.preventDefault();
+
+      const firebaseKey = e.target.id.split('--')[1];
+
+      const destinationObject = {
+        name: $('#destinationName').val(),
+        image: $('#destinationImage').val(),
+      };
+
+      updateDestination(firebaseKey, destinationObject).then(
+        (destinationsArray) => {
+          destinationsView(user, destinationsArray);
+        },
+      );
     }
 
     if (e.target.id.includes('submit-species')) {
