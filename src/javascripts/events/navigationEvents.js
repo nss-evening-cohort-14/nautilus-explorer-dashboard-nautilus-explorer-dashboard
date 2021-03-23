@@ -1,11 +1,11 @@
 import dashboardView from '../components/pages/dashboardView';
-import getCrew from '../helpers/data/crewData';
+import { getCrew } from '../helpers/data/crewData';
 import { getSpecies } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getLogEntry } from '../helpers/data/logEntryData';
-import getDestinations from '../helpers/data/destinationsData';
+import { getDestinations } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 
 const navigationEvents = (user) => {
@@ -18,14 +18,14 @@ const navigationEvents = (user) => {
       if (crewArray.length) {
         showCrew(crewArray, user);
       } else {
-        emptyCrew();
+        emptyCrew(user);
       }
     });
   });
 
   $('#readDestinations').on('click', () => {
     getDestinations().then((destinationsArray) => {
-      destinationsView(destinationsArray);
+      destinationsView(user, destinationsArray);
     });
   });
 

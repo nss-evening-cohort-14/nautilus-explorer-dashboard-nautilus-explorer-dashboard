@@ -17,4 +17,19 @@ const getDestinations = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getDestinations;
+const createDestination = (newDestination) => new Promise((resolve, reject) => {
+  axios
+    .post(`${dbUrl}/destination.json`, newDestination)
+    .then((response) => {
+      axios
+        .patch(`${dbUrl}/destination/${response.data.name}.json`, {
+          firebaseKey: response.data.name,
+        })
+        .then(() => {
+          getDestinations().then((destinationsArray) => resolve(destinationsArray));
+        });
+    })
+    .catch((error) => reject(error));
+});
+
+export { getDestinations, createDestination };
