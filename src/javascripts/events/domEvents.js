@@ -9,13 +9,16 @@ import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEn
 import { getSpecies, createSpecies, deleteSpecies } from '../helpers/data/crudSpecies';
 import {
   getDestinations,
+  getSingleDestination,
   createDestination,
   deleteDestination,
+  updateDestination,
 } from '../helpers/data/destinationsData';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import destinationsView from '../components/pages/destinationsView';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
+import updateDestinationForm from '../components/forms/updateDestinationForm';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -48,6 +51,14 @@ const domEvents = (user) => {
     if (e.target.id.includes('destinationsView')) {
       getDestinations().then((destinationsArray) => {
         destinationsView(user, destinationsArray);
+      });
+    }
+
+    if (e.target.id.includes('updateDestination')) {
+      const firebaseKey = e.target.id.split('--')[1];
+
+      getSingleDestination(firebaseKey).then((destinationObject) => {
+        updateDestinationForm(destinationObject);
       });
     }
 
@@ -130,6 +141,23 @@ const domEvents = (user) => {
       createDestination(newDestination).then((destinationsArray) => {
         destinationsView(user, destinationsArray);
       });
+    }
+
+    if (e.target.id.includes('updateDestinationForm')) {
+      e.preventDefault();
+
+      const firebaseKey = e.target.id.split('--')[1];
+
+      const destinationObject = {
+        name: $('#destinationName').val(),
+        image: $('#destinationImage').val(),
+      };
+
+      updateDestination(firebaseKey, destinationObject).then(
+        (destinationsArray) => {
+          destinationsView(user, destinationsArray);
+        },
+      );
     }
 
     if (e.target.id.includes('submit-species')) {
