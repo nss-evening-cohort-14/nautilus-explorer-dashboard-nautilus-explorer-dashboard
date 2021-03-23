@@ -59,7 +59,7 @@ const domEvents = (user) => {
         if (logArray.length) {
           showLogEntry(logArray, user);
         } else {
-          emptyLogEntry();
+          emptyLogEntry(user);
         }
       });
     }
