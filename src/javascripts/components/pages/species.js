@@ -14,7 +14,7 @@ const showReadSpecies = (speciesArray, user) => {
     <div class="card mb-3" style="max-width: 540px;" id="speciesCard">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="" class="card-img" alt=${creature.name}>
+          <img src="${creature.img}" class="card-img" alt=${creature.name}>
           <h6 class="card-title" id="speciesName"><img src="${speciesName}">  : ${creature.name}</h6>
         </div>
         <div class="col-md-8">
