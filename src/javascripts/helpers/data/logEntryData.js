@@ -15,6 +15,13 @@ const getLogEntry = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
+// DELETE LOGS
+const deleteLogEntry = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/logEntry/${firebaseKey}.json`)
+    .then(() => getLogEntry(uid).then((logArray) => resolve(logArray)))
+    .catch((error) => reject(error));
+});
+
 // CREATE NEW LOG
 const createNewLog = (logObject, uid) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/logEntry.json`, logObject)
@@ -27,4 +34,4 @@ const createNewLog = (logObject, uid) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export { getLogEntry, createNewLog };
+export { getLogEntry, createNewLog, deleteLogEntry };
