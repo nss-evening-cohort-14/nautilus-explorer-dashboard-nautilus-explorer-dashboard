@@ -15,4 +15,21 @@ const getSpecies = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export default getSpecies;
+const createSpecies = (speciesObject) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/species.json`, speciesObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/species/${response.data.name}.json`, body)
+        .then(() => {
+          getSpecies().then((speciesArray) => resolve(speciesArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+const deleteSpecies = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/species/${firebaseKey}.json`)
+    .then(() => getSpecies().then((speciesArray) => resolve(speciesArray)))
+    .catch((error) => reject(error));
+});
+
+export { getSpecies, createSpecies, deleteSpecies };

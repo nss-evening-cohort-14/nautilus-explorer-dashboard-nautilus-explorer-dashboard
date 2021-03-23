@@ -1,18 +1,31 @@
-import getSpecies from '../helpers/data/crudSpecies';
+import dashboardView from '../components/pages/dashboardView';
+import { getCrew } from '../helpers/data/crewData';
+import { getSpecies } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
-import getLogEntry from '../helpers/data/logEntryData';
-import { getCrew } from '../helpers/data/crewData';
+import { getLogEntry } from '../helpers/data/logEntryData';
+import { getDestinations } from '../helpers/data/destinationsData';
+import destinationsView from '../components/pages/destinationsView';
 
 const navigationEvents = (user) => {
+  $('#navbarLogo').on('click', () => {
+    dashboardView();
+  });
+
   document.querySelector('#readCrew').addEventListener('click', () => {
     getCrew(user).then((crewArray) => {
       if (crewArray.length) {
         showCrew(crewArray, user);
       } else {
-        emptyCrew();
+        emptyCrew(user);
       }
+    });
+  });
+
+  $('#readDestinations').on('click', () => {
+    getDestinations().then((destinationsArray) => {
+      destinationsView(user, destinationsArray);
     });
   });
 
@@ -21,7 +34,7 @@ const navigationEvents = (user) => {
       if (logArray.length) {
         showLogEntry(logArray, user);
       } else {
-        emptyLogEntry();
+        emptyLogEntry(user);
       }
     });
   });
@@ -31,7 +44,7 @@ const navigationEvents = (user) => {
       if (speciesArray.length) {
         showReadSpecies(speciesArray, user);
       } else {
-        noReadSpecies();
+        noReadSpecies(user);
       }
     });
   });
