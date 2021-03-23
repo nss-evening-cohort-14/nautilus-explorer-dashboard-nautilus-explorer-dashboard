@@ -1,19 +1,19 @@
 import firebase from 'firebase';
 import 'firebase/auth';
-import crewForm from '../components/forms/addCrew';
 import formModal from '../components/forms/formModal';
-import { getCrew, createCrew } from '../helpers/data/crewData';
+import crewForm from '../components/forms/addCrew';
 import addLogForm from '../components/forms/addLogForm';
-import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
 import addSpeciesForm from '../components/forms/addSpecies';
-import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { getCrew, createCrew, deleteCrew } from '../helpers/data/crewData';
+import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
 import { getSpecies, createSpecies, deleteSpecies } from '../helpers/data/crudSpecies';
-import { showCrew, emptyCrew } from '../components/pages/crew';
 import {
   getDestinations,
   createDestination,
   deleteDestination,
 } from '../helpers/data/destinationsData';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { showCrew, emptyCrew } from '../components/pages/crew';
 import destinationsView from '../components/pages/destinationsView';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 
@@ -40,7 +40,7 @@ const domEvents = (user) => {
         if (crewArray.length) {
           showCrew(crewArray, user);
         } else {
-          emptyCrew();
+          emptyCrew(user);
         }
       });
     }
@@ -89,6 +89,15 @@ const domEvents = (user) => {
       if (window.confirm('Want to delete?'));
       const firebaseKey = e.target.id.split('--')[1];
       deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray, user));
+    }
+
+    // CLICK EVENT FOR DELETING CREW CARD
+    if (e.target.id.includes('delete-crew')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?')) {
+        const crewId = e.target.id.split('--')[1];
+        deleteCrew(crewId).then((crewArray) => showCrew(crewArray, user));
+      }
     }
   });
 
