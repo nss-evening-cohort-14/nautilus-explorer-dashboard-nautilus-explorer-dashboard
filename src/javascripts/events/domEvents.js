@@ -4,9 +4,13 @@ import formModal from '../components/forms/formModal';
 import crewForm from '../components/forms/addCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
+import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import {
+  getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
+} from '../helpers/data/crudSpecies';
+import { showCrew, emptyCrew } from '../components/pages/crew';
 import { getCrew, createCrew, deleteCrew } from '../helpers/data/crewData';
 import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
-import { getSpecies, createSpecies, deleteSpecies } from '../helpers/data/crudSpecies';
 import {
   getDestinations,
   getSingleDestination,
@@ -14,9 +18,8 @@ import {
   deleteDestination,
   updateDestination,
 } from '../helpers/data/destinationsData';
-import { showReadSpecies, noReadSpecies } from '../components/pages/species';
-import { showCrew, emptyCrew } from '../components/pages/crew';
 import destinationsView from '../components/pages/destinationsView';
+import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 
@@ -31,6 +34,12 @@ const domEvents = (user) => {
     if (e.target.id.includes('addNewSpeciesBtn')) {
       formModal('Add Species');
       addSpeciesForm();
+    }
+
+    if (e.target.id.includes('update-existing-species-btn')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      formModal('Edit Species');
+      getSpecificSpecies(firebaseKey).then((speciesObject) => editSpeciesForm(speciesObject));
     }
 
     if (e.target.id.includes('delete-species-btn')) {
@@ -172,6 +181,21 @@ const domEvents = (user) => {
       createSpecies(speciesObject, user).then((speciesArray) => {
         showReadSpecies(speciesArray, user);
       });
+
+      $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('edit-species-form')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const speciesObject = {
+        description: document.querySelector('#editSpeciesDescription').value,
+        img: document.querySelector('#editSpeciesImage').value,
+        name: document.querySelector('#editSpeciesName').value,
+        // destination_id: document.querySelector('#selectDestinationForSpecies').value,
+        // uid: firebase.auth().currentUser.uid,
+      };
+      updateSpecificSpecies(firebaseKey, speciesObject, user).then((speciesArray) => showReadSpecies(speciesArray, user));
 
       $('#formModal').modal('toggle');
     }
