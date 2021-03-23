@@ -15,8 +15,8 @@ const showCrew = (crewArray, user) => {
           <span>${member.job}</span> <br>
           <span>Tenure: ${member.months_tenure} months</span>
           <hr>
-          ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-board-btn--${member.firebaseKey}">Update Info</button>
-          <button class="btn btn-danger shadow-lg" id="delete-crew--${member.firebaseKey}">Remove Personnel</button>` : ''}
+          ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-crew--${member.firebaseKey}">Details</button>
+          <button class="btn btn-danger shadow-lg" id="delete-crew--${member.firebaseKey}">Disembark</button>` : ''}
         </div>
       </div>
     </div>
