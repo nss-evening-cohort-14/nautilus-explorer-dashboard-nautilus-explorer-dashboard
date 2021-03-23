@@ -26,4 +26,10 @@ const createSpecies = (speciesObject) => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-export { getSpecies, createSpecies };
+const deleteSpecies = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/species/${firebaseKey}.json`)
+    .then(() => getSpecies().then((speciesArray) => resolve(speciesArray)))
+    .catch((error) => reject(error));
+});
+
+export { getSpecies, createSpecies, deleteSpecies };
