@@ -30,13 +30,13 @@ import {
   getDestinations,
   getSingleDestination,
   createDestination,
-  deleteDestination,
   updateDestination,
 } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
+import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -103,7 +103,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('deleteDestination')) {
       const firebaseKey = e.target.id.split('--')[1];
 
-      deleteDestination(firebaseKey).then((destinationsArray) => {
+      deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
         destinationsView(user, destinationsArray);
       });
     }
@@ -223,7 +223,7 @@ const domEvents = (user) => {
         description: document.querySelector('#addSpeciesDescription').value,
         img: document.querySelector('#addSpeciesImage').value,
         name: document.querySelector('#addSpeciesName').value,
-        // destination_id: document.querySelector('#selectDestinationForSpecies').value,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
       createSpecies(speciesObject, user).then((speciesArray) => {
@@ -240,8 +240,8 @@ const domEvents = (user) => {
         description: document.querySelector('#editSpeciesDescription').value,
         img: document.querySelector('#editSpeciesImage').value,
         name: document.querySelector('#editSpeciesName').value,
-        // destination_id: document.querySelector('#selectDestinationForSpecies').value,
-        // uid: firebase.auth().currentUser.uid,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        uid: firebase.auth().currentUser.uid,
       };
       updateSpecificSpecies(firebaseKey, speciesObject, user).then((speciesArray) => showReadSpecies(speciesArray, user));
 

@@ -1,6 +1,6 @@
-// import selectDestination from './selectDestination';
+import selectDestination from './selectDestination';
 
-const addSpeciesForm = () => {
+const addSpeciesForm = (speciesObject) => {
   document.querySelector('#modal-body').innerHTML = `
     <form id="submit-species-form" class="mb-4">
     <div class="form-group">
@@ -20,7 +20,7 @@ const addSpeciesForm = () => {
       <button type="submit" id="submit-species" class="btn submitSpeciesBtn">Submit Species</button>
     </form>`;
 
-  // selectDestination();
+  selectDestination(speciesObject);
 };
 
 export default addSpeciesForm;

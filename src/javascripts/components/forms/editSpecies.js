@@ -1,4 +1,4 @@
-// import selectDestination from './selectDestination';
+import selectDestination from './selectDestination';
 
 const editSpeciesForm = (speciesObject) => {
   document.querySelector('#modal-body').innerHTML = `
@@ -20,7 +20,7 @@ const editSpeciesForm = (speciesObject) => {
       <button type="submit" id="submit-edit-existing-species" class="btn submitSpeciesBtn">Update Species</button>
     </form>`;
 
-  // selectDestination();
+  selectDestination(speciesObject);
 };
 
 export default editSpeciesForm;
