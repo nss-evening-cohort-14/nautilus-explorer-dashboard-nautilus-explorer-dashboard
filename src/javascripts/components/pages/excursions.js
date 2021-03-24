@@ -35,7 +35,7 @@ const showReadExcursions = (speciesArray, user) => {
 
 const noReadExcursions = (user) => {
   if (user) {
-    document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" id="addNewExcursionBtn">Add Excursion</button>';
+    document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
   }
   document.querySelector('#cardContainer').innerHTML = '<h1>Dive Deep</h1>';
 };

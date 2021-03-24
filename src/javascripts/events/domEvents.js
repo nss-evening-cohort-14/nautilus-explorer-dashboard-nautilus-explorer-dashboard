@@ -39,7 +39,7 @@ import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
 import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
 import {
-  createExcursions, deleteExcursions, updateSpecificExcursions, getSpecificExcursions
+  getExcursions, createExcursions, deleteExcursions, updateSpecificExcursions, getSpecificExcursions
 } from '../helpers/data/excursionCrud';
 import editExcursionForm from '../components/forms/editExcursion';
 import addExcursionForm from '../components/forms/addExcursion';
@@ -159,7 +159,7 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('excursionsView')) {
-      getSpecies(user).then((excursionsArray) => {
+      getExcursions(user).then((excursionsArray) => {
         if (excursionsArray.length) {
           showReadExcursions(excursionsArray, user);
         } else {
