@@ -43,9 +43,21 @@ import {
 } from '../helpers/data/excursionCrud';
 import editExcursionForm from '../components/forms/editExcursion';
 import addExcursionForm from '../components/forms/addExcursion';
+import getEnvinromental from '../helpers/data/environmentalData';
+import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
+    // SHOW ENVIRONMENTAL VARIABLES
+    if (e.target.id.includes('variablesView')) {
+      getEnvinromental(user).then((environmentalArray) => {
+        if (environmentalArray.length) {
+          showEnvironmental(environmentalArray, user);
+        } else {
+          emptyEnvironmental(user);
+        }
+      });
+    }
     // CLICK EVENT FOR READING CREW CARDS
     if (e.target.id.includes('crewView')) {
       getCrew(user).then((crewArray) => {
