@@ -61,6 +61,14 @@ const dashboardView = (user) => {
                         </div>
                       </div>
                     </div>
+                    <div class="width-100">
+                    <div class="card dashboard-card">
+                      <div class="card-body">
+                        <h3 class="card-title">Excursions</h3>
+                        <button type="button" class="btn btn-primary" id="excursionsView">Go there!</button>
+                      </div>
+                    </div>
+                  </div>
                   </div>
   `);
 };

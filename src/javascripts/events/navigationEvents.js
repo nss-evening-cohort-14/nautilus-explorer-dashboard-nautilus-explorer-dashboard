@@ -7,6 +7,8 @@ import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getLogEntry, seePublicLogs } from '../helpers/data/logEntryData';
 import { getDestinations } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
+import { showReadExcursions, noReadExcursions } from '../components/pages/excursions';
+import { getExcursions } from '../helpers/data/excursionCrud';
 
 const navigationEvents = (user) => {
   $('#navbarLogo').on('click', () => {
@@ -53,6 +55,16 @@ const navigationEvents = (user) => {
         showReadSpecies(speciesArray, user);
       } else {
         noReadSpecies(user);
+      }
+    });
+  });
+
+  document.querySelector('#readExcursions').addEventListener('click', () => {
+    getExcursions(user).then((excursionsArray) => {
+      if (excursionsArray.length) {
+        showReadExcursions(excursionsArray, user);
+      } else {
+        noReadExcursions(user);
       }
     });
   });
