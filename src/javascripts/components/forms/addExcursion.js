@@ -2,7 +2,7 @@ import selectDestination from './selectDestination';
 
 const addExcursionForm = (excursionObject) => {
   document.querySelector('#modal-body').innerHTML = `
-    <form id="submit-species-form" class="mb-4">
+    <form id="submit-excursion-form" class="mb-4">
     <div class="form-group">
     <label for="addExcursionName">Excursion Name</label>
     <input type="text" class="form-control" id="addExcursionName" aria-describedby="addExcursionName" placeholder="Enter Name" required>

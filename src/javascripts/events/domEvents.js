@@ -280,7 +280,7 @@ const domEvents = (user) => {
       $('#formModal').modal('toggle');
     }
 
-    if (e.target.id.includes('submit-excursion')) {
+    if (e.target.id.includes('submit-excursion-form')) {
       e.preventDefault();
       const excursionObject = {
         description: document.querySelector('#addExcursionDescription').value,
