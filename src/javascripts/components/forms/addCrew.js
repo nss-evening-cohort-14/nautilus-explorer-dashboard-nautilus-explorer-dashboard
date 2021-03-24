@@ -21,7 +21,7 @@ const crewForm = () => {
         <label for="image">Image</label>
         <input type="url" class="form-control" id="image" placeholder="Image Url" required>
       </div>
-      <button type="submit" id="submit-crew" class="btn btn-primary">Submit Member</button>
+      <button type="submit" id="submit-crew" class="btn btn-primary">Enroll</button>
     </form>`;
 };
 

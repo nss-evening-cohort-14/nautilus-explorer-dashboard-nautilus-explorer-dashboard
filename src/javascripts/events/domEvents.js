@@ -11,6 +11,7 @@ import {
 } from '../helpers/data/logEntryData';
 import crewForm from '../components/forms/addCrew';
 import formModal from '../components/forms/formModal';
+import editCrewForm from '../components/forms/editCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
@@ -18,7 +19,13 @@ import {
   getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
 } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
-import { getCrew, createCrew, deleteCrew } from '../helpers/data/crewData';
+import {
+  getCrew,
+  createCrew,
+  deleteCrew,
+  getSingleCrew,
+  updateCrew
+} from '../helpers/data/crewData';
 import {
   getDestinations,
   getSingleDestination,
@@ -33,10 +40,34 @@ import updateDestinationForm from '../components/forms/updateDestinationForm';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
+    // CLICK EVENT FOR READING CREW CARDS
+    if (e.target.id.includes('crewView')) {
+      getCrew(user).then((crewArray) => {
+        if (crewArray.length) {
+          showCrew(crewArray, user);
+        } else {
+          emptyCrew(user);
+        }
+      });
+    }
     // CLICK EVENT FOR SHOWING 'ADD CREW' FORM
     if (e.target.id.includes('addCrewButton')) {
       formModal('Add Crew');
       crewForm();
+    }
+    // CLICK EVENT FOR SHOWING 'EDIT CREW' FORM
+    if (e.target.id.includes('update-crew')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      formModal('Edit Crew Member');
+      getSingleCrew(firebaseKey).then((crewObject) => editCrewForm(crewObject));
+    }
+    // CLICK EVENT FOR DELETING CREW CARD
+    if (e.target.id.includes('delete-crew')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?')) {
+        const crewId = e.target.id.split('--')[1];
+        deleteCrew(crewId).then((crewArray) => showCrew(crewArray, user));
+      }
     }
 
     if (e.target.id.includes('addNewSpeciesBtn')) {
@@ -53,16 +84,6 @@ const domEvents = (user) => {
     if (e.target.id.includes('delete-species-btn')) {
       const firebaseKey = e.target.id.split('--')[1];
       deleteSpecies(firebaseKey, user).then((speciesArray) => showReadSpecies(speciesArray, user));
-    }
-
-    if (e.target.id.includes('crewView')) {
-      getCrew(user).then((crewArray) => {
-        if (crewArray.length) {
-          showCrew(crewArray, user);
-        } else {
-          emptyCrew(user);
-        }
-      });
     }
 
     if (e.target.id.includes('destinationsView')) {
@@ -132,15 +153,6 @@ const domEvents = (user) => {
       const firebaseKey = e.target.id.split('--')[1];
       deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray, user));
     }
-
-    // CLICK EVENT FOR DELETING CREW CARD
-    if (e.target.id.includes('delete-crew')) {
-      // eslint-disable-next-line no-alert
-      if (window.confirm('Want to delete?')) {
-        const crewId = e.target.id.split('--')[1];
-        deleteCrew(crewId).then((crewArray) => showCrew(crewArray, user));
-      }
-    }
   });
 
   document.querySelector('body').addEventListener('submit', (e) => {
@@ -156,6 +168,20 @@ const domEvents = (user) => {
         user,
       };
       createCrew(crewObject).then((crewArray) => showCrew(crewArray, user));
+      $('#formModal').modal('toggle');
+    }
+    // CLICK EVENT FOR SUBMITTING 'EDIT CREW FORM' TO UPDATE CREW MEMBER
+    if (e.target.id.includes('edit-crew-form')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const crewObject = {
+        firstname: document.querySelector('#firstName').value,
+        lastname: document.querySelector('#lastName').value,
+        job: document.querySelector('#title').value,
+        months_tenure: document.querySelector('#tenure').value,
+        image: document.querySelector('#image').value,
+      };
+      updateCrew(firebaseKey, crewObject).then((crewArray) => showCrew(crewArray, user));
       $('#formModal').modal('toggle');
     }
 
