@@ -11,4 +11,11 @@ const getEnvironmental = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default getEnvironmental;
+// DELETE ENVIRONMENTAL DATA
+const deleteEnvirontalVariable = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/environmentalVariable/${firebaseKey}.json`)
+    .then(() => getEnvironmental(uid).then((variableArray) => resolve(variableArray)))
+    .catch((error) => reject(error));
+});
+
+export { getEnvironmental, deleteEnvirontalVariable };

@@ -2,7 +2,7 @@ import dashboardView from '../components/pages/dashboardView';
 import { getCrew } from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import destinationsView from '../components/pages/destinationsView';
-import getEnvironmental from '../helpers/data/environmentalData';
+import { getEnvironmental } from '../helpers/data/environmentalData';
 import { getLogEntry, seePublicLogs } from '../helpers/data/logEntryData';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getSpecies } from '../helpers/data/crudSpecies';

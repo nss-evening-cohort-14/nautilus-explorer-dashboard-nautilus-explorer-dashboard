@@ -37,14 +37,14 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
-import getEnvinromental from '../helpers/data/environmentalData';
+import { getEnvironmental, deleteEnvirontalVariable } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
     // SHOW ENVIRONMENTAL VARIABLES
     if (e.target.id.includes('variablesView')) {
-      getEnvinromental(user).then((environmentalArray) => {
+      getEnvironmental(user).then((environmentalArray) => {
         if (environmentalArray.length) {
           showEnvironmental(environmentalArray, user);
         } else {
@@ -164,6 +164,14 @@ const domEvents = (user) => {
       if (window.confirm('Want to delete?'));
       const firebaseKey = e.target.id.split('--')[1];
       deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray, user));
+    }
+
+    // DELETE ENVIRONMENTAL DATA
+    if (e.target.id.includes('delete-environmental')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?'));
+      const firebaseKey = e.target.id.split('--')[1];
+      deleteEnvirontalVariable(firebaseKey, user).then((variableArray) => showEnvironmental(variableArray, user));
     }
   });
 
