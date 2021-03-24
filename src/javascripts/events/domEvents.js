@@ -40,7 +40,7 @@ import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
 import { getEnvironmental, deleteEnvirontalVariable } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
-const domEvents = (user) => {
+const dashboardEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
     // SHOW ENVIRONMENTAL VARIABLES
     if (e.target.id.includes('variablesView')) {
@@ -62,6 +62,45 @@ const domEvents = (user) => {
         }
       });
     }
+
+    if (e.target.id.includes('destinationsView')) {
+      getDestinations().then((destinationsArray) => {
+        destinationsView(user, destinationsArray);
+      });
+    }
+
+    if (e.target.id.includes('logsView')) {
+      if (user) {
+        getLogEntry(user).then((logArray) => {
+          if (logArray.length) {
+            showLogEntry(logArray, user);
+          } else {
+            emptyLogEntry();
+          }
+        });
+      } else {
+        seePublicLogs().then((logArray) => {
+          if (logArray.length) {
+            showLogEntry(logArray);
+          }
+        });
+      }
+    }
+
+    if (e.target.id.includes('speciesView')) {
+      getSpecies(user).then((speciesArray) => {
+        if (speciesArray.length) {
+          showReadSpecies(speciesArray, user);
+        } else {
+          noReadSpecies();
+        }
+      });
+    }
+  });
+};
+
+const domEvents = (user) => {
+  document.querySelector('body').addEventListener('click', (e) => {
     // CLICK EVENT FOR SHOWING 'ADD CREW' FORM
     if (e.target.id.includes('addCrewButton')) {
       formModal('Add Crew');
@@ -98,12 +137,6 @@ const domEvents = (user) => {
       deleteSpecies(firebaseKey, user).then((speciesArray) => showReadSpecies(speciesArray, user));
     }
 
-    if (e.target.id.includes('destinationsView')) {
-      getDestinations().then((destinationsArray) => {
-        destinationsView(user, destinationsArray);
-      });
-    }
-
     if (e.target.id.includes('updateDestination')) {
       const firebaseKey = e.target.id.split('--')[1];
 
@@ -117,34 +150,6 @@ const domEvents = (user) => {
 
       deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
         destinationsView(user, destinationsArray);
-      });
-    }
-
-    if (e.target.id.includes('logsView')) {
-      if (user) {
-        getLogEntry(user).then((logArray) => {
-          if (logArray.length) {
-            showLogEntry(logArray, user);
-          } else {
-            emptyLogEntry();
-          }
-        });
-      } else {
-        seePublicLogs().then((logArray) => {
-          if (logArray.length) {
-            showLogEntry(logArray);
-          }
-        });
-      }
-    }
-
-    if (e.target.id.includes('speciesView')) {
-      getSpecies(user).then((speciesArray) => {
-        if (speciesArray.length) {
-          showReadSpecies(speciesArray, user);
-        } else {
-          noReadSpecies(user);
-        }
       });
     }
 
@@ -298,4 +303,4 @@ const domEvents = (user) => {
   });
 };
 
-export default domEvents;
+export { dashboardEvents, domEvents };
