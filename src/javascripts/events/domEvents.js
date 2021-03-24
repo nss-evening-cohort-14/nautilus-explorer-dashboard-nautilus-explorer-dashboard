@@ -131,7 +131,7 @@ const domEvents = (user) => {
         if (speciesArray.length) {
           showReadSpecies(speciesArray, user);
         } else {
-          noReadSpecies();
+          noReadSpecies(user);
         }
       });
     }
