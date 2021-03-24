@@ -5,8 +5,8 @@ const editLogForm = (logObject) => {
     <input type="text" class="form-control" id="title" aria-describedby="logTitle" placeholder="Enter Log Title" value="${logObject.title}" required>
   </div>
   <div class="form-group">
-    <label for="Textarea">Log Body</label>
-    <textarea class="form-control" id="body" rows="3"></textarea>
+    <label for="body">Log Body</label>
+    <textarea class="form-control" id="body" rows="3">${logObject.body}</textarea>
   </div>
   <div class="form-group">
     <label for="timestamp">Timestamp</label>
