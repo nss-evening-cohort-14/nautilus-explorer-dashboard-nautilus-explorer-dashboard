@@ -37,9 +37,21 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
+import getEnvinromental from '../helpers/data/environmentalData';
+import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
+    // SHOW ENVIRONMENTAL VARIABLES
+    if (e.target.id.includes('variablesView')) {
+      getEnvinromental(user).then((environmentalArray) => {
+        if (environmentalArray.length) {
+          showEnvironmental(environmentalArray, user);
+        } else {
+          emptyEnvironmental(user);
+        }
+      });
+    }
     // CLICK EVENT FOR READING CREW CARDS
     if (e.target.id.includes('crewView')) {
       getCrew(user).then((crewArray) => {
