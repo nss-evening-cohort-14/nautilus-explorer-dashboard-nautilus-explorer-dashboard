@@ -1,12 +1,12 @@
 const editLogForm = (logObject) => {
-  document.querySelector('#modal-body').innerHTML = `<form id="edit-log-form" class="mb-4">
+  document.querySelector('#modal-body').innerHTML = `<form id="edit-log-form--${logObject.firebaseKey}" class="mb-4">
   <div class="form-group">
     <label for="title">Log Title</label>
     <input type="text" class="form-control" id="title" aria-describedby="logTitle" placeholder="Enter Log Title" value="${logObject.title}" required>
   </div>
   <div class="form-group">
-    <label for="Textarea">Log Body</label>
-    <textarea class="form-control" id="body" rows="3"></textarea>
+    <label for="body">Log Body</label>
+    <textarea class="form-control" id="body" rows="3">${logObject.body}</textarea>
   </div>
   <div class="form-group">
     <label for="timestamp">Timestamp</label>

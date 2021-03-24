@@ -1,7 +1,16 @@
 import firebase from 'firebase';
 import 'firebase/auth';
-import formModal from '../components/forms/formModal';
+import editLogForm from '../components/forms/editLogForm';
+import {
+  editLogEntry,
+  getSingleLogEntry,
+  getLogEntry,
+  createNewLog,
+  seePublicLogs,
+  deleteLogEntry
+} from '../helpers/data/logEntryData';
 import crewForm from '../components/forms/addCrew';
+import formModal from '../components/forms/formModal';
 import editCrewForm from '../components/forms/editCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
@@ -17,7 +26,6 @@ import {
   getSingleCrew,
   updateCrew
 } from '../helpers/data/crewData';
-import { getLogEntry, createNewLog, deleteLogEntry } from '../helpers/data/logEntryData';
 import {
   getDestinations,
   getSingleDestination,
@@ -101,13 +109,21 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('logsView')) {
-      getLogEntry(user).then((logArray) => {
-        if (logArray.length) {
-          showLogEntry(logArray, user);
-        } else {
-          emptyLogEntry(user);
-        }
-      });
+      if (user) {
+        getLogEntry(user).then((logArray) => {
+          if (logArray.length) {
+            showLogEntry(logArray, user);
+          } else {
+            emptyLogEntry();
+          }
+        });
+      } else {
+        seePublicLogs().then((logArray) => {
+          if (logArray.length) {
+            showLogEntry(logArray);
+          }
+        });
+      }
     }
 
     if (e.target.id.includes('speciesView')) {
@@ -123,6 +139,12 @@ const domEvents = (user) => {
     // CLICK TO SHOW ADD NEW LOG
     if (e.target.id.includes('addLogEntry')) {
       addLogForm();
+    }
+    // SHOW EDIT LOG MODAL
+    if (e.target.id.includes('edit-log')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      formModal('Edit Log');
+      getSingleLogEntry(firebaseKey).then((logObject) => editLogForm(logObject));
     }
     // DELETE LOGS
     if (e.target.id.includes('delete-log')) {
@@ -237,9 +259,21 @@ const domEvents = (user) => {
         shared: document.querySelector('#log-private').checked,
         uid: firebase.auth().currentUser.uid,
       };
-      createNewLog(logObject, user).then((logArray) => {
-        showLogEntry(logArray, user);
-      });
+      createNewLog(logObject, user).then((logArray) => showLogEntry(logArray, user));
+    }
+    // EDIT LOG ENTRY
+    if (e.target.id.includes('edit-log-form')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const logObject = {
+        title: document.querySelector('#title').value,
+        body: document.querySelector('#body').value,
+        timestamp: new Date(),
+        timezone: document.querySelector('#timezone').value,
+        shared: document.querySelector('#log-private').checked,
+      };
+      editLogEntry(firebaseKey, logObject, user).then((logArray) => showLogEntry(logArray, user));
+      $('#formModal').modal('toggle');
     }
   });
 };
