@@ -256,7 +256,7 @@ const domEvents = (user) => {
         img: document.querySelector('#addSpeciesImage').value,
         name: document.querySelector('#addSpeciesName').value,
         destinationId: document.querySelector('#selectDestinationForSpecies').value,
-        uid: firebase.auth().currentUser.uid,
+        // uid: firebase.auth().currentUser.uid,
       };
       createSpecies(speciesObject, user).then((speciesArray) => {
         showReadSpecies(speciesArray, user);
