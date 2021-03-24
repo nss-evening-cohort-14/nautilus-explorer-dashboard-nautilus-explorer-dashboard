@@ -55,6 +55,12 @@ const updateDestination = (firebaseKey, destinationObject) => new Promise((resol
     .catch((error) => reject(error));
 });
 
+const getDestinationSpecies = (destinationId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/species.json?orderBy="destinationId"&equalTo="${destinationId}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
-  getDestinations, getSingleDestination, createDestination, deleteDestination, updateDestination
+  getDestinations, getSingleDestination, createDestination, deleteDestination, updateDestination, getDestinationSpecies
 };
