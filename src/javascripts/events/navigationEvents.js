@@ -4,7 +4,7 @@ import { getSpecies } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
-import { getLogEntry } from '../helpers/data/logEntryData';
+import { getLogEntry, seePublicLogs } from '../helpers/data/logEntryData';
 import { getDestinations } from '../helpers/data/destinationsData';
 import destinationsView from '../components/pages/destinationsView';
 
@@ -30,13 +30,21 @@ const navigationEvents = (user) => {
   });
 
   document.querySelector('#readLogEntries').addEventListener('click', () => {
-    getLogEntry(user).then((logArray) => {
-      if (logArray.length) {
-        showLogEntry(logArray, user);
-      } else {
-        emptyLogEntry(user);
-      }
-    });
+    if (user) {
+      getLogEntry(user).then((logArray) => {
+        if (logArray.length) {
+          showLogEntry(logArray, user);
+        } else {
+          emptyLogEntry();
+        }
+      });
+    } else {
+      seePublicLogs().then((logArray) => {
+        if (logArray.length) {
+          showLogEntry(logArray);
+        }
+      });
+    }
   });
 
   document.querySelector('#readSpecies').addEventListener('click', () => {
