@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import domEvents from '../../events/domEvents';
+import { domEvents } from '../../events/domEvents';
 
 const signOut = () => {
   document.querySelector('body').removeEventListener('click', domEvents);
