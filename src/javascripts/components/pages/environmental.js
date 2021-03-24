@@ -1,3 +1,5 @@
+import { getSingleDestination } from '../../helpers/data/destinationsData';
+
 const showEnvironmental = (environmentalArray, user) => {
   // BUILD ENVIRONMENT CARDS
   if (user) {
@@ -11,7 +13,7 @@ const showEnvironmental = (environmentalArray, user) => {
       document.querySelector('#environmentalPlaceholder').innerHTML += `
       <div class="col-sm-3">
         <div class="card v-25 m-3 p-4 shadow-lg rounded">
-          <h5 class="card-title">${destination}</h5>
+          <h5 class="card-title">${destination.name}</h5>
           <div class="card-body">
             <span>Current: ${entry.current}</span> <br>
             <span>Depth: ${entry.depth}</span> <br>

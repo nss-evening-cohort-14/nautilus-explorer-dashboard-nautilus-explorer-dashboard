@@ -1,16 +1,17 @@
 import dashboardView from '../components/pages/dashboardView';
 import { getCrew } from '../helpers/data/crewData';
-import getDestinations from '../helpers/data/destinationsData';
-import getLogEntry from '../helpers/data/logEntryData';
-import getEnvironmental from '../helpers/data/environmentalData';
-import getSpecies from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import destinationsView from '../components/pages/destinationsView';
+import getEnvironmental from '../helpers/data/environmentalData';
+import { getLogEntry, seePublicLogs } from '../helpers/data/logEntryData';
 import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
-import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
+import { getSpecies } from '../helpers/data/crudSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { getDestinations } from '../helpers/data/destinationsData';
+import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const navigationEvents = (user) => {
+  // GO TO HOME PAGE
   $('#navbarLogo').on('click', () => {
     dashboardView();
   });
@@ -27,18 +28,26 @@ const navigationEvents = (user) => {
   // GO TO DESTINATIONS
   $('#readDestinations').on('click', () => {
     getDestinations().then((destinationsArray) => {
-      destinationsView(destinationsArray);
+      destinationsView(user, destinationsArray);
     });
   });
   // GO TO LOGS
   document.querySelector('#readLogEntries').addEventListener('click', () => {
-    getLogEntry(user).then((logArray) => {
-      if (logArray.length) {
-        showLogEntry(logArray, user);
-      } else {
-        emptyLogEntry();
-      }
-    });
+    if (user) {
+      getLogEntry(user).then((logArray) => {
+        if (logArray.length) {
+          showLogEntry(logArray, user);
+        } else {
+          emptyLogEntry();
+        }
+      });
+    } else {
+      seePublicLogs().then((logArray) => {
+        if (logArray.length) {
+          showLogEntry(logArray);
+        }
+      });
+    }
   });
   // GO TO ENVIRONMENTAL VARIABLES
   $('#readEnvironmentalVariables').on('click', () => {
@@ -56,7 +65,7 @@ const navigationEvents = (user) => {
       if (speciesArray.length) {
         showReadSpecies(speciesArray, user);
       } else {
-        noReadSpecies();
+        noReadSpecies(user);
       }
     });
   });

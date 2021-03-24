@@ -1,6 +1,6 @@
 const editCrewForm = (crewObject) => {
   document.querySelector('#modal-body').innerHTML = `
-    <form id="edit-crew-form" class="mb-4">
+    <form id="edit-crew-form--${crewObject.firebaseKey}" class="mb-4">
     <div class="form-group">
       <label for="firstName">First Name</label>
       <input type="text" class="form-control" id="firstName" placeholder="First Name" value="${crewObject.firstname}" required>
@@ -21,7 +21,7 @@ const editCrewForm = (crewObject) => {
       <label for="image">Image</label>
       <input type="url" class="form-control" id="image" placeholder="Image Url" value="${crewObject.image}" required>
     </div>
-    <button type="submit" id="submit-edit-crew--${crewObject.firebaseKey}" class="btn btn-primary">Update</button>
+    <button type="submit" id="submit-edit-crew" class="btn btn-primary">Update</button>
   </form>`;
 };
 
