@@ -37,6 +37,12 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
+import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
+import {
+  getExcursions, createExcursions, deleteExcursions, updateSpecificExcursions, getSpecificExcursions
+} from '../helpers/data/excursionCrud';
+import editExcursionForm from '../components/forms/editExcursion';
+import addExcursionForm from '../components/forms/addExcursion';
 import { getEnvironmental, deleteEnvirontalVariable } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
@@ -96,6 +102,16 @@ const dashboardEvents = (user) => {
         }
       });
     }
+
+    if (e.target.id.includes('excursionsView')) {
+      getExcursions(user).then((excursionsArray) => {
+        if (excursionsArray.length) {
+          showReadExcursions(excursionsArray, user);
+        } else {
+          noReadExcursions();
+        }
+      });
+    }
   });
 };
 
@@ -137,6 +153,28 @@ const domEvents = (user) => {
       deleteSpecies(firebaseKey, user).then((speciesArray) => showReadSpecies(speciesArray, user));
     }
 
+    if (e.target.id.includes('addNewExcursionBtn')) {
+      formModal('Add Excursion');
+      addExcursionForm();
+    }
+
+    if (e.target.id.includes('update-existing-excursion-btn')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      formModal('Edit Excursion');
+      getSpecificExcursions(firebaseKey).then((excursionsObject) => editExcursionForm(excursionsObject));
+    }
+
+    if (e.target.id.includes('delete-excursion-btn')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      deleteExcursions(firebaseKey, user).then((excursionsArray) => showReadExcursions(excursionsArray, user));
+    }
+
+    if (e.target.id.includes('destinationsView')) {
+      getDestinations().then((destinationsArray) => {
+        destinationsView(user, destinationsArray);
+      });
+    }
+
     if (e.target.id.includes('updateDestination')) {
       const firebaseKey = e.target.id.split('--')[1];
 
@@ -150,6 +188,44 @@ const domEvents = (user) => {
 
       deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
         destinationsView(user, destinationsArray);
+      });
+    }
+
+    if (e.target.id.includes('logsView')) {
+      if (user) {
+        getLogEntry(user).then((logArray) => {
+          if (logArray.length) {
+            showLogEntry(logArray, user);
+          } else {
+            emptyLogEntry();
+          }
+        });
+      } else {
+        seePublicLogs().then((logArray) => {
+          if (logArray.length) {
+            showLogEntry(logArray);
+          }
+        });
+      }
+    }
+
+    if (e.target.id.includes('speciesView')) {
+      getSpecies(user).then((speciesArray) => {
+        if (speciesArray.length) {
+          showReadSpecies(speciesArray, user);
+        } else {
+          noReadSpecies(user);
+        }
+      });
+    }
+
+    if (e.target.id.includes('excursionsView')) {
+      getExcursions(user).then((excursionsArray) => {
+        if (excursionsArray.length) {
+          showReadExcursions(excursionsArray, user);
+        } else {
+          noReadExcursions();
+        }
       });
     }
 
@@ -249,7 +325,7 @@ const domEvents = (user) => {
         img: document.querySelector('#addSpeciesImage').value,
         name: document.querySelector('#addSpeciesName').value,
         destinationId: document.querySelector('#selectDestinationForSpecies').value,
-        uid: firebase.auth().currentUser.uid,
+        // uid: firebase.auth().currentUser.uid,
       };
       createSpecies(speciesObject, user).then((speciesArray) => {
         showReadSpecies(speciesArray, user);
@@ -269,6 +345,37 @@ const domEvents = (user) => {
         uid: firebase.auth().currentUser.uid,
       };
       updateSpecificSpecies(firebaseKey, speciesObject, user).then((speciesArray) => showReadSpecies(speciesArray, user));
+
+      $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('submit-excursion-form')) {
+      e.preventDefault();
+      const excursionObject = {
+        description: document.querySelector('#addExcursionDescription').value,
+        img: document.querySelector('#addExcursionImage').value,
+        name: document.querySelector('#addExcursionName').value,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        uid: firebase.auth().currentUser.uid,
+      };
+      createExcursions(excursionObject, user).then((excursionsArray) => {
+        showReadExcursions(excursionsArray, user);
+      });
+
+      $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('edit-excursion-form')) {
+      const firebaseKey = e.target.id.split('--')[1];
+      e.preventDefault();
+      const excursionObject = {
+        description: document.querySelector('#editExcursionDescription').value,
+        img: document.querySelector('#editExcursionImage').value,
+        name: document.querySelector('#editExcursionName').value,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        uid: firebase.auth().currentUser.uid,
+      };
+      updateSpecificExcursions(firebaseKey, excursionObject, user).then((excursionsArray) => showReadExcursions(excursionsArray, user));
 
       $('#formModal').modal('toggle');
     }
