@@ -14,6 +14,7 @@ import formModal from '../components/forms/formModal';
 import editCrewForm from '../components/forms/editCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
+import addEnvironmentalVariableForm from '../components/forms/addEnvironmental';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import {
   getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
@@ -124,6 +125,11 @@ const domEvents = (user) => {
     if (e.target.id.includes('addNewSpeciesBtn')) {
       formModal('Add Species');
       addSpeciesForm();
+    }
+
+    if (e.target.id.includes('addEnvironmentalButton')) {
+      formModal('Add Environmental Variable');
+      addEnvironmentalVariableForm();
     }
 
     if (e.target.id.includes('update-existing-species-btn')) {
@@ -298,6 +304,26 @@ const domEvents = (user) => {
         shared: document.querySelector('#log-private').checked,
       };
       editLogEntry(firebaseKey, logObject, user).then((logArray) => showLogEntry(logArray, user));
+      $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('submit-environmental-form')) {
+      e.preventDefault();
+      const variableObject = {
+        depth: document.querySelector('#addEnvName').value,
+        current: document.querySelector('#addEnvCurrent').value,
+        latitude: document.querySelector('#addEnvLatitude').value,
+        longitude: document.querySelector('#addEnvLongitude').value,
+        pressure: document.querySelector('#addEnvPressure').value,
+        temperature: document.querySelector('#addEnvTemperature').value,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        timestamp: new Date(),
+        uid: firebase.auth().currentUser.uid,
+      };
+      createEnvironmentalVariable(variableObject, user).then((variableArray) => {
+        showEnvironmental(variableArray, user);
+      });
+
       $('#formModal').modal('toggle');
     }
   });
