@@ -102,6 +102,16 @@ const dashboardEvents = (user) => {
         }
       });
     }
+
+    if (e.target.id.includes('excursionsView')) {
+      getExcursions(user).then((excursionsArray) => {
+        if (excursionsArray.length) {
+          showReadExcursions(excursionsArray, user);
+        } else {
+          noReadExcursions();
+        }
+      });
+    }
   });
 };
 
