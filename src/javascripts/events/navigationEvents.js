@@ -8,6 +8,8 @@ import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getSpecies } from '../helpers/data/crudSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getDestinations } from '../helpers/data/destinationsData';
+import { showReadExcursions, noReadExcursions } from '../components/pages/excursions';
+import { getExcursions } from '../helpers/data/excursionCrud';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const navigationEvents = (user) => {
@@ -66,6 +68,16 @@ const navigationEvents = (user) => {
         showReadSpecies(speciesArray, user);
       } else {
         noReadSpecies(user);
+      }
+    });
+  });
+
+  document.querySelector('#readExcursions').addEventListener('click', () => {
+    getExcursions(user).then((excursionsArray) => {
+      if (excursionsArray.length) {
+        showReadExcursions(excursionsArray, user);
+      } else {
+        noReadExcursions(user);
       }
     });
   });

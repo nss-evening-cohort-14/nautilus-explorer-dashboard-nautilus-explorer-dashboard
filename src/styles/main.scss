@@ -162,6 +162,11 @@ body {
   color: #F2E8DF;
 }
 
+.submitExcursionBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
 #dashboardLogo {
   img {
     width: 150px;
@@ -186,4 +191,49 @@ body {
   background-color: #D99D55;
   color: #F2E8DF;
   border-color: #262223;
+}
+
+#excursionsContainer {
+  display: flex;
+  flex-direction: column ;
+  flex-flow: wrap;
+}
+
+#excursionCard {
+  background-color: #F2E8DF;
+  border-color: #262223;
+  box-shadow: 5px 5px 5px #262223;
+  border-radius: 10px;
+  margin: auto;
+  .card-img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .view-excursion-btn {
+    background-color: #D99D55;
+    color: #F2E8DF;
+  }
+  .delete-excursion-btn {
+    background-color: #297365;
+    color: #F2E8DF;
+  }
+  .card-title  {
+    color: #262223;
+    img {
+      width: 1.5em;
+      padding-bottom: .25em;
+    }
+  }
+  .card-text {
+    color: #262223;
+    img {
+    width: 1em;
+    padding-bottom: .2em;
+  }
+}
+}
+
+#addNewExcursionBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
 }
