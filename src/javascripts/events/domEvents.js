@@ -37,7 +37,7 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
-import { getEnvironmental, deleteEnvirontalVariable } from '../helpers/data/environmentalData';
+import { getEnvironmental, deleteEnvirontalVariable, createEnvironmentalVariable } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const dashboardEvents = (user) => {
