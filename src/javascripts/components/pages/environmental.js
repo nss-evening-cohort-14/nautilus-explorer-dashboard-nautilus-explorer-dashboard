@@ -6,7 +6,7 @@ const showEnvironmental = (environmentalArray) => {
   const user = firebase.auth().currentUser;
   // BUILD ENVIRONMENT CARDS
   if (user) {
-    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addEnvironmentalButton">Add Environmental Data</button>';
+    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn" data-toggle="modal" data-target="#formModal" id="addEnvironmentalButton">Add Environmental Data</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="environmentalPlaceholder" class="row d-flex justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
@@ -25,7 +25,7 @@ const showEnvironmental = (environmentalArray) => {
             <span>Temperature: ${entry.temperature}</span> <br>
             <span>Entry Date: ${entry.timestamp} months</span>
             <hr>
-            ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-environmental--${entry.firebaseKey}">Variables</button>
+            ${user ? `<button class="btn btn-info shadow-lg" data-toggle="modal" data-target="#formModal" id="update-environmental--${entry.firebaseKey}"> Update Variables</button>
             <button class="btn btn-danger shadow-lg" id="delete-environmental--${entry.firebaseKey}">Delete</button>` : ''}
           </div>
         </div>
@@ -37,7 +37,7 @@ const showEnvironmental = (environmentalArray) => {
 
 const emptyEnvironmental = (user) => {
   if (user) {
-    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addEnvironmentalButton">Add Environmental Data</button>';
+    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn"  data-toggle="modal" data-target="#formModal" id="addEnvironmentalButton">Add Environmental Data</button>';
   }
   document.querySelector('#cardContainer').innerHTML = '<h1>Environment Undocumented</h1>';
 };

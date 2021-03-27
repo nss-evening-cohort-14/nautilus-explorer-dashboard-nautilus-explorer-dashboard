@@ -14,9 +14,14 @@ import formModal from '../components/forms/formModal';
 import editCrewForm from '../components/forms/editCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
+import addEnvironmentalVariableForm from '../components/forms/addEnvironmental';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import {
-  getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
+  getSpecies,
+  createSpecies,
+  deleteSpecies,
+  getSpecificSpecies,
+  updateSpecificSpecies
 } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import {
@@ -37,13 +42,17 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
+import { getEnvironmental, deleteEnvirontalVariable, createEnvironmentalVariable } from '../helpers/data/environmentalData';
 import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
 import {
-  getExcursions, createExcursions, deleteExcursions, updateSpecificExcursions, getSpecificExcursions
+  getExcursions,
+  createExcursions,
+  deleteExcursions,
+  updateSpecificExcursions,
+  getSpecificExcursions
 } from '../helpers/data/excursionCrud';
 import editExcursionForm from '../components/forms/editExcursion';
 import addExcursionForm from '../components/forms/addExcursion';
-import { getEnvironmental, deleteEnvirontalVariable } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 
 const dashboardEvents = (user) => {
@@ -140,6 +149,11 @@ const domEvents = (user) => {
     if (e.target.id.includes('addNewSpeciesBtn')) {
       formModal('Add Species');
       addSpeciesForm();
+    }
+
+    if (e.target.id.includes('addEnvironmentalButton')) {
+      formModal('Add Environmental Variable');
+      addEnvironmentalVariableForm();
     }
 
     if (e.target.id.includes('update-existing-species-btn')) {
@@ -395,6 +409,26 @@ const domEvents = (user) => {
         shared: document.querySelector('#log-private').checked,
       };
       editLogEntry(firebaseKey, logObject, user).then((logArray) => showLogEntry(logArray, user));
+      $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('submit-environmental-form')) {
+      e.preventDefault();
+      const variableObject = {
+        depth: document.querySelector('#addEnvName').value,
+        current: document.querySelector('#addEnvCurrent').value,
+        latitude: document.querySelector('#addEnvLatitude').value,
+        longitude: document.querySelector('#addEnvLongitude').value,
+        pressure: document.querySelector('#addEnvPressure').value,
+        temperature: document.querySelector('#addEnvTemperature').value,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        timestamp: new Date(),
+        uid: firebase.auth().currentUser.uid,
+      };
+      createEnvironmentalVariable(variableObject, user).then((variableArray) => {
+        showEnvironmental(variableArray, user);
+      });
+
       $('#formModal').modal('toggle');
     }
   });

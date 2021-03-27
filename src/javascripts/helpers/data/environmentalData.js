@@ -18,4 +18,15 @@ const deleteEnvirontalVariable = (firebaseKey, uid) => new Promise((resolve, rej
     .catch((error) => reject(error));
 });
 
-export { getEnvironmental, deleteEnvirontalVariable };
+const createEnvironmentalVariable = (envObject) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/environmentalVariable.json`, envObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/environmentalVariable/${response.data.name}.json`, body)
+        .then(() => {
+          getEnvironmental().then((variableArray) => resolve(variableArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+export { getEnvironmental, deleteEnvirontalVariable, createEnvironmentalVariable };
