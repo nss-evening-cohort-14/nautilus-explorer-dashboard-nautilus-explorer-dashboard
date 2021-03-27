@@ -191,6 +191,16 @@ const domEvents = (user) => {
       });
     }
 
+    if (e.target.id.includes('crewView')) {
+      getCrew(user).then((crewArray) => {
+        if (crewArray.length) {
+          showCrew(crewArray, user);
+        } else {
+          emptyCrew(user);
+        }
+      });
+    }
+
     if (e.target.id.includes('logsView')) {
       if (user) {
         getLogEntry(user).then((logArray) => {
@@ -207,26 +217,6 @@ const domEvents = (user) => {
           }
         });
       }
-    }
-
-    if (e.target.id.includes('speciesView')) {
-      getSpecies(user).then((speciesArray) => {
-        if (speciesArray.length) {
-          showReadSpecies(speciesArray, user);
-        } else {
-          noReadSpecies(user);
-        }
-      });
-    }
-
-    if (e.target.id.includes('excursionsView')) {
-      getExcursions(user).then((excursionsArray) => {
-        if (excursionsArray.length) {
-          showReadExcursions(excursionsArray, user);
-        } else {
-          noReadExcursions();
-        }
-      });
     }
 
     // CLICK TO SHOW ADD NEW LOG
