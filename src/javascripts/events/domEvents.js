@@ -42,7 +42,6 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
-import { getEnvironmental, deleteEnvirontalVariable, createEnvironmentalVariable } from '../helpers/data/environmentalData';
 import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
 import {
   getExcursions,
@@ -53,7 +52,11 @@ import {
 } from '../helpers/data/excursionCrud';
 import editExcursionForm from '../components/forms/editExcursion';
 import addExcursionForm from '../components/forms/addExcursion';
+import {
+  getEnvironmental, getSingleEnvironmentalVariable, deleteEnvirontalVariable, updateEnvironmentalVariable, createEnvironmentalVariable
+} from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
+import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 
 const dashboardEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -251,6 +254,15 @@ const domEvents = (user) => {
       deleteLogEntry(firebaseKey, user).then((logArray) => showLogEntry(logArray, user));
     }
 
+    // UPDATE ENVIRONMENTAL DATA
+    if (e.target.id.includes('update-environmental')) {
+      const firebaseKey = e.target.id.split('--')[1];
+
+      getSingleEnvironmentalVariable(firebaseKey).then((environmentalVariableObject) => {
+        updateEnvironmentalVariableForm(environmentalVariableObject);
+      });
+    }
+
     // DELETE ENVIRONMENTAL DATA
     if (e.target.id.includes('delete-environmental')) {
       // eslint-disable-next-line no-alert
@@ -410,6 +422,26 @@ const domEvents = (user) => {
       };
       editLogEntry(firebaseKey, logObject, user).then((logArray) => showLogEntry(logArray, user));
       $('#formModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('updateEnvironmentalVariableForm')) {
+      e.preventDefault();
+      const firebaseKey = e.target.id.split('--')[1];
+      const environmentalVariableObject = {
+        current: $('#environmentalVariableCurrent').val(),
+        depth: $('#environmentalVariableDepth').val(),
+        latitude: $('#environmentalVariableLatitude').val(),
+        longitude: $('#environmentalVariableLongitude').val(),
+        pressure: $('#environmentalVariablePressure').val(),
+        temperature: $('#environmentalVariableTemperature').val(),
+      };
+
+      updateEnvironmentalVariable(
+        firebaseKey,
+        environmentalVariableObject,
+      ).then((environmentalVariableArray) => {
+        showEnvironmental(environmentalVariableArray);
+      });
     }
 
     if (e.target.id.includes('submit-environmental-form')) {
