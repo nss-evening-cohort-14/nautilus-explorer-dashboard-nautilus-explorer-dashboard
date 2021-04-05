@@ -8,13 +8,12 @@ const startApp = (user) => {
   domBuilder(); // builds all divs for project
   navBar(); // populates #navigation with nav bar items
   navigationEvents(user); // enables clicks from #navigation
+  dashboardEvents();
   // dashboardEvents(user);
   if (user) {
     document.querySelector('body').removeEventListener('click', dashboardEvents);
     domEvents(user);
-  } else {
-    dashboardEvents();
-  }// listens for button clicks inside #mainContainer
+  }
   dashboardView(user);
 };
 
