@@ -14,9 +14,14 @@ import formModal from '../components/forms/formModal';
 import editCrewForm from '../components/forms/editCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
+import addEnvironmentalVariableForm from '../components/forms/addEnvironmental';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import {
-  getSpecies, createSpecies, deleteSpecies, getSpecificSpecies, updateSpecificSpecies
+  getSpecies,
+  createSpecies,
+  deleteSpecies,
+  getSpecificSpecies,
+  updateSpecificSpecies
 } from '../helpers/data/crudSpecies';
 import { showCrew, emptyCrew } from '../components/pages/crew';
 import {
@@ -39,12 +44,16 @@ import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
 import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
 import {
-  getExcursions, createExcursions, deleteExcursions, updateSpecificExcursions, getSpecificExcursions
+  getExcursions,
+  createExcursions,
+  deleteExcursions,
+  updateSpecificExcursions,
+  getSpecificExcursions
 } from '../helpers/data/excursionCrud';
 import editExcursionForm from '../components/forms/editExcursion';
 import addExcursionForm from '../components/forms/addExcursion';
 import {
-  getEnvironmental, getSingleEnvironmentalVariable, deleteEnvirontalVariable, updateEnvironmentalVariable
+  getEnvironmental, getSingleEnvironmentalVariable, deleteEnvirontalVariable, updateEnvironmentalVariable, createEnvironmentalVariable
 } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
@@ -145,6 +154,11 @@ const domEvents = (user) => {
       addSpeciesForm();
     }
 
+    if (e.target.id.includes('addEnvironmentalButton')) {
+      formModal('Add Environmental Variable');
+      addEnvironmentalVariableForm();
+    }
+
     if (e.target.id.includes('update-existing-species-btn')) {
       const firebaseKey = e.target.id.split('--')[1];
       formModal('Edit Species');
@@ -194,6 +208,16 @@ const domEvents = (user) => {
       });
     }
 
+    if (e.target.id.includes('crewView')) {
+      getCrew(user).then((crewArray) => {
+        if (crewArray.length) {
+          showCrew(crewArray, user);
+        } else {
+          emptyCrew(user);
+        }
+      });
+    }
+
     if (e.target.id.includes('logsView')) {
       if (user) {
         getLogEntry(user).then((logArray) => {
@@ -210,26 +234,6 @@ const domEvents = (user) => {
           }
         });
       }
-    }
-
-    if (e.target.id.includes('speciesView')) {
-      getSpecies(user).then((speciesArray) => {
-        if (speciesArray.length) {
-          showReadSpecies(speciesArray, user);
-        } else {
-          noReadSpecies(user);
-        }
-      });
-    }
-
-    if (e.target.id.includes('excursionsView')) {
-      getExcursions(user).then((excursionsArray) => {
-        if (excursionsArray.length) {
-          showReadExcursions(excursionsArray, user);
-        } else {
-          noReadExcursions();
-        }
-      });
     }
 
     // CLICK TO SHOW ADD NEW LOG
@@ -438,6 +442,26 @@ const domEvents = (user) => {
       ).then((environmentalVariableArray) => {
         showEnvironmental(environmentalVariableArray);
       });
+    }
+
+    if (e.target.id.includes('submit-environmental-form')) {
+      e.preventDefault();
+      const variableObject = {
+        depth: document.querySelector('#addEnvName').value,
+        current: document.querySelector('#addEnvCurrent').value,
+        latitude: document.querySelector('#addEnvLatitude').value,
+        longitude: document.querySelector('#addEnvLongitude').value,
+        pressure: document.querySelector('#addEnvPressure').value,
+        temperature: document.querySelector('#addEnvTemperature').value,
+        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        timestamp: new Date(),
+        uid: firebase.auth().currentUser.uid,
+      };
+      createEnvironmentalVariable(variableObject, user).then((variableArray) => {
+        showEnvironmental(variableArray, user);
+      });
+
+      $('#formModal').modal('toggle');
     }
   });
 };

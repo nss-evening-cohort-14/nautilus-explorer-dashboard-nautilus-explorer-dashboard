@@ -25,6 +25,7 @@ const deleteEnvirontalVariable = (firebaseKey, uid) => new Promise((resolve, rej
     .catch((error) => reject(error));
 });
 
+<<<<<<< HEAD
 const updateEnvironmentalVariable = (firebaseKey, environmentalVariableObject) => new Promise((resolve, reject) => {
   axios
     .patch(
@@ -42,3 +43,17 @@ const updateEnvironmentalVariable = (firebaseKey, environmentalVariableObject) =
 export {
   getEnvironmental, getSingleEnvironmentalVariable, deleteEnvirontalVariable, updateEnvironmentalVariable
 };
+=======
+const createEnvironmentalVariable = (envObject) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/environmentalVariable.json`, envObject)
+    .then((response) => {
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/environmentalVariable/${response.data.name}.json`, body)
+        .then(() => {
+          getEnvironmental().then((variableArray) => resolve(variableArray));
+        });
+    }).catch((error) => reject(error));
+});
+
+export { getEnvironmental, deleteEnvirontalVariable, createEnvironmentalVariable };
+>>>>>>> 2cb46847432baf97ec75fd2da3f606f2fd705528

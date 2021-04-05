@@ -1,14 +1,18 @@
+import firebase from 'firebase';
+import 'firebase/auth';
 import speciesName from '../../../assets/speciesName.png';
 import speciesDescription from '../../../assets/speciesDescription.png';
 import speciesDestination from '../../../assets/speciesDestination.png';
 import { getSingleDestination } from '../../helpers/data/destinationsData';
 
-const showReadExcursions = (speciesArray, user) => {
+const showReadExcursions = (speciesArray) => {
+  const user = firebase.auth().currentUser;
   if (user) {
     document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="excursionsContainer"></div>';
+  document.querySelector('#excursionsContainer').innerHTML = '';
 
   speciesArray.forEach((excursion) => {
     getSingleDestination(excursion.destinationId).then((destination) => {
