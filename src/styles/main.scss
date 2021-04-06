@@ -1,0 +1,248 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+body {
+  background-color: #03403a;
+  color: #d99d55;
+}
+
+#cardContainer {
+  text-align: center;
+  width: 100%;
+}
+
+#dashboardHeader {
+  margin-top: -50px;
+}
+
+#pageCardsContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.width-50 {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.width-100 {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.dashboard-card {
+  background-color: #f2e8df;
+  color: #262223;
+  width: 300px;
+  height: 150px;
+  margin: auto;
+
+  button {
+    background-color: #d99d55;
+    border-color: #262223;
+  }
+}
+
+.navbar {
+  background-color: #F2E8DF;
+}
+
+.nav-link img {
+  width: 3em;
+  padding-left: 1em;
+}
+
+.navbar-brand img {
+ width: 4em;
+}
+
+#google-auth img {
+  width: 3em;
+}
+
+.btn-hj-primary {
+  background-color: #d99d55;
+  color: #f2e8df;
+}
+
+.destination-card {
+  height: fit-content;
+}
+
+.btn-hj-warning {
+  background-color: #f49a1a;
+  color: #f2e8df;
+}
+
+.btn-hj-danger {
+  background-color: #f44336;
+  color: #f2e8df;
+}
+
+#addNewSpeciesBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+#addEnvironmentalButton {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+
+#addCrewBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+
+#addLogEntry {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+#speciesContainer {
+  display: flex;
+  flex-direction: column ;
+  flex-flow: wrap;
+}
+
+#speciesCard {
+  background-color: #F2E8DF;
+  border-color: #262223;
+  box-shadow: 5px 5px 5px #262223;
+  border-radius: 10px;
+  margin: auto;
+  .card-img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .view-species-btn {
+    background-color: #D99D55;
+    color: #F2E8DF;
+  }
+  .delete-species-btn {
+    background-color: #297365;
+    color: #F2E8DF;
+  }
+  .card-title  {
+    color: #262223;
+    img {
+      width: 1.5em;
+      padding-bottom: .25em;
+    }
+  }
+  .card-text {
+    color: #262223;
+    img {
+    width: 1em;
+    padding-bottom: .2em;
+  }
+}
+}
+
+#add-log-form {
+  width: 60%;
+  margin: auto;
+  justify-content: center;
+}
+
+#log-entry-card {
+  background-color: #F2E8DF;
+  border-color: black;
+  margin: 3em auto;
+  width: 65%;
+  padding-bottom: 15px;
+}
+
+#addButton {
+  display:flex;
+  justify-content: center;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+
+.submitSpeciesBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+.submitEnvironmentalBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+.submitExcursionBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
+
+#dashboardLogo {
+  img {
+    width: 150px;
+    border-radius: 10px;
+    border-style: 100px solid #F2E8DF;
+  }
+}
+
+#specialCard {
+  background-color: #03403a;
+  border-style: none;
+  color: #D99D55;
+}
+
+.deleteLogBtn {
+  background-color: #297365;
+  color: #F2E8DF;
+  border-color: #262223;
+}
+
+.updateLogBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+  border-color: #262223;
+}
+
+#excursionsContainer {
+  display: flex;
+  flex-direction: column ;
+  flex-flow: wrap;
+}
+
+#excursionCard {
+  background-color: #F2E8DF;
+  border-color: #262223;
+  box-shadow: 5px 5px 5px #262223;
+  border-radius: 10px;
+  margin: auto;
+  .card-img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .view-excursion-btn {
+    background-color: #D99D55;
+    color: #F2E8DF;
+  }
+  .delete-excursion-btn {
+    background-color: #297365;
+    color: #F2E8DF;
+  }
+  .card-title  {
+    color: #262223;
+    img {
+      width: 1.5em;
+      padding-bottom: .25em;
+    }
+  }
+  .card-text {
+    color: #262223;
+    img {
+    width: 1em;
+    padding-bottom: .2em;
+  }
+}
+}
+
+#addNewExcursionBtn {
+  background-color: #D99D55;
+  color: #F2E8DF;
+}
