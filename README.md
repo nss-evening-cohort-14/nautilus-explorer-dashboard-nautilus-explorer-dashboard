@@ -1,76 +1,85 @@
 # Nautilus Explorer Dashboard
+Welcome to Nautilus, the world's most advanced, electrical-powered submersible. You will be coming aboard to build tools for the Captain to use en route and at destinations across the globe.
+While on board, you can see, create, edit and delete data that is needed for our adventure: Crew Members, Destinations, Environmental readings, Log entries, Species and Excursions.
+
+## [Deployed Site](https://nautilusexplorerdashboard.netlify.app)
 
 ### [ERD](https://dbdiagram.io/d/604d0f78fcdcb6230b240157)
 ### [Workflow Diagram](https://docs.google.com/presentation/d/1lBstv8ilRRyP87Sqn62cQ8Q2JMju-SF3ofdo6_suoSs/edit?usp=sharing)
 ### [Wireframe](https://www.figma.com/file/j9kRS7JW3I9rVwHrCYtbfy/NAUTILUS?node-id=0%3A1)
 
-### Product Owner
-Your PO is assigned as an approver and feedback for your application. They are not there to guide you through code. If you have code related needs, submit a completed issue ticket.
 
-PO: **Aja**
-
-## Description
-Welcome to Nautilus, the world's most advanced, electrical-powered submersible. You will be coming aboard to build tools for the Captain to use en route and at destinations across the globe.
-
-Your task is to build a management dashboard for the Captain to keep track of the Crew Members, Destinations, Environmental readings, Log entries, and Species. The Captain should be able to perform full CRUD on each of those 4 topics.  Additionally he should be able to authenticate into the application - if he is not authenticated the dashboard should perform READ only operations.
-
-Captain Nemo expects to see themes throughout the application that radiate the classic opulence and grandeur of Nautilus.
-*Mobilis in mobili*.
-
-### Requirements
-* Complete Planning
-    * Make sure to break down tickets into milestones, include an ERD and a Workflow Diagram of how you will tackle each part of the application
-    * NOTE: This includes setting up a development branch that branches off of the main branch to test your team's code and for review by the PO
-* Set up deployment EARLY and deploy with every milestone so that the PO can see the web interface
-* Add Webpack to the Project
-* Authenticate to perform any actions (CUD)
-* Crew Members
-* Destinations - longitude, latitude
-* Log Entries
-* Environmental Readings - temperature, depth, current, pressure
-* **Stretch goal:** Excursions
-
-### User Stories
+## Features:
 #### Authentication
-* As a user, when I am unauthenticated I should be able to see the dashboard (Read only).
-* As a user, when I am authenticated I should be able to perform all actions on the dashboard (full CRUD).
-* As a user, I should be able to login via google.
-* As a user, I should be able to logout.
-
+* When unauthenticated you are able to see the dashboard, and not manipulate data.
+* When authenticated you are able to perform all actions on the dashboard.
+* Able to login via Google.
 #### Crew Members
-* As a user, I should be able to on board (add) Crew Members to the Nautilus.
-* As a user, I should be able to see all Crew Members on the Nautilus.
-* As a user, I should be able to edit Crew Members.
-* As a user, I should be able to have a Crew Members disembark (delete) from the Nautilus.
-
+When logged in, you are able to:
+* Add Crew Members to the Nautilus.
+* See all Crew Members on the Nautilus.
+* Edit Crew Members.
+* Have a Crew Members disembark (delete) from the Nautilus.
 #### Destinations
-* As a user, I should be able to add possible destinations.
-* As a user, I should be able to read all possible destinations.
-* As a user, I should be able to edit destinations.
-* As a user, I should be able to delete a destination.
+When logged in, you are able to:
+* Add destinations.
+* See all destinations.
+* Edit destinations.
+* Delete a destination.
 
 #### Log Entries
-* As a user, I should be able to add log entries.
-* As a user, I should be able to read all my log entries.
-* As a user, I should be able to edit my log entries.
-* As a user, I should be able to delete my log entries.
-* As a user, I should be able to share my log entries.
+When logged in, you are able to:
+* Add log entries.
+* See all log entries.
+* Edit my log entries.
+* Delete my log entries.
+* Only public log entries are visible when not logged in.
 
 #### Environmental Data
-* As a user, I should be able to add environmental readings (latitude, longitude, temperature, depth, current, pressure).
-* As a user, I should be able to read all environmental readings.
-* As a user, I should be able to edit environmental readings.
-* As a user, I should be able to delete an environmental reading.
+When logged in, you are able to:
+* Add environmental readings.
+* See all environmental readings.
+* Edit environmental readings.
+* Delete an environmental reading.
 
 #### Species
-* As a user, I should be able to add species.
-* As a user, I should be able to read all species.
-* As a user, I should be able to edit species.
-* As a user, I should be able to delete species.
+When logged in, you are able to:
+* Add species.
+* See all species.
+* Edit species.
+* Delete species.
 
-### Stretch Goals
 #### Excursions
-* As a user, I should be able to add excursions.
-* As a user, I should be able to read all my excursions.
-* As a user, I should be able to edit my excursions.
-* As a user, I should be able to delete my excursions.
+When logged in, you are able to:
+* Add excursions.
+* See all my excursions.
+* Edit my excursions.
+* Delete my excursions.
+
+[Github Repository](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard)
+
+[Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/1)
+
+### Screenshots
+![2021-04-05 (2)](https://user-images.githubusercontent.com/76795299/113638655-5ea95e80-9645-11eb-9aec-a8286cfb7547.png)
+![2021-04-05 (1)](https://user-images.githubusercontent.com/76795299/113638643-4f2a1580-9645-11eb-967e-dfb0ffd6ea6f.png)
+
+
+### Loom Video Walkthroughs
+
+[Dashboard and Destinations](https://www.loom.com/share/490b8072f6364a34841740141551df73)
+
+[Crew Members](https://www.loom.com/share/4121f4b3b7d44a22bba6da2d4456f4ac)
+
+[Log Entries](https://www.loom.com/share/f02cdef2215a49efa206ed6021ca852e)
+
+[Species and Excursions](https://www.loom.com/share/77e13f0c5ef84c5aa4d0e7455ddd34f8)
+
+### Contributors
+[Chris Meffley](https://github.com/cmeffley)
+
+[Matthew Gonzales](https://github.com/GonzalesMatthew)
+
+[Hunter Juneau](https://github.com/HunterJuneau)
+
+[Honey-Rae Swan](https://github.com/thedigitalmenagerie)
