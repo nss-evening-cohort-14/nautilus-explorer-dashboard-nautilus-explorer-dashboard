@@ -1,22 +1,122 @@
 {
-"-MXduzzD6GwoQEG8niZ9":{"firebaseKey":"-MXduzzD6GwoQEG8niZ9","name":"Veith","image":"http://dummyimage.com/246x100.png/cc0000/ffffff","uid":"84-501-9506"},
-"-MXduzzEVZSbGEOgqhf8":{"firebaseKey":"-MXduzzEVZSbGEOgqhf8","name":"Sloan","image":"http://dummyimage.com/225x100.png/cc0000/ffffff","uid":"31-011-9669"},
-"-MXduzzEVZSbGEOgqhf9":{"firebaseKey":"-MXduzzEVZSbGEOgqhf9","name":"John Wall","image":"http://dummyimage.com/249x100.png/5fa2dd/ffffff","uid":"22-146-1836"},
-"-MXduzzFL0O2Ge3yjtn_":{"firebaseKey":"-MXduzzFL0O2Ge3yjtn_","name":"Kensington","image":"http://dummyimage.com/101x100.png/cc0000/ffffff","uid":"12-451-0674"},
-"-MXduzzGCxM9ZAQ0rHHd":{"firebaseKey":"-MXduzzGCxM9ZAQ0rHHd","name":"Sheridan","image":"http://dummyimage.com/188x100.png/dddddd/000000","uid":"14-201-2575"},
-"-MXduzzGCxM9ZAQ0rHHe":{"firebaseKey":"-MXduzzGCxM9ZAQ0rHHe","name":"Ridgeway","image":"http://dummyimage.com/161x100.png/dddddd/000000","uid":"88-980-8602"},
-"-MXduzzHfoGDuf2WlIQN":{"firebaseKey":"-MXduzzHfoGDuf2WlIQN","name":"Golf View","image":"http://dummyimage.com/154x100.png/ff4444/ffffff","uid":"67-999-6749"},
-"-MXduzzIuoq1Y5Tn5JQL":{"firebaseKey":"-MXduzzIuoq1Y5Tn5JQL","name":"Grasskamp","image":"http://dummyimage.com/224x100.png/ff4444/ffffff","uid":"74-905-9223"},
-"-MXduzzIuoq1Y5Tn5JQM":{"firebaseKey":"-MXduzzIuoq1Y5Tn5JQM","name":"Burning Wood","image":"http://dummyimage.com/118x100.png/ff4444/ffffff","uid":"52-714-6137"},
-"-MXduzzKdhZeTHsMU-oj":{"firebaseKey":"-MXduzzKdhZeTHsMU-oj","name":"Heffernan","image":"http://dummyimage.com/106x100.png/5fa2dd/ffffff","uid":"37-633-8807"},
-"-MXduzzKdhZeTHsMU-ok":{"firebaseKey":"-MXduzzKdhZeTHsMU-ok","name":"Lunder","image":"http://dummyimage.com/218x100.png/cc0000/ffffff","uid":"56-493-0395"},
-"-MXduzzLjI_xjOu1am2J":{"firebaseKey":"-MXduzzLjI_xjOu1am2J","name":"American","image":"http://dummyimage.com/117x100.png/cc0000/ffffff","uid":"40-836-8855"},
-"-MXduzzMPJ6Tb_z-r8z6":{"firebaseKey":"-MXduzzMPJ6Tb_z-r8z6","name":"Village","image":"http://dummyimage.com/156x100.png/5fa2dd/ffffff","uid":"05-350-0411"},
-"-MXduzzMPJ6Tb_z-r8z7":{"firebaseKey":"-MXduzzMPJ6Tb_z-r8z7","name":"Golf Course","image":"http://dummyimage.com/213x100.png/dddddd/000000","uid":"57-396-0703"},
-"-MXduzzNKVWkyQX4vaea":{"firebaseKey":"-MXduzzNKVWkyQX4vaea","name":"Fremont","image":"http://dummyimage.com/118x100.png/cc0000/ffffff","uid":"31-539-9887"},
-"-MXduzzOVDBaDnSBJfK1":{"firebaseKey":"-MXduzzOVDBaDnSBJfK1","name":"Florence","image":"http://dummyimage.com/204x100.png/cc0000/ffffff","uid":"86-482-8731"},
-"-MXduzzOVDBaDnSBJfK2":{"firebaseKey":"-MXduzzOVDBaDnSBJfK2","name":"Cordelia","image":"http://dummyimage.com/211x100.png/cc0000/ffffff","uid":"70-227-0454"},
-"-MXduzzPIYj8U72p2I3O":{"firebaseKey":"-MXduzzPIYj8U72p2I3O","name":"Carioca","image":"http://dummyimage.com/127x100.png/ff4444/ffffff","uid":"42-314-5165"},
-"-MXduzzQeiBSTO-iPbBj":{"firebaseKey":"-MXduzzQeiBSTO-iPbBj","name":"Spohn","image":"http://dummyimage.com/196x100.png/dddddd/000000","uid":"28-413-7889"},
-"-MXduzzQeiBSTO-iPbBk":{"firebaseKey":"-MXduzzQeiBSTO-iPbBk","name":"Manufacturers","image":"http://dummyimage.com/146x100.png/cc0000/ffffff","uid":"19-625-8476"}
+  "-MXduzzD6GwoQEG8niZ9" : {
+    "firebaseKey" : "-MXduzzD6GwoQEG8niZ9",
+    "image" : "http://dummyimage.com/246x100.png/cc0000/ffffff",
+    "name" : "Veith",
+    "uid" : "84-501-9506"
+  },
+  "-MXduzzEVZSbGEOgqhf8" : {
+    "firebaseKey" : "-MXduzzEVZSbGEOgqhf8",
+    "image" : "http://dummyimage.com/225x100.png/cc0000/ffffff",
+    "name" : "Sloan",
+    "uid" : "31-011-9669"
+  },
+  "-MXduzzEVZSbGEOgqhf9" : {
+    "firebaseKey" : "-MXduzzEVZSbGEOgqhf9",
+    "image" : "http://dummyimage.com/249x100.png/5fa2dd/ffffff",
+    "name" : "John Wall",
+    "uid" : "22-146-1836"
+  },
+  "-MXduzzFL0O2Ge3yjtn_" : {
+    "firebaseKey" : "-MXduzzFL0O2Ge3yjtn_",
+    "image" : "http://dummyimage.com/101x100.png/cc0000/ffffff",
+    "name" : "Kensington",
+    "uid" : "12-451-0674"
+  },
+  "-MXduzzGCxM9ZAQ0rHHd" : {
+    "firebaseKey" : "-MXduzzGCxM9ZAQ0rHHd",
+    "image" : "http://dummyimage.com/188x100.png/dddddd/000000",
+    "name" : "Sheridan",
+    "uid" : "14-201-2575"
+  },
+  "-MXduzzGCxM9ZAQ0rHHe" : {
+    "firebaseKey" : "-MXduzzGCxM9ZAQ0rHHe",
+    "image" : "http://dummyimage.com/161x100.png/dddddd/000000",
+    "name" : "Ridgeway",
+    "uid" : "88-980-8602"
+  },
+  "-MXduzzHfoGDuf2WlIQN" : {
+    "firebaseKey" : "-MXduzzHfoGDuf2WlIQN",
+    "image" : "http://dummyimage.com/154x100.png/ff4444/ffffff",
+    "name" : "Golf View",
+    "uid" : "67-999-6749"
+  },
+  "-MXduzzIuoq1Y5Tn5JQL" : {
+    "firebaseKey" : "-MXduzzIuoq1Y5Tn5JQL",
+    "image" : "http://dummyimage.com/224x100.png/ff4444/ffffff",
+    "name" : "Grasskamp",
+    "uid" : "74-905-9223"
+  },
+  "-MXduzzIuoq1Y5Tn5JQM" : {
+    "firebaseKey" : "-MXduzzIuoq1Y5Tn5JQM",
+    "image" : "http://dummyimage.com/118x100.png/ff4444/ffffff",
+    "name" : "Burning Wood",
+    "uid" : "52-714-6137"
+  },
+  "-MXduzzKdhZeTHsMU-oj" : {
+    "firebaseKey" : "-MXduzzKdhZeTHsMU-oj",
+    "image" : "http://dummyimage.com/106x100.png/5fa2dd/ffffff",
+    "name" : "Heffernan",
+    "uid" : "37-633-8807"
+  },
+  "-MXduzzKdhZeTHsMU-ok" : {
+    "firebaseKey" : "-MXduzzKdhZeTHsMU-ok",
+    "image" : "http://dummyimage.com/218x100.png/cc0000/ffffff",
+    "name" : "Lunder",
+    "uid" : "56-493-0395"
+  },
+  "-MXduzzLjI_xjOu1am2J" : {
+    "firebaseKey" : "-MXduzzLjI_xjOu1am2J",
+    "image" : "http://dummyimage.com/117x100.png/cc0000/ffffff",
+    "name" : "American",
+    "uid" : "40-836-8855"
+  },
+  "-MXduzzMPJ6Tb_z-r8z6" : {
+    "firebaseKey" : "-MXduzzMPJ6Tb_z-r8z6",
+    "image" : "http://dummyimage.com/156x100.png/5fa2dd/ffffff",
+    "name" : "Village",
+    "uid" : "05-350-0411"
+  },
+  "-MXduzzMPJ6Tb_z-r8z7" : {
+    "firebaseKey" : "-MXduzzMPJ6Tb_z-r8z7",
+    "image" : "http://dummyimage.com/213x100.png/dddddd/000000",
+    "name" : "Golf Course",
+    "uid" : "57-396-0703"
+  },
+  "-MXduzzNKVWkyQX4vaea" : {
+    "firebaseKey" : "-MXduzzNKVWkyQX4vaea",
+    "image" : "http://dummyimage.com/118x100.png/cc0000/ffffff",
+    "name" : "Fremont",
+    "uid" : "31-539-9887"
+  },
+  "-MXduzzOVDBaDnSBJfK1" : {
+    "firebaseKey" : "-MXduzzOVDBaDnSBJfK1",
+    "image" : "http://dummyimage.com/204x100.png/cc0000/ffffff",
+    "name" : "Florence",
+    "uid" : "86-482-8731"
+  },
+  "-MXduzzOVDBaDnSBJfK2" : {
+    "firebaseKey" : "-MXduzzOVDBaDnSBJfK2",
+    "image" : "http://dummyimage.com/211x100.png/cc0000/ffffff",
+    "name" : "Cordelia",
+    "uid" : "70-227-0454"
+  },
+  "-MXduzzPIYj8U72p2I3O" : {
+    "firebaseKey" : "-MXduzzPIYj8U72p2I3O",
+    "image" : "http://dummyimage.com/127x100.png/ff4444/ffffff",
+    "name" : "Carioca",
+    "uid" : "42-314-5165"
+  },
+  "-MXduzzQeiBSTO-iPbBj" : {
+    "firebaseKey" : "-MXduzzQeiBSTO-iPbBj",
+    "image" : "http://dummyimage.com/196x100.png/dddddd/000000",
+    "name" : "Spohn",
+    "uid" : "28-413-7889"
+  },
+  "-MXduzzQeiBSTO-iPbBk" : {
+    "firebaseKey" : "-MXduzzQeiBSTO-iPbBk",
+    "image" : "http://dummyimage.com/146x100.png/cc0000/ffffff",
+    "name" : "Manufacturers",
+    "uid" : "19-625-8476"
+  }
 }
