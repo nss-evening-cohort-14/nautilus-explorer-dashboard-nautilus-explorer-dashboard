@@ -1,19 +1,5 @@
-# Nautilus Explorer Dashboard
-Welcome to Nautilus, the world's most advanced, electrical-powered submersible. You will be coming aboard to build tools for the Captain to use en route and at destinations across the globe.
-While on board, you can see, create, edit and delete data that is needed for our adventure: Crew Members, Destinations, Environmental readings, Log entries, Species and Excursions.
-
-## Deployed Sites
-### Week 1 [Deployed Site](https://e14-nautilus-explorer.netlify.app/)
-### Week 2-3 [Deployed Site](https://nautilusexplorerdashboard.netlify.app)
-
-## ERDs
-### Week 1 [ERD](https://dbdiagram.io/d/604d0f78fcdcb6230b240157)
-### Week 2-3 [ERD](https://dbdiagram.io/d/606d0d7cecb54e10c33f0262)
-
-### Week 1 [Workflow Diagram](https://docs.google.com/presentation/d/1lBstv8ilRRyP87Sqn62cQ8Q2JMju-SF3ofdo6_suoSs/edit?usp=sharing)
-### Week 1 [Wireframe](https://www.figma.com/file/j9kRS7JW3I9rVwHrCYtbfy/NAUTILUS?node-id=0%3A1)
-
 ## Description
+### Revised instructions from Dr. T
 ### Week 1:
 Welcome to Nautilus, the world's most advanced, electrical-powered submersible. You will be coming aboard to build tools for the Captain to use en route and at destinations across the globe.
 
@@ -134,39 +120,3 @@ The captain was very impressed with the first team, but they have reached their 
 #### Excursions
 * As a user, I should be able to add Log Entries to an Excursion I have created.
 * As a user, when I am logged in as the captain I should have the option to add an excursion to a Captain's Log entry and see that log entry appear on the aggregated Excursion dashboard.
-
-
-[Github Repository](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard)
-
-## Project Boards
-Week 1
-### [Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/2)
-Week 2-3
-### [Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/2)
-### Screenshots
-![2021-04-05 (2)](https://user-images.githubusercontent.com/76795299/113638655-5ea95e80-9645-11eb-9aec-a8286cfb7547.png)
-![2021-04-05 (1)](https://user-images.githubusercontent.com/76795299/113638643-4f2a1580-9645-11eb-967e-dfb0ffd6ea6f.png)
-
-
-## Loom Video Walkthroughs
-
-### Week 1
-[Dashboard and Destinations](https://www.loom.com/share/490b8072f6364a34841740141551df73)
-[Crew Members](https://www.loom.com/share/4121f4b3b7d44a22bba6da2d4456f4ac)
-[Log Entries](https://www.loom.com/share/f02cdef2215a49efa206ed6021ca852e)
-[Species and Excursions](https://www.loom.com/share/77e13f0c5ef84c5aa4d0e7455ddd34f8)
-
-### Week 2-3
-
-## Contributors
-### Week 1
-[Chris Meffley](https://github.com/cmeffley)
-[Matthew Gonzales](https://github.com/GonzalesMatthew)
-[Hunter Juneau](https://github.com/HunterJuneau)
-[Honey-Rae Swan](https://github.com/thedigitalmenagerie)
-
-### Week 2-3
-[Juan Davila](https://github.com/JuanDavila1101)
-[Mitchell Crumbley](https://github.com/Mitchell-Crumbley)
-[Martin Sisk](https://github.com/fimoefive)
-[Jim Conner](https://github.com/jim-conner)
