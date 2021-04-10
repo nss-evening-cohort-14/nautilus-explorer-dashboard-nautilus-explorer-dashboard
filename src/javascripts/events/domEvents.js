@@ -15,9 +15,8 @@ import editCrewForm from '../components/forms/editCrew';
 import addLogForm from '../components/forms/addLogForm';
 import addSpeciesForm from '../components/forms/addSpecies';
 import addEnvironmentalVariableForm from '../components/forms/addEnvironmental';
-import { showReadSpecies, noReadSpecies } from '../components/pages/species';
+import { showReadSpecies } from '../components/pages/species';
 import {
-  getSpecies,
   createSpecies,
   deleteSpecies,
   getSpecificSpecies,
@@ -42,9 +41,8 @@ import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
 import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
-import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
+import { showReadExcursions } from '../components/pages/excursions';
 import {
-  getExcursions,
   createExcursions,
   deleteExcursions,
   updateSpecificExcursions,
@@ -53,79 +51,11 @@ import {
 import editExcursionForm from '../components/forms/editExcursion';
 import addExcursionForm from '../components/forms/addExcursion';
 import {
-  getEnvironmental, getSingleEnvironmentalVariable, deleteEnvirontalVariable, updateEnvironmentalVariable, createEnvironmentalVariable
+  getSingleEnvironmentalVariable, deleteEnvirontalVariable,
+  updateEnvironmentalVariable, createEnvironmentalVariable
 } from '../helpers/data/environmentalData';
-import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
+import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
-
-const dashboardEvents = (user) => {
-  document.querySelector('body').addEventListener('click', (e) => {
-    // SHOW ENVIRONMENTAL VARIABLES
-    if (e.target.id.includes('variablesView')) {
-      getEnvironmental(user).then((environmentalArray) => {
-        if (environmentalArray.length) {
-          showEnvironmental(environmentalArray, user);
-        } else {
-          emptyEnvironmental(user);
-        }
-      });
-    }
-    // CLICK EVENT FOR READING CREW CARDS
-    if (e.target.id.includes('crewView')) {
-      getCrew(user).then((crewArray) => {
-        if (crewArray.length) {
-          showCrew(crewArray, user);
-        } else {
-          emptyCrew(user);
-        }
-      });
-    }
-
-    if (e.target.id.includes('destinationsView')) {
-      getDestinations().then((destinationsArray) => {
-        destinationsView(user, destinationsArray);
-      });
-    }
-
-    if (e.target.id.includes('logsView')) {
-      if (user) {
-        getLogEntry(user).then((logArray) => {
-          if (logArray.length) {
-            showLogEntry(logArray, user);
-          } else {
-            emptyLogEntry();
-          }
-        });
-      } else {
-        seePublicLogs().then((logArray) => {
-          if (logArray.length) {
-            showLogEntry(logArray);
-          }
-        });
-      }
-    }
-
-    if (e.target.id.includes('speciesView')) {
-      getSpecies(user).then((speciesArray) => {
-        if (speciesArray.length) {
-          showReadSpecies(speciesArray, user);
-        } else {
-          noReadSpecies();
-        }
-      });
-    }
-
-    if (e.target.id.includes('excursionsView')) {
-      getExcursions(user).then((excursionsArray) => {
-        if (excursionsArray.length) {
-          showReadExcursions(excursionsArray, user);
-        } else {
-          noReadExcursions();
-        }
-      });
-    }
-  });
-};
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -466,4 +396,4 @@ const domEvents = (user) => {
   });
 };
 
-export { dashboardEvents, domEvents };
+export default domEvents;
