@@ -13,7 +13,7 @@ const editSpeciesForm = (speciesObject) => {
       </div>
       <div class="form-group">
         <label for="editSpeciesImage">Image URL</label>
-        <input type="url" class="form-control" id="editSpeciesImage" placeholder="Image URL" value="${speciesObject.img}" required>
+        <input type="url" class="form-control" id="editSpeciesImage" placeholder="Image URL" value="${speciesObject.image}" required>
       </div>
       <div class="form-group" id="select-destination">
       </div>

@@ -338,7 +338,7 @@ const domEvents = (user) => {
       e.preventDefault();
       const speciesObject = {
         description: document.querySelector('#addSpeciesDescription').value,
-        img: document.querySelector('#addSpeciesImage').value,
+        image: document.querySelector('#addSpeciesImage').value,
         name: document.querySelector('#addSpeciesName').value,
         destinationId: document.querySelector('#selectDestinationForSpecies').value,
         // uid: firebase.auth().currentUser.uid,
@@ -355,7 +355,7 @@ const domEvents = (user) => {
       e.preventDefault();
       const speciesObject = {
         description: document.querySelector('#editSpeciesDescription').value,
-        img: document.querySelector('#editSpeciesImage').value,
+        image: document.querySelector('#editSpeciesImage').value,
         name: document.querySelector('#editSpeciesName').value,
         destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
