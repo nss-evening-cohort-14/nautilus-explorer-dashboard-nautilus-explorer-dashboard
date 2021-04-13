@@ -65,10 +65,10 @@ const dashboardView = (user) => {
                     <div class="card dashboard-card">
                       <div class="card-body">
                         <h3 class="card-title">Excursions</h3>
-                        <button type="button" class="btn btn-primary" id="excursionsView">Go there!</button>
+                        ${user ? ` <button type="button" class="btn btn-primary" id="excursionsView">Go there!</button>
                       </div>
                     </div>
-                  </div>
+                  </div>` : '<button type="danger" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Please Log In!" id="notExcursionsView">Please Log In!</button>'}
                   </div>
   `);
 };
