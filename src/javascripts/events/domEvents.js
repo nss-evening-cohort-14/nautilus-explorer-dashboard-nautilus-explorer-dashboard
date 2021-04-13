@@ -57,6 +57,8 @@ import {
 } from '../helpers/data/environmentalData';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
+import formExcursionModal from '../components/forms/excursionModal';
+import excursionDestinations from '../helpers/data/excursionDestinations';
 
 const dashboardEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -184,6 +186,28 @@ const domEvents = (user) => {
     if (e.target.id.includes('delete-excursion-btn')) {
       const firebaseKey = e.target.id.split('--')[1];
       deleteExcursions(firebaseKey, user).then((excursionsArray) => showReadExcursions(excursionsArray, user));
+    }
+
+    if (e.target.id.includes('displayCrewMembers')) {
+      formExcursionModal('Displaying Crew Members');
+      $('#formExcursitonModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('displayDestination')) {
+      const excursionID = e.target.id.split('--')[1];
+      const destinations = excursionDestinations(excursionID);
+      formExcursionModal('Displaying Destinations', destinations);
+      $('#formExcursitonModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('displayEnviromentalData')) {
+      formExcursionModal('Displaying Enviromental Data');
+      $('#formExcursitonModal').modal('toggle');
+    }
+
+    if (e.target.id.includes('displaySpecies')) {
+      formExcursionModal('Displaying Spacies');
+      $('#formExcursitonModal').modal('toggle');
     }
 
     if (e.target.id.includes('destinationsView')) {
