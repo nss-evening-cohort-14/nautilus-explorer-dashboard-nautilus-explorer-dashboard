@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import dashboardView from '../components/pages/dashboardView';
 import { getCrew } from '../helpers/data/crewData';
 import { showCrew, emptyCrew } from '../components/pages/crew';
@@ -15,7 +16,7 @@ import { emptyEnvironmental, showEnvironmental } from '../components/pages/envir
 const navigationEvents = (user) => {
   // GO TO HOME PAGE
   $('#navbarLogo').on('click', () => {
-    dashboardView();
+    dashboardView(user);
   });
   // GO TO CREW
   document.querySelector('#readCrew').addEventListener('click', () => {
@@ -73,13 +74,15 @@ const navigationEvents = (user) => {
   });
 
   document.querySelector('#readExcursions').addEventListener('click', () => {
-    getExcursions(user).then((excursionsArray) => {
-      if (excursionsArray.length) {
-        showReadExcursions(excursionsArray, user);
-      } else {
-        noReadExcursions(user);
-      }
-    });
+    if (firebase.auth().currentUser) {
+      getExcursions(user).then((excursionsArray) => {
+        if (excursionsArray.length) {
+          showReadExcursions(excursionsArray, user);
+        } else {
+          noReadExcursions(user);
+        }
+      });
+    }
   });
 };
 

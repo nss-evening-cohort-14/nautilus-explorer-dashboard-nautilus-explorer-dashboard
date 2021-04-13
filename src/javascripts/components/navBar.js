@@ -1,3 +1,4 @@
+// import firebase from 'firebase';
 import crewOptionTwo from '../../assets/crewOptionTwo.png';
 import destination from '../../assets/destination.png';
 import excursions from '../../assets/excursions.png';
@@ -7,6 +8,7 @@ import logoOnly from '../../assets/logoOnly.png';
 import environmentalVariables from '../../assets/environmentalVariables.png';
 
 const navBar = () => {
+  // const isUserLoggedIn = firebase.auth().currentUser;
   document.querySelector('#navigation').innerHTML = `<nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#" id="navbarLogo"><img src=${logoOnly}></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,8 +37,8 @@ const navBar = () => {
 </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
-      <button class="btn" id="loginLogoutButton"></button>
-    </div>
+    <button class="btn" id="loginLogoutButton"></button>
+  </div>
   </div>
 </nav>`;
 };
