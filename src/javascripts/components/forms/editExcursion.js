@@ -16,8 +16,8 @@ const editExcursionForm = (excursionObject) => {
         <input type="url" class="form-control" id="editExcursionImage" placeholder="Image URL" value="${excursionObject.img}" required>
       </div>
       <div class="form-group" id="select-destination">
-      </div>submit-edit-existing-excursion
-      <button type="submit" id="" class="btn submitExcursionBtn">Update Excursion</button>
+      </div>
+      <button type="submit" id="submit-edit-existing-excursion" class="btn submitExcursionBtn">Update Excursion</button>
     </form>`;
 
   selectDestination(excursionObject);
