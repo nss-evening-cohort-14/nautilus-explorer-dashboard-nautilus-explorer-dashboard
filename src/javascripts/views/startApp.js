@@ -2,7 +2,8 @@ import domBuilder from '../components/domBuilder';
 import navBar from '../components/navBar';
 import navigationEvents from '../events/navigationEvents';
 import dashboardView from '../components/pages/dashboardView';
-import { dashboardEvents, domEvents } from '../events/domEvents';
+import domEvents from '../events/domEvents';
+import dashboardEvents from '../events/hideCreate';
 
 const startApp = (user) => {
   domBuilder(); // builds all divs for project
