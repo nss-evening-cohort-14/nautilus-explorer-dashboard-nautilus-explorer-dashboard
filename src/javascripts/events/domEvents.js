@@ -57,7 +57,7 @@ import {
 import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 import formExcursionModal from '../components/forms/excursionModal';
-import excursionDestinations from '../helpers/data/excursionDestinations';
+import excursionDestinations, { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -115,7 +115,8 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('delete-excursion-btn')) {
       const firebaseKey = e.target.id.split('--')[1];
-      deleteExcursions(firebaseKey, user).then((excursionsArray) => showReadExcursions(excursionsArray, user));
+      deleteExcursionDestination(firebaseKey);
+      deleteExcursions(firebaseKey).then((excursionsArray) => showReadExcursions(excursionsArray, user));
     }
 
     if (e.target.id.includes('displayCrewMembers')) {
@@ -321,14 +322,15 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('submit-excursion-form')) {
       e.preventDefault();
+      const destinationId = document.querySelector('#selectDestinationForSpecies').value;
       const excursionObject = {
         description: document.querySelector('#addExcursionDescription').value,
         img: document.querySelector('#addExcursionImage').value,
         name: document.querySelector('#addExcursionName').value,
-        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createExcursions(excursionObject, user).then((excursionsArray) => {
+      createExcursions(excursionObject, destinationId).then((excursionsArray) => {
         showReadExcursions(excursionsArray, user);
       });
 
@@ -345,7 +347,7 @@ const domEvents = (user) => {
         destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      updateSpecificExcursions(firebaseKey, excursionObject, user).then((excursionsArray) => showReadExcursions(excursionsArray, user));
+      updateSpecificExcursions(firebaseKey, excursionObject, user).then((excursionsArray) => showReadExcursions(excursionsArray));
 
       $('#formModal').modal('toggle');
     }
