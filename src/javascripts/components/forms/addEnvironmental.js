@@ -32,14 +32,6 @@ const addEnvironmentalVariableForm = () => {
         <label for="addEnvTemperature">Temperature</label>
         <input type="text" class="form-control" id="addEnvTemperature" aria-describedby="addEnvTemperature" placeholder="Enter Temperature" required>
       </div>
-<<<<<<< HEAD
-      <div class="form-group" id="select-destination">
-      </div>
-      </div>
-      <div class="form-group" id="select-environmental">
-      </div>
-=======
->>>>>>> development
       <button type="submit" id="submit-environmental-variable" class="btn submitEnvironmentalBtn">Submit Environmental Data</button>
     </form>`;
   // document.querySelector('#modal-body').innerHTML = `
