@@ -9,9 +9,9 @@ import { emptyLogEntry, showLogEntry } from '../components/pages/logEntry';
 import { getSpecies } from '../helpers/data/crudSpecies';
 import { showReadSpecies, noReadSpecies } from '../components/pages/species';
 import { getDestinations } from '../helpers/data/destinationsData';
-import { showReadExcursions, noReadExcursions } from '../components/pages/excursions';
 import { getExcursions } from '../helpers/data/excursionCrud';
 import { emptyEnvironmental, showEnvironmental } from '../components/pages/environmental';
+import { noReadExcursions, showReadExcursions } from '../components/pages/excursions';
 
 const navigationEvents = (user) => {
   // GO TO HOME PAGE
