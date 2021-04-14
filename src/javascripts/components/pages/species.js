@@ -2,8 +2,8 @@ import firebase from 'firebase';
 import 'firebase/auth';
 import speciesName from '../../../assets/speciesName.png';
 import speciesDescription from '../../../assets/speciesDescription.png';
-import speciesDestination from '../../../assets/speciesDestination.png';
-import { getSingleDestination } from '../../helpers/data/destinationsData';
+// import speciesDestination from '../../../assets/speciesDestination.png';
+// import { getSingleDestination } from '../../helpers/data/destinationsData';
 
 const showReadSpecies = (speciesArray) => {
   const user = firebase.auth().currentUser;
@@ -15,8 +15,8 @@ const showReadSpecies = (speciesArray) => {
   document.querySelector('#speciesContainer').innerHTML = '';
 
   speciesArray.forEach((creature) => {
-    getSingleDestination(creature.destinationId).then((destination) => {
-      document.querySelector('#speciesContainer').innerHTML += `
+    // getSingleDestination(creature.destinationId).then((destination) => {
+    document.querySelector('#speciesContainer').innerHTML += `
     <div class="card mb-3" style="max-width: 540px;" id="speciesCard">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -24,16 +24,34 @@ const showReadSpecies = (speciesArray) => {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-           <h6 class="card-title" id="speciesName"><img src="${speciesName}">  : ${creature.name}</h6> 
+           <h6 class="card-title" id="speciesName"><img src="${speciesName}">  : ${creature.name}</h6>
            <p class="card-text" id="speciesDescription"><img src="${speciesDescription}">  : ${creature.description}</p>
-            <p class="card-text" id="speciesDestination"><img src="${speciesDestination}">  : ${destination.name}</p>
             ${user ? `<button class="btn btn-sm border-dark view-species-btn" data-toggle="modal" data-target="#formModal" id="update-existing-species-btn--${creature.firebaseKey}">Update Species</button>
             <button class="btn btn-sm border-dark delete-species-btn" id="delete-species-btn--${creature.firebaseKey}">Delete Species</button>` : ''}
           </div>
         </div>
       </div>
     </div>`;
-    });
+    // });
+    // getSingleDestination(creature.destinationId).then((destination) => {
+    //   document.querySelector('#speciesContainer').innerHTML += `
+    // <div class="card mb-3" style="max-width: 540px;" id="speciesCard">
+    //   <div class="row no-gutters">
+    //     <div class="col-md-4">
+    //       <img src="${creature.image}" class="card-img" alt=${creature.name}>
+    //     </div>
+    //     <div class="col-md-8">
+    //       <div class="card-body">
+    //        <h6 class="card-title" id="speciesName"><img src="${speciesName}">  : ${creature.name}</h6>
+    //        <p class="card-text" id="speciesDescription"><img src="${speciesDescription}">  : ${creature.description}</p>
+    //         <p class="card-text" id="speciesDestination"><img src="${speciesDestination}">  : ${destination.name}</p>
+    //         ${user ? `<button class="btn btn-sm border-dark view-species-btn" data-toggle="modal" data-target="#formModal" id="update-existing-species-btn--${creature.firebaseKey}">Update Species</button>
+    //         <button class="btn btn-sm border-dark delete-species-btn" id="delete-species-btn--${creature.firebaseKey}">Delete Species</button>` : ''}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>`;
+    // });
   });
 };
 
