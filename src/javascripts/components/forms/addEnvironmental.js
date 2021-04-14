@@ -33,6 +33,9 @@ const addEnvironmentalVariableForm = (variableObject) => {
       </div>
       <div class="form-group" id="select-destination">
       </div>
+      </div>
+      <div class="form-group" id="select-environmental">
+      </div>
       <button type="submit" id="submit-environmental-variable" class="btn submitEnvironmentalBtn">Submit Environmental Data</button>
     </form>`;
 
