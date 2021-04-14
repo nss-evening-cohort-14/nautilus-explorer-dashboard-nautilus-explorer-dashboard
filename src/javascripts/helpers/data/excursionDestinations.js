@@ -18,7 +18,7 @@ const excursionDestinations = (excursionID) => new Promise((resolve, reject) => 
   // Promise.all([board, boardPins])
   //   .then((response) => resolve(response))
   //   .catch((error) => reject(error));
-
+  debugger;
   const listOfExcursionDestinations = getExcursionDestinations(excursionID);
   const getDestinations = listOfExcursionDestinations.map((destination) => getSingleDestination(destination.destinationID));
   Promise.all(getDestinations)
