@@ -10,8 +10,10 @@ While on board, you can see, create, edit and delete data that is needed for our
 ### Week 1 [ERD](https://dbdiagram.io/d/604d0f78fcdcb6230b240157)
 ### Week 2-3 [ERD](https://dbdiagram.io/d/606d0d7cecb54e10c33f0262)
 
+## Wireframes/Diagram
 ### Week 1 [Workflow Diagram](https://docs.google.com/presentation/d/1lBstv8ilRRyP87Sqn62cQ8Q2JMju-SF3ofdo6_suoSs/edit?usp=sharing)
 ### Week 1 [Wireframe](https://www.figma.com/file/j9kRS7JW3I9rVwHrCYtbfy/NAUTILUS?node-id=0%3A1)
+### Week 2-3 [Excursion Wireframes](https://docs.google.com/presentation/d/1Np1UAKau3zsBrOXaGgmTrNRJBCOsROhosOb60ruXa9Q/edit?usp=sharing)
 
 ## Description
 ### Week 1:
@@ -139,10 +141,9 @@ The captain was very impressed with the first team, but they have reached their 
 [Github Repository](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard)
 
 ## Project Boards
-Week 1
-### [Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/2)
-Week 2-3
-### [Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/2)
+### Week 1 [Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/2)
+### Week 2-3 [Project Board](https://github.com/nss-evening-cohort-14/nautilus-explorer-dashboard-nautilus-explorer-dashboard/projects/2)
+
 ### Screenshots
 ![2021-04-05 (2)](https://user-images.githubusercontent.com/76795299/113638655-5ea95e80-9645-11eb-9aec-a8286cfb7547.png)
 ![2021-04-05 (1)](https://user-images.githubusercontent.com/76795299/113638643-4f2a1580-9645-11eb-967e-dfb0ffd6ea6f.png)
@@ -155,8 +156,6 @@ Week 2-3
 [Crew Members](https://www.loom.com/share/4121f4b3b7d44a22bba6da2d4456f4ac)
 [Log Entries](https://www.loom.com/share/f02cdef2215a49efa206ed6021ca852e)
 [Species and Excursions](https://www.loom.com/share/77e13f0c5ef84c5aa4d0e7455ddd34f8)
-
-### Week 2-3
 
 ## Contributors
 ### Week 1

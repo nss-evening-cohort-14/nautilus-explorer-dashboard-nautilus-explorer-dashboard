@@ -1,4 +1,5 @@
 import selectDestination from './selectDestination';
+import selectEnvironmental from './selectEnvironmental';
 
 const addExcursionForm = (excursionObject) => {
   document.querySelector('#modal-body').innerHTML = `
@@ -17,10 +18,14 @@ const addExcursionForm = (excursionObject) => {
       </div>
       <div class="form-group" id="select-destination">
       </div>
+      </div>
+      <div class="form-group" id="select-environmental">
+      </div>
       <button type="submit" id="submit-excursion" class="btn submitExcursionBtn">Create Excursion</button>
     </form>`;
 
   selectDestination(excursionObject);
+  selectEnvironmental(excursionObject);
 };
 
 export default addExcursionForm;
