@@ -200,13 +200,13 @@ const domEvents = (user) => {
       });
     }
 
-    if (e.target.id.includes('deleteDestination')) {
-      const firebaseKey = e.target.id.split('--')[1];
+    // if (e.target.id.includes('deleteDestination')) {
+    //   const firebaseKey = e.target.id.split('--')[1];
 
-      deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
-        destinationsView(user, destinationsArray);
-      });
-    }
+    //   deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
+    //     destinationsView(user, destinationsArray);
+    //   });
+    // }
 
     if (e.target.id.includes('crewView')) {
       getCrew(user).then((crewArray) => {

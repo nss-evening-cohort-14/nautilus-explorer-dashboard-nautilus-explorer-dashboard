@@ -1,6 +1,6 @@
-import selectDestination from './selectDestination';
+// import selectDestination from './selectDestination';
 
-const addSpeciesForm = (speciesObject) => {
+const addSpeciesForm = () => {
   document.querySelector('#modal-body').innerHTML = `
     <form id="submit-species-form" class="mb-4">
     <div class="form-group">
@@ -15,12 +15,11 @@ const addSpeciesForm = (speciesObject) => {
         <label for="addSpeciesImage">Image URL</label>
         <input type="url" class="form-control" id="addSpeciesImage" placeholder="Image URL" required>
       </div>
-      <div class="form-group" id="select-destination">
-      </div>
+      // <div class="form-group" id="select-destination"></div>
       <button type="submit" id="submit-species" class="btn submitSpeciesBtn">Submit Species</button>
     </form>`;
 
-  selectDestination(speciesObject);
+  // selectDestination(speciesObject);
 };
 
 export default addSpeciesForm;
