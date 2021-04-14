@@ -401,7 +401,8 @@ const domEvents = (user) => {
     if (e.target.id.includes('submit-environmental-form')) {
       e.preventDefault();
       const variableObject = {
-        depth: document.querySelector('#addEnvName').value,
+        name: document.querySelector('#addEnvName').value,
+        depth: document.querySelector('#addEnvDepth').value,
         current: document.querySelector('#addEnvCurrent').value,
         latitude: document.querySelector('#addEnvLatitude').value,
         longitude: document.querySelector('#addEnvLongitude').value,
