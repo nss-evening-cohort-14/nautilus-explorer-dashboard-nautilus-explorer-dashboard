@@ -340,7 +340,7 @@ const domEvents = (user) => {
         description: document.querySelector('#addSpeciesDescription').value,
         image: document.querySelector('#addSpeciesImage').value,
         name: document.querySelector('#addSpeciesName').value,
-        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         // uid: firebase.auth().currentUser.uid,
       };
       createSpecies(speciesObject, user).then((speciesArray) => {
@@ -357,7 +357,7 @@ const domEvents = (user) => {
         description: document.querySelector('#editSpeciesDescription').value,
         image: document.querySelector('#editSpeciesImage').value,
         name: document.querySelector('#editSpeciesName').value,
-        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
       updateSpecificSpecies(firebaseKey, speciesObject, user).then((speciesArray) => showReadSpecies(speciesArray, user));
