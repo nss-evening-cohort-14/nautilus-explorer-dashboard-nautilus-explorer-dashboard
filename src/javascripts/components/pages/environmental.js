@@ -17,6 +17,7 @@ const showEnvironmental = (environmentalArray) => {
       <div class="col-sm-3">
         <div class="card v-25 m-3 p-4 shadow-lg rounded">
           <div class="card-body">
+            <h5>Name: ${entry.name}</h5> <br>
             <span>Current: ${entry.current}</span> <br>
             <span>Depth: ${entry.depth}</span> <br>
             <span>Coordinates: ${entry.latitude}, ${entry.longitude}</span> <br>
