@@ -18,7 +18,7 @@ const getDestinations = () => new Promise((resolve, reject) => {
 });
 
 const getSingleDestination = (firebaseKey) => new Promise((resolve, reject) => {
-  console.warn(`${dbUrl}/destination/${firebaseKey}.json`);
+  // console.warn(`${dbUrl}/destination/${firebaseKey}.json`);
   axios
     .get(`${dbUrl}/destination/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
