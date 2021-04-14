@@ -24,9 +24,15 @@ const showReadExcursions = (speciesArray) => {
         </div>
         <div class="col-md-8">
           <div class="card-body">
-           <h6 class="card-title" id="excursionName"><img src="${speciesName}">  : ${excursion.name}</h6> 
+           <h6 class="card-title" id="excursionName"><img src="${speciesName}">  : ${excursion.name}</h6>
            <p class="card-text" id="excursionDescription"><img src="${speciesDescription}">  : ${excursion.description}</p>
             <p class="card-text" id="excursionDestination"><img src="${speciesDestination}">  : ${destination.name}</p>
+            <div class="card mb-3">
+               <button class="btn btn-sm border-dark display-excursion-btn" id="display-destination-btn--${destination.firebaseKey}">Destination</button>
+               <button class="btn btn-sm border-dark display-excursion-btn" id="display-destination-btn--${destination.firebaseKey}">Destination</button>
+               <button class="btn btn-sm border-dark display-excursion-btn" id="display-destination-btn--${destination.firebaseKey}">Destination</button>
+               <button class="btn btn-sm border-dark display-excursion-btn" id="display-destination-btn--${destination.firebaseKey}">Destination</button>
+            </div>
             ${user ? `<button class="btn btn-sm border-dark view-excursion-btn" data-toggle="modal" data-target="#formModal" id="update-existing-excursion-btn--${excursion.firebaseKey}">Update Excursion</button>
             <button class="btn btn-sm border-dark delete-excursion-btn" id="delete-excursion-btn--${excursion.firebaseKey}">Delete Excursion</button>` : ''}
           </div>
