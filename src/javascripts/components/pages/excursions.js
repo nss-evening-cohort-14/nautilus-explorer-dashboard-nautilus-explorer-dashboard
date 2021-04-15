@@ -59,7 +59,7 @@ const noReadExcursions = () => {
   const user = firebase.auth().currentUser;
   if (user) {
     document.querySelector('#title').innerHTML = '<h1>Excursions</h1>';
-    document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
+    document.querySelector('#addButton').innerHTML = '<button class="btn btn-hj-primary" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
     document.querySelector('#formContainer').innerHTML = '';
     document.querySelector('#cardContainer').innerHTML = '<div id="excursionsContainer"></div>';
     document.querySelector('#excursionsContainer').innerHTML = '';
