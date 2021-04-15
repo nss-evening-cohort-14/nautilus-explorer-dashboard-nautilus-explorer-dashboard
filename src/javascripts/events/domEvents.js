@@ -58,6 +58,7 @@ import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 import formExcursionModal from '../components/forms/excursionModal';
 import excursionDestinations, { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
+import excursionsWithCrew from '../helpers/data/excursionCrew';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -120,7 +121,9 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('displayCrewMembers')) {
-      formExcursionModal('Displaying Crew Members');
+      const crewID = e.target.id.split('--')[1];
+      const crewMembers = excursionsWithCrew(crewID);
+      formExcursionModal('Displaying Crew Members', crewMembers);
       $('#formExcursitonModal').modal('toggle');
     }
 
