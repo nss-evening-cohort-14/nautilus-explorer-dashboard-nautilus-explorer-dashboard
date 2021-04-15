@@ -7,7 +7,7 @@ const dbUrl = firebaseConfig.databaseURL;
 
 const getExcursionDestinations = (excursionID) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/manageDestinations/.json?orderBy="excursionId"&equalTo="${excursionID}"`)
+    .get(`${dbUrl}/manageDestinations.json?orderBy="excursionID"&equalTo="${excursionID}"`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
