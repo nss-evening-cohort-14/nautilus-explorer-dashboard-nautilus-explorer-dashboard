@@ -6,18 +6,20 @@ import { getExcursions } from './excursionCrud';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getExcursionCrew = (crewID) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/manageCrews.json?orderBy="excursionID"&equalTo="${crewID}"`)
-    .then((response) => resolve(response.data))
+const getExcursionCrew = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/manageCrews.json?orderBy="excursionID"`)
+  // axios.get(`${dbUrl}/manageCrews.json?orderBy="excursionID"&equalTo="${excursionID}"`)
+    .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 
 const excursionsWithCrew = () => new Promise((resolve, reject) => {
   Promise.all([getCrew(), getExcursions(), getExcursionCrew()])
     .then(([crewMembers, excursions, crewExcursionsJoin]) => {
-      console.warn('crew', crewMembers, 'excursion', excursions, 'crewExcursion', crewExcursionsJoin);
+      console.warn(crewMembers, excursions, 'crewExcursion', crewExcursionsJoin);
       const allExcursionsInfoArray = excursions.map((excursion) => {
-        const excursionRelationshipsArray = crewExcursionsJoin.filter((crewExcursion) => crewExcursion.excursion_id === excursion.id);
+        console.warn(allExcursionsInfoArray);
+        const excursionRelationshipsArray = crewExcursionsJoin.filter((crewExcursion) => crewExcursion.excursionID === excursion.id);
         console.warn('array', excursionRelationshipsArray);
 
         const crewInfoArray = excursionRelationshipsArray.map((excursionRelationship) => crewMembers.find((crew) => crew.id === excursionRelationship.crew_id));
@@ -27,5 +29,22 @@ const excursionsWithCrew = () => new Promise((resolve, reject) => {
       resolve(allExcursionsInfoArray);
     }).catch((error) => reject(error));
 });
+
+// const excursionsWithCrew = () => new Promise((resolve, reject) => {
+//   Promise.all([getCrew(), getExcursions(), getExcursionCrew()])
+//     .then(([crewMembers, excursions, crewExcursionsJoin]) => {
+//       console.warn('crew', crewMembers, 'crewExcursion', crewExcursionsJoin);
+
+//       const allExcursionsInfoArray = [];
+
+//       excursions.forEach((excursion) => {
+//         const excursionRelationshipsArray = [];
+//         excursionRelationshipsArray.push(crewExcursionsJoin.filter((crewExcursion) => crewExcursion.excursionID === excursion.id));
+//         console.warn(excursionRelationshipsArray);
+//       });
+
+//       resolve(allExcursionsInfoArray);
+//     }).catch((error) => reject(error));
+// });
 
 export default excursionsWithCrew;
