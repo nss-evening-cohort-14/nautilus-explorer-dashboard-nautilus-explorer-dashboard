@@ -6,7 +6,8 @@ const showEnvironmental = (environmentalArray) => {
   const user = firebase.auth().currentUser;
   // BUILD ENVIRONMENT CARDS
   if (user) {
-    document.querySelector('#addButton').innerHTML = '<button type="button" class="btn" data-toggle="modal" data-target="#formModal" id="addEnvironmentalButton">Add Environmental Data</button>';
+    document.querySelector('#title').innerHTML = '<h1>Environments</h1>';
+    document.querySelector('#addButton').innerHTML = '<button type = "button" class="btn" data - toggle="modal" data - target="#formModal" id = "addEnvironmentalButton" > Add Environmental Data</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
   document.querySelector('#cardContainer').innerHTML = '<div id="environmentalPlaceholder" class="row d-flex justify-content-center p-5 mx-5 mt-3 mb-5 rounded shadow-lg"></div>';
@@ -58,6 +59,7 @@ const showEnvironmental = (environmentalArray) => {
 
 const emptyEnvironmental = (user) => {
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Environments</h1>';
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn"  data-toggle="modal" data-target="#formModal" id="addEnvironmentalButton">Add Environmental Data</button>';
   }
   document.querySelector('#cardContainer').innerHTML = '<h1>Environment Undocumented</h1>';

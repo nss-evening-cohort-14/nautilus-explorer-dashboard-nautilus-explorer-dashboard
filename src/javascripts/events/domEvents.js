@@ -57,7 +57,7 @@ import {
 import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 import formExcursionModal from '../components/forms/excursionModal';
-import excursionDestinations, { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
+import { excursionDestinations, deleteExcursionDestination } from '../helpers/data/excursionDestinations';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {

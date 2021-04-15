@@ -1,9 +1,13 @@
-@import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
   background-color: #03403a;
   color: #d99d55;
+}
+
+.page-title {
+  text-align: center;
 }
 
 #cardContainer {
@@ -44,7 +48,7 @@ body {
 }
 
 .navbar {
-  background-color: #F2E8DF;
+  background-color: #f2e8df;
 }
 
 .nav-link img {
@@ -53,7 +57,7 @@ body {
 }
 
 .navbar-brand img {
- width: 4em;
+  width: 4em;
 }
 
 #google-auth img {
@@ -80,35 +84,33 @@ body {
 }
 
 #addNewSpeciesBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
 
 #addEnvironmentalButton {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
-
 
 #addCrewBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
 
-
 #addLogEntry {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
 
 #speciesContainer {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   flex-flow: wrap;
 }
 
 #speciesCard {
-  background-color: #F2E8DF;
+  background-color: #f2e8df;
   border-color: #262223;
   box-shadow: 5px 5px 5px #262223;
   border-radius: 10px;
@@ -118,27 +120,27 @@ body {
     border-bottom-left-radius: 10px;
   }
   .view-species-btn {
-    background-color: #D99D55;
-    color: #F2E8DF;
+    background-color: #d99d55;
+    color: #f2e8df;
   }
   .delete-species-btn {
     background-color: #297365;
-    color: #F2E8DF;
+    color: #f2e8df;
   }
-  .card-title  {
+  .card-title {
     color: #262223;
     img {
       width: 1.5em;
-      padding-bottom: .25em;
+      padding-bottom: 0.25em;
     }
   }
   .card-text {
     color: #262223;
     img {
-    width: 1em;
-    padding-bottom: .2em;
+      width: 1em;
+      padding-bottom: 0.2em;
+    }
   }
-}
 }
 
 #add-log-form {
@@ -148,7 +150,7 @@ body {
 }
 
 #log-entry-card {
-  background-color: #F2E8DF;
+  background-color: #f2e8df;
   border-color: black;
   margin: 3em auto;
   width: 65%;
@@ -156,60 +158,60 @@ body {
 }
 
 #addButton {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin-top: 75px;
   margin-bottom: 75px;
 }
 
 .submitSpeciesBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
 
 .submitEnvironmentalBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
 .submitExcursionBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }
 
 #dashboardLogo {
   img {
     width: 150px;
     border-radius: 10px;
-    border-style: 100px solid #F2E8DF;
+    border-style: 100px solid #f2e8df;
   }
 }
 
 #specialCard {
   background-color: #03403a;
   border-style: none;
-  color: #D99D55;
+  color: #d99d55;
 }
 
 .deleteLogBtn {
   background-color: #297365;
-  color: #F2E8DF;
+  color: #f2e8df;
   border-color: #262223;
 }
 
 .updateLogBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
   border-color: #262223;
 }
 
 #excursionsContainer {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   flex-flow: wrap;
 }
 
 #excursionCard {
-  background-color: #F2E8DF;
+  background-color: #f2e8df;
   border-color: #262223;
   box-shadow: 5px 5px 5px #262223;
   border-radius: 10px;
@@ -219,30 +221,30 @@ body {
     border-bottom-left-radius: 10px;
   }
   .view-excursion-btn {
-    background-color: #D99D55;
-    color: #F2E8DF;
+    background-color: #d99d55;
+    color: #f2e8df;
   }
   .delete-excursion-btn {
     background-color: #297365;
-    color: #F2E8DF;
+    color: #f2e8df;
   }
-  .card-title  {
+  .card-title {
     color: #262223;
     img {
       width: 1.5em;
-      padding-bottom: .25em;
+      padding-bottom: 0.25em;
     }
   }
   .card-text {
     color: #262223;
     img {
-    width: 1em;
-    padding-bottom: .2em;
+      width: 1em;
+      padding-bottom: 0.2em;
+    }
   }
-}
 }
 
 #addNewExcursionBtn {
-  background-color: #D99D55;
-  color: #F2E8DF;
+  background-color: #d99d55;
+  color: #f2e8df;
 }

@@ -1,5 +1,6 @@
 const showLogEntry = (logArray, user) => {
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Log Entries</h1>';
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-sm mb-4" id="addLogEntry">Add Log Entry</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
@@ -25,6 +26,7 @@ const showLogEntry = (logArray, user) => {
 
 const emptyLogEntry = (user) => {
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Log Entries</h1>';
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-sm mb-4" id="addLogEntry">Add Log Entry</button>';
   }
   document.querySelector('#cardContainer').innerHTML = '<h1>Log, lest you get decked</h1>';

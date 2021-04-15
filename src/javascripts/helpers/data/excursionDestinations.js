@@ -7,7 +7,7 @@ const dbUrl = firebaseConfig.databaseURL;
 
 const getExcursionDestinations = (excursionID) => new Promise((resolve, reject) => {
   axios
-    .get(`${dbUrl}/manageDestinations/.json?orderBy="excursionId"&equalTo="${excursionID}"`)
+    .get(`${dbUrl}/manageDestinations.json?orderBy="excursionId"&equalTo="${excursionID}"`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
@@ -41,7 +41,7 @@ const createExcursionDestination = (excursionIDArg, destinationIdArg) => new Pro
     .then((response) => {
       const body = { manageDestinationsID: response.data.name };
       axios.patch(`${dbUrl}/manageDestinations/${response.data.name}.json`, body)
-        .then(() => {});
+        .then(() => { });
     }).catch((error) => reject(error));
 });
 
@@ -51,7 +51,7 @@ const deleteExcursionDestination = (excursionID) => new Promise((resolve, reject
       const manageDestinationsID = Object.values(response.data);
       const manageDestinationsID2 = manageDestinationsID[0].manageDestinationsID;
       axios.delete(`${dbUrl}/manageDestinations/${manageDestinationsID2}.json`)
-        .then(() => {});
+        .then(() => { });
     }).catch((error) => reject(error));
 });
 
