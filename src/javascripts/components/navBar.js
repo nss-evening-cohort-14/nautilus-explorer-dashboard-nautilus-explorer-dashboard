@@ -16,22 +16,22 @@ const navBar = () => {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#" id="readCrew"><img src=${crewOptionTwo}></a>
+        <a class="nav-link" href="#" id="readCrew" data-toggle="tooltip" data-placement="top" title="Crew Members"><img src=${crewOptionTwo}></a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#" id="readDestinations"><img src=${destination}></a>
+      <a class="nav-link" href="#" id="readDestinations" data-toggle="tooltip" data-placement="top" title="Destinations"><img src=${destination}></a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="#" id="readLogEntries"><img src=${log}></a>
+    <a class="nav-link" href="#" id="readLogEntries" data-toggle="tooltip" data-placement="top" title="Log Entries"><img src=${log}></a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="#" id="readEnvironmentalVariables"><img src=${environmentalVariables}></a>
+  <a class="nav-link" href="#" id="readEnvironmentalVariables" data-toggle="tooltip" data-placement="top" title="Environmental Variables"><img src=${environmentalVariables}></a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="#" id="readSpecies"><img src=${krakenIcon}></a>
+<a class="nav-link" href="#" id="readSpecies" data-toggle="tooltip" data-placement="top" title="Species"><img src=${krakenIcon}></a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="#" id="readExcursions"><img src=${excursions}></a>
+<a class="nav-link" href="#" id="readExcursions" data-toggle="tooltip" data-placement="top" title="Excursions"><img src=${excursions}></a>
 </li>
     </ul>
     <div class="form-inline my-2 my-lg-0">
