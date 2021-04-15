@@ -58,7 +58,7 @@ import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 import formExcursionModal from '../components/forms/excursionModal';
 import excursionDestinations, { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
-import excursionsWithCrew from '../helpers/data/excursionCrew';
+import { excursionsOnlyCrew } from '../helpers/data/excursionCrew';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -121,10 +121,15 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('displayCrewMembers')) {
-      const crewID = e.target.id.split('--')[1];
-      const crewMembers = excursionsWithCrew(crewID);
-      formExcursionModal('Displaying Crew Members', crewMembers);
-      $('#formExcursitonModal').modal('toggle');
+      const excursionID = e.target.id.split('--')[1];
+      debugger;
+      // console.warn(e.target.id.split('--')[1]);
+      // const crewMembers = excursionsWithCrew(excursionID);
+      excursionsOnlyCrew(excursionID).then((crewMembers) => {
+        debugger;
+        formExcursionModal('Displaying Crew Members', crewMembers);
+        $('#formExcursitonModal').modal('toggle');
+      });
     }
 
     if (e.target.id.includes('displayDestination')) {
@@ -326,6 +331,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('submit-excursion-form')) {
       e.preventDefault();
       const destinationId = document.querySelector('#selectDestinationForSpecies').value;
+      const crewId = document.querySelector('#selectCrewForExcursion').value;
       const excursionObject = {
         description: document.querySelector('#addExcursionDescription').value,
         img: document.querySelector('#addExcursionImage').value,
@@ -333,7 +339,7 @@ const domEvents = (user) => {
         // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createExcursions(excursionObject, destinationId).then((excursionsArray) => {
+      createExcursions(excursionObject, destinationId, crewId).then((excursionsArray) => {
         showReadExcursions(excursionsArray, user);
       });
 
