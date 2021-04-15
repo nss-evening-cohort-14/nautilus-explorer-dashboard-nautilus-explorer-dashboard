@@ -2,11 +2,12 @@ import 'firebase/auth';
 import firebase from 'firebase';
 import axios from 'axios';
 import firebaseConfig from '../auth/apiKeys';
+import { createExcursionDestination } from './excursionDestinations';
 
 const dbUrl = firebaseConfig.databaseURL;
 
 const getExcursions = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/excursions.json`)
+  axios.get(`${dbUrl}/excursions.json?orderBy="uid"&equalTo="${firebase.auth().currentUser.uid}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -16,12 +17,14 @@ const getExcursions = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const createExcursions = (excursionsObject) => new Promise((resolve, reject) => {
+const createExcursions = (excursionsObject, destinationId) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/excursions.json`, excursionsObject)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/excursions/${response.data.name}.json`, body)
         .then(() => {
+          const excursionID = body.firebaseKey;
+          createExcursionDestination(excursionID, destinationId);
           getExcursions().then((excursionsArray) => resolve(excursionsArray));
         });
     }).catch((error) => reject(error));

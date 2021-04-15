@@ -11,7 +11,7 @@ const getExcursionCrew = () => new Promise((resolve, reject) => {
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
-  // console.warn(getExcursionCrew);
+console.warn(getExcursionCrew);
 
 // const excursionWithCrew = ([getCrew(), getExcursions(), getExcursionCrew()]) => new Promise((resolve, reject) => {
 //   .then(([crew, excursions, crewExcursionsJoin,]) => {

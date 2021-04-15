@@ -12,13 +12,19 @@ const getExcursionDestinations = (excursionID) => new Promise((resolve, reject) 
     .catch((error) => reject(error));
 });
 
+const getSingleDestinationfromManageDestinations = (excursionID) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/manageDestinations.json?orderBy="excursionID"&equalTo="${excursionID}"`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    }).catch((error) => reject(error));
+});
+
 const excursionDestinations = (excursionID) => new Promise((resolve, reject) => {
-  // const board = getSingleBoard(boardID);
-  // const boardPins = getBoardPins(boardID);
-  // Promise.all([board, boardPins])
-  //   .then((response) => resolve(response))
-  //   .catch((error) => reject(error));
-  debugger;
   const listOfExcursionDestinations = getExcursionDestinations(excursionID);
   const getDestinations = listOfExcursionDestinations.map((destination) => getSingleDestination(destination.destinationID));
   Promise.all(getDestinations)
@@ -26,4 +32,29 @@ const excursionDestinations = (excursionID) => new Promise((resolve, reject) => 
     .catch((error) => reject(error));
 });
 
-export default excursionDestinations;
+const createExcursionDestination = (excursionIDArg, destinationIdArg) => new Promise((resolve, reject) => {
+  const excursionObject = {
+    excursionID: excursionIDArg,
+    destinationID: destinationIdArg,
+  };
+  axios.post(`${dbUrl}/manageDestinations.json`, excursionObject)
+    .then((response) => {
+      const body = { manageDestinationsID: response.data.name };
+      axios.patch(`${dbUrl}/manageDestinations/${response.data.name}.json`, body)
+        .then(() => {});
+    }).catch((error) => reject(error));
+});
+
+const deleteExcursionDestination = (excursionID) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/manageDestinations.json?orderBy="excursionID"&equalTo="${excursionID}"`)
+    .then((response) => {
+      const manageDestinationsID = Object.values(response.data);
+      const manageDestinationsID2 = manageDestinationsID[0].manageDestinationsID;
+      axios.delete(`${dbUrl}/manageDestinations/${manageDestinationsID2}.json`)
+        .then(() => {});
+    }).catch((error) => reject(error));
+});
+
+export {
+  excursionDestinations, createExcursionDestination, getSingleDestinationfromManageDestinations, deleteExcursionDestination
+};
