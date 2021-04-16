@@ -42,7 +42,6 @@ const excursionsOnlyCrew = (excursionID) => new Promise((resolve, reject) => {
       //   const crewInfoArray = excursionRelationshipsArray.map((excursionRelationship) => crewMembers.find((crew) => crew.id === excursionRelationship.crew_id));
 
       //   console.warn('crewInfoArray', crewInfoArray);
-      //   debugger;
       //   return { ...excursion, crewMembers: crewInfoArray };
       // });
 
@@ -64,11 +63,8 @@ const excursionsOnlyCrew = (excursionID) => new Promise((resolve, reject) => {
         });
         console.warn(crewArray);
         return crewArray;
-        // console.warn('crewInfoArray', crewInfoArray);
-        // // debugger;
-        // return { ...excursion, crewMembers: crewInfoArray };
       });
-      resolve();
+      resolve(Object.values(crewArray));
       // resolve(allExcursionsInfoArray);
       // console.warn(allExcursionsInfoArray);
     }).catch((error) => reject(error));

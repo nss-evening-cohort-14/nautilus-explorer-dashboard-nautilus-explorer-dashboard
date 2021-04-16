@@ -123,6 +123,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('displayCrewMembers')) {
       const excursionID = e.target.id.split('--')[1];
       excursionsOnlyCrew(excursionID).then((crewMembers) => {
+        console.warn(crewMembers);
         formExcursionModal('Displaying Crew Members', crewMembers, 'crewMembers');
         $('#formExcursionModal').modal('toggle');
       });
