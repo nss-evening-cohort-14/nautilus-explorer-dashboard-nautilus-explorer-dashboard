@@ -127,7 +127,7 @@ const domEvents = (user) => {
       // const crewMembers = excursionsWithCrew(excursionID);
       excursionsOnlyCrew(excursionID).then((crewMembers) => {
         debugger;
-        formExcursionModal('Displaying Crew Members', crewMembers);
+        formExcursionModal('Displaying Crew Members', crewMembers, 'crewMembers');
         $('#formExcursitonModal').modal('toggle');
       });
     }

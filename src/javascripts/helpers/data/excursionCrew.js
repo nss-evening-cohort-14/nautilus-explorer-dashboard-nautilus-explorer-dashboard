@@ -50,17 +50,29 @@ const excursionsOnlyCrew = (excursionID) => new Promise((resolve, reject) => {
 
       // const allExcursionsInfoArray = crewExcursionsJoin.map((excursion) => {
       //   console.warn(allExcursionsInfoArray);
-        // const excursionRelationshipsArray = crewExcursionsJoin.filter((crewExcursion) => crewExcursion.excursionID === excursion.id);
-        // console.warn('array', excursionRelationshipsArray);
+      // const excursionRelationshipsArray = crewExcursionsJoin.filter((crewExcursion) => crewExcursion.excursionID === excursion.id);
+      // console.warn('array', excursionRelationshipsArray);
+      const crewArray = [];
+      // const crewIDsArray = crewExcursionsJoin.map((crewExcursion) => crewExcursion.firebaseKey === excursionID));
+      // crewMembers.array.forEach(crewMember => {
+      //   crewArray.push(crewMembers.find((crewMember) => crewMember.firebaseKey === crewExcursionsJoin.crewID))
+      // });
 
-      const crewIDsArray = crewExcursionsJoin.map((crewExcursion) => crewExcursion.firebaseKey === excursionID));
-
-        console.warn('crewInfoArray', crewInfoArray);
-        debugger;
-        return { ...excursion, crewMembers: crewInfoArray };
+      crewExcursionsJoin.forEach((excursion) => {
+        crewMembers.forEach((crewMember) => {
+          if (excursion.crewID === crewMember.firebaseKey) {
+            crewArray.push(crewMember);
+          }
+        });
+        console.warn(crewArray);
+        return crewArray;
+        // console.warn('crewInfoArray', crewInfoArray);
+        // // debugger;
+        // return { ...excursion, crewMembers: crewInfoArray };
       });
-      resolve(allExcursionsInfoArray);
-      console.warn(allExcursionsInfoArray);
+      resolve();
+      // resolve(allExcursionsInfoArray);
+      // console.warn(allExcursionsInfoArray);
     }).catch((error) => reject(error));
 });
 
