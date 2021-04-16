@@ -1,6 +1,24 @@
-const formExcursionModal = (modalTitle) => {
+function getListOfItemsToDisplay(arrayOfObjects, displayType) {
+  let buidString = '';
+  if (displayType === 'crewMembers') {
+    buidString = '';
+  } else if (displayType === 'logEntries') {
+    buidString = '<ul>';
+    arrayOfObjects.forEach((logEntry) => {
+      buidString += `<li>${logEntry.title}</li>`;
+    });
+    buidString += '</ul>';
+  } else if (displayType === 'enviromentalData') {
+    buidString = '';
+  } else if (displayType === 'species') {
+    buidString = '';
+  }
+  return buidString;
+}
+
+const formExcursionModal = (modalTitle, arrayOfObjects, displayType) => {
   document.querySelector('#formContainer').innerHTML = `
-  <div class="modal fade" id="formExcursitonModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+  <div class="modal fade" id="formExcursionModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -9,9 +27,15 @@ const formExcursionModal = (modalTitle) => {
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+<<<<<<< HEAD
           <div class="modal-body" id="modal-body">
             
           </div>
+=======
+        <div class="modal-body" id="modal-body">
+        ${getListOfItemsToDisplay(arrayOfObjects, displayType)}
+        </div>
+>>>>>>> development
       </div>
     </div>
   </div>`;
