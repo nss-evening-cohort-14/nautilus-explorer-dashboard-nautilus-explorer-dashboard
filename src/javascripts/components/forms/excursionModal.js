@@ -1,7 +1,11 @@
 function getListOfItemsToDisplay(arrayOfObjects, displayType) {
   let buidString = '';
   if (displayType === 'crewMembers') {
-    buidString = '';
+    buidString = '<ul>';
+    arrayOfObjects.forEach((crewMember) => {
+      buidString += `<li>${crewMember.firstname} ${crewMember.lastname}</li>`;
+    });
+    buidString += '</ul>';
   } else if (displayType === 'logEntries') {
     buidString = '<ul>';
     arrayOfObjects.forEach((logEntry) => {
@@ -27,15 +31,9 @@ const formExcursionModal = (modalTitle, arrayOfObjects, displayType) => {
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-<<<<<<< HEAD
-          <div class="modal-body" id="modal-body">
-            
-          </div>
-=======
         <div class="modal-body" id="modal-body">
         ${getListOfItemsToDisplay(arrayOfObjects, displayType)}
         </div>
->>>>>>> development
       </div>
     </div>
   </div>`;

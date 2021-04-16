@@ -57,13 +57,8 @@ import {
 import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 import formExcursionModal from '../components/forms/excursionModal';
-<<<<<<< HEAD
-import excursionDestinations, { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
-import { excursionsOnlyCrew } from '../helpers/data/excursionCrew';
-=======
 import { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
-// import excursionDestinations, { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
->>>>>>> development
+import { excursionsOnlyCrew } from '../helpers/data/excursionCrew';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -126,16 +121,11 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('displayCrewMembers')) {
-<<<<<<< HEAD
       const excursionID = e.target.id.split('--')[1];
       excursionsOnlyCrew(excursionID).then((crewMembers) => {
-        formExcursionModal('Displaying Crew Members', crewMembers);
-        $('#formExcursitonModal').modal('toggle');
+        formExcursionModal('Displaying Crew Members', crewMembers, 'crewMembers');
+        $('#formExcursionModal').modal('toggle');
       });
-=======
-      formExcursionModal('Displaying Crew Members');
-      $('#formExcursionModal').modal('toggle');
->>>>>>> development
     }
 
     if (e.target.id.includes('displayLogEntries')) {
