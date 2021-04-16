@@ -122,12 +122,8 @@ const domEvents = (user) => {
 
     if (e.target.id.includes('displayCrewMembers')) {
       const excursionID = e.target.id.split('--')[1];
-      debugger;
-      // console.warn(e.target.id.split('--')[1]);
-      // const crewMembers = excursionsWithCrew(excursionID);
       excursionsOnlyCrew(excursionID).then((crewMembers) => {
-        debugger;
-        formExcursionModal('Displaying Crew Members', crewMembers, 'crewMembers');
+        formExcursionModal('Displaying Crew Members', crewMembers);
         $('#formExcursitonModal').modal('toggle');
       });
     }

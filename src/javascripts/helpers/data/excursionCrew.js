@@ -7,8 +7,6 @@ import { getCrew } from './crewData';
 const dbUrl = firebaseConfig.databaseURL;
 
 const getExcursionCrew = (excursionID) => new Promise((resolve, reject) => {
-  console.warn(`${dbUrl}/manageCrews.json?orderBy="excursionID"&equalTo="${excursionID}"`);
-  debugger;
   axios.get(`${dbUrl}/manageCrews.json?orderBy="excursionID"&equalTo="${excursionID}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
