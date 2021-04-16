@@ -2,7 +2,6 @@ function getListOfItemsToDisplay(arrayOfObjects, displayType) {
   let buidString = '';
   if (displayType === 'crewMembers') {
     buidString = '<ul>';
-    console.warn(arrayOfObjects);
     arrayOfObjects.forEach((crewMembers) => {
       buidString += `<li>${crewMembers.firstname} ${crewMembers.lastname}</li>`;
     });
