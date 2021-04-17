@@ -17,6 +17,8 @@ const editExcursionForm = (excursionObject) => {
       </div>
       <div class="form-group" id="select-destination">
       </div>
+      <div class="form-group" id="select-species">
+      </div>
       <button type="submit" id="submit-edit-existing-excursion" class="btn submitExcursionBtn">Update Excursion</button>
     </form>`;
 

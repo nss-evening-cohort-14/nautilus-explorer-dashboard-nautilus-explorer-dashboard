@@ -40,7 +40,7 @@ import destinationsView from '../components/pages/destinationsView';
 import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
-import deleteDestinationSpecies from '../helpers/data/destSpeciesData';
+import { excursionsOnlySpecies } from '../helpers/data/destSpeciesData';
 import { showReadExcursions } from '../components/pages/excursions';
 import {
   createExcursions,
@@ -141,8 +141,11 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('displaySpecies')) {
-      formExcursionModal('Displaying Spacies');
-      $('#formExcursionModal').modal('toggle');
+      const excursionID = e.target.id.split('--')[1];
+      excursionsOnlySpecies(excursionID).then((species) => {
+        formExcursionModal('Displaying Species', species, 'species');
+        $('#formExcursionModal').modal('toggle');
+      });
     }
 
     if (e.target.id.includes('destinationsView')) {
@@ -158,13 +161,13 @@ const domEvents = (user) => {
         updateDestinationForm(destinationObject);
       });
     }
-
+    // Destination Species
     if (e.target.id.includes('deleteDestination')) {
-      const firebaseKey = e.target.id.split('--')[1];
+      // const firebaseKey = e.target.id.split('--')[1];
 
-      deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
-        destinationsView(user, destinationsArray);
-      });
+      // deleteDestinationSpecies(firebaseKey).then((destinationsArray) => {
+      // destinationsView(user, destinationsArray);
+      // });
     }
 
     if (e.target.id.includes('crewView')) {
@@ -328,6 +331,7 @@ const domEvents = (user) => {
       e.preventDefault();
       const destinationId = document.querySelector('#selectDestinationForSpecies').value;
       const crewId = document.querySelector('#selectCrewForExcursion').value;
+      const speciesId = document.querySelector('#selectSpeciesForExcursion').value;
       const excursionObject = {
         description: document.querySelector('#addExcursionDescription').value,
         img: document.querySelector('#addExcursionImage').value,
@@ -335,7 +339,7 @@ const domEvents = (user) => {
         // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createExcursions(excursionObject, destinationId, crewId).then((excursionsArray) => {
+      createExcursions(excursionObject, destinationId, crewId, speciesId).then((excursionsArray) => {
         showReadExcursions(excursionsArray, user);
       });
 
@@ -349,7 +353,7 @@ const domEvents = (user) => {
         description: document.querySelector('#editExcursionDescription').value,
         img: document.querySelector('#editExcursionImage').value,
         name: document.querySelector('#editExcursionName').value,
-        destinationId: document.querySelector('#selectDestinationForSpecies').value,
+        // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
       updateSpecificExcursions(firebaseKey, excursionObject, user).then((excursionsArray) => showReadExcursions(excursionsArray));

@@ -4,7 +4,7 @@ import axios from 'axios';
 import firebaseConfig from '../auth/apiKeys';
 import { createExcursionDestination } from './excursionDestinations';
 import { createExcursionCrew } from './excursionCrew';
-// import { createExcursionSpecies } from './excursionSpecies';
+import { createExcursionSpecies } from './destSpeciesData';
 
 const dbUrl = firebaseConfig.databaseURL;
 
@@ -28,7 +28,7 @@ const createExcursions = (excursionsObject, destinationID, crewID, speciesID) =>
           const excursionID = body.firebaseKey;
           createExcursionDestination(excursionID, destinationID);
           createExcursionCrew(excursionID, crewID);
-          // createExcursionSpecies(excursionID, speciesID);
+          createExcursionSpecies(excursionID, speciesID);
           getExcursions().then((excursionsArray) => resolve(excursionsArray));
         });
     }).catch((error) => reject(error));
