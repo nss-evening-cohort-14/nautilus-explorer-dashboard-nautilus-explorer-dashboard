@@ -1,7 +1,11 @@
 function getListOfItemsToDisplay(arrayOfObjects, displayType) {
   let buidString = '';
   if (displayType === 'crewMembers') {
-    buidString = '';
+    buidString = '<ul>';
+    arrayOfObjects.forEach((crewMembers) => {
+      buidString += `<li>${crewMembers.firstname} ${crewMembers.lastname}</li>`;
+    });
+    buidString += '</ul>';
   } else if (displayType === 'logEntries') {
     buidString = '<ul>';
     arrayOfObjects.forEach((logEntry) => {
