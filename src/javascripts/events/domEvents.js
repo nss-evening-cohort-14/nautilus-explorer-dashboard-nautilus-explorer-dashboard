@@ -19,6 +19,7 @@ import { showReadSpecies } from '../components/pages/species';
 import {
   createSpecies,
   deleteSpecies,
+  getSpecies,
   getSpecificSpecies,
   updateSpecificSpecies
 } from '../helpers/data/crudSpecies';
@@ -40,7 +41,7 @@ import destinationsView from '../components/pages/destinationsView';
 import editSpeciesForm from '../components/forms/editSpecies';
 import { showLogEntry, emptyLogEntry } from '../components/pages/logEntry';
 import updateDestinationForm from '../components/forms/updateDestinationForm';
-import { excursionsOnlySpecies } from '../helpers/data/destSpeciesData';
+// import { excursionsOnlySpecies } from '../helpers/data/destSpeciesData';
 import { showReadExcursions } from '../components/pages/excursions';
 import {
   createExcursions,
@@ -141,9 +142,10 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('displaySpecies')) {
-      const excursionID = e.target.id.split('--')[1];
-      excursionsOnlySpecies(excursionID).then((species) => {
-        formExcursionModal('Displaying Species', species, 'species');
+      // const excursionID = e.target.id.split('--')[1];
+      // excursionsOnlySpecies(excursionID).then((speciesArray) => {
+      getSpecies().then((speciesArray) => {
+        formExcursionModal('Displaying Species', speciesArray, 'species');
         $('#formExcursionModal').modal('toggle');
       });
     }
