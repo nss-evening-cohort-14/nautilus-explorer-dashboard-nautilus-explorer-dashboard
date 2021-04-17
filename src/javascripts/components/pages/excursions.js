@@ -3,9 +3,10 @@ import 'firebase/auth';
 import speciesName from '../../../assets/speciesName.png';
 import speciesDescription from '../../../assets/speciesDescription.png';
 import speciesDestination from '../../../assets/speciesDestination.png';
+import log from '../../../assets/log.png';
 import { getSingleDestination } from '../../helpers/data/destinationsData';
 import crewOptionTwoImg from '../../../assets/crewOptionTwo.png';
-import destinationImg from '../../../assets/destination.png';
+// import destinationImg from '../../../assets/destination.png';
 import krakenIconImg from '../../../assets/krakenIcon.png';
 import environmentalVariablesImg from '../../../assets/environmentalVariables.png';
 import { getSingleDestinationfromManageDestinations } from '../../helpers/data/excursionDestinations';
@@ -37,9 +38,9 @@ const showReadExcursions = (speciesArray) => {
                   <p class="card-text" id="excursionDestination"><img src="${speciesDestination}">  : ${destination.name}</p>
                   <div class="card mb-3">
                      <button class="btn btn-sm border-dark display-excursion-btn">
-                       <p class="card-text" id="displayCrewMembers--${excursion.destinationId}"><img src="${crewOptionTwoImg}"> Crew Members
+                       <p class="card-text" id="displayCrewMembers--${excursion.firebaseKey}"><img src="${crewOptionTwoImg}"> Crew Members
                      </button>
-                     <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayDestination--${excursion.destinationId}"><img src="${destinationImg}"> Destination</p></button>
+                     <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayLogEntries--${excursion.destinationId}"><img src="${log}"> Log Entries</p></button>
                      <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayEnviromentalData--${excursion.destinationId}"><img src="${environmentalVariablesImg}"> Enviromental Data</button>
                      <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displaySpecies--${excursion.destinationId}"><img src="${krakenIconImg}"> Species</button>
                   </div>

@@ -57,7 +57,8 @@ import {
 import { showEnvironmental } from '../components/pages/environmental';
 import updateEnvironmentalVariableForm from '../components/forms/updateEnvironmentalVariableForm';
 import formExcursionModal from '../components/forms/excursionModal';
-import { excursionDestinations, deleteExcursionDestination } from '../helpers/data/excursionDestinations';
+import { deleteExcursionDestination } from '../helpers/data/excursionDestinations';
+import { excursionsOnlyCrew } from '../helpers/data/excursionCrew';
 
 const domEvents = (user) => {
   document.querySelector('body').addEventListener('click', (e) => {
@@ -120,25 +121,28 @@ const domEvents = (user) => {
     }
 
     if (e.target.id.includes('displayCrewMembers')) {
-      formExcursionModal('Displaying Crew Members');
-      $('#formExcursitonModal').modal('toggle');
+      const excursionID = e.target.id.split('--')[1];
+      excursionsOnlyCrew(excursionID).then((crewMembers) => {
+        formExcursionModal('Displaying Crew Members', crewMembers, 'crewMembers');
+        $('#formExcursionModal').modal('toggle');
+      });
     }
 
-    if (e.target.id.includes('displayDestination')) {
-      const excursionID = e.target.id.split('--')[1];
-      const destinations = excursionDestinations(excursionID);
-      formExcursionModal('Displaying Destinations', destinations);
-      $('#formExcursitonModal').modal('toggle');
+    if (e.target.id.includes('displayLogEntries')) {
+      getLogEntry().then((logArray) => {
+        formExcursionModal('Displaying Log Entries', logArray, 'logEntries');
+        $('#formExcursionModal').modal('toggle');
+      });
     }
 
     if (e.target.id.includes('displayEnviromentalData')) {
       formExcursionModal('Displaying Enviromental Data');
-      $('#formExcursitonModal').modal('toggle');
+      $('#formExcursionModal').modal('toggle');
     }
 
     if (e.target.id.includes('displaySpecies')) {
       formExcursionModal('Displaying Spacies');
-      $('#formExcursitonModal').modal('toggle');
+      $('#formExcursionModal').modal('toggle');
     }
 
     if (e.target.id.includes('destinationsView')) {
@@ -323,6 +327,7 @@ const domEvents = (user) => {
     if (e.target.id.includes('submit-excursion-form')) {
       e.preventDefault();
       const destinationId = document.querySelector('#selectDestinationForSpecies').value;
+      const crewId = document.querySelector('#selectCrewForExcursion').value;
       const excursionObject = {
         description: document.querySelector('#addExcursionDescription').value,
         img: document.querySelector('#addExcursionImage').value,
@@ -330,7 +335,7 @@ const domEvents = (user) => {
         // destinationId: document.querySelector('#selectDestinationForSpecies').value,
         uid: firebase.auth().currentUser.uid,
       };
-      createExcursions(excursionObject, destinationId).then((excursionsArray) => {
+      createExcursions(excursionObject, destinationId, crewId).then((excursionsArray) => {
         showReadExcursions(excursionsArray, user);
       });
 
