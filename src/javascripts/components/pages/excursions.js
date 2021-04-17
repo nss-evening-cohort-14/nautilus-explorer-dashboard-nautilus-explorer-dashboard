@@ -14,6 +14,7 @@ import { getSingleDestinationfromManageDestinations } from '../../helpers/data/e
 const showReadExcursions = (speciesArray) => {
   const user = firebase.auth().currentUser;
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Excursions</h1>';
     document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
@@ -41,7 +42,7 @@ const showReadExcursions = (speciesArray) => {
                      </button>
                      <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayLogEntries--${excursion.destinationId}"><img src="${log}"> Log Entries</p></button>
                      <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayEnviromentalData--${excursion.destinationId}"><img src="${environmentalVariablesImg}"> Enviromental Data</button>
-                     <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displaySpecies--${excursion.destinationId}"><img src="${krakenIconImg}"> Species</button>
+                     <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displaySpecies--${excursion.firebaseKey}"><img src="${krakenIconImg}"> Species</button>
                   </div>
                   ${user ? `<button class="btn btn-sm border-dark view-excursion-btn" data-toggle="modal" data-target="#formModal" id="update-existing-excursion-btn--${excursion.firebaseKey}">Update Excursion</button>
                   <button class="btn btn-sm border-dark delete-excursion-btn" id="delete-excursion-btn--${excursion.firebaseKey}">Delete Excursion</button>` : ''}
@@ -58,7 +59,8 @@ const showReadExcursions = (speciesArray) => {
 const noReadExcursions = () => {
   const user = firebase.auth().currentUser;
   if (user) {
-    document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
+    document.querySelector('#title').innerHTML = '<h1>Excursions</h1>';
+    document.querySelector('#addButton').innerHTML = '<button class="btn btn-hj-primary" data-toggle="modal" data-target="#formModal" id="addNewExcursionBtn">Add Excursion</button>';
     document.querySelector('#formContainer').innerHTML = '';
     document.querySelector('#cardContainer').innerHTML = '<div id="excursionsContainer"></div>';
     document.querySelector('#excursionsContainer').innerHTML = '';

@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 const destinationsView = (user, destinationsArray) => {
+  document.querySelector('#title').innerHTML = '<h1>Destinations</h1>';
   $('#formContainer')
     .html(`<div class="modal fade" id="destinationModal" tabindex="-1" aria-labelledby="destinationModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -24,6 +25,11 @@ const destinationsView = (user, destinationsArray) => {
               </div>
             </div>
           </div>`);
+  $('#title').html(
+    user
+      ? '<h1>Destinations</h1>'
+      : '',
+  );
 
   $('#addButton').html(
     user
@@ -42,9 +48,8 @@ const destinationsView = (user, destinationsArray) => {
                       />
                       <div class="card-body">
                         <h5 class="card-title">${destination.name}</h5>
-                        ${
-                          user
-                            ? `<button
+                        ${user
+          ? `<button
                                 type="button"
                                 class="btn btn-hj-warning"
                                 id="updateDestination--${destination.firebaseKey}"
@@ -58,8 +63,8 @@ const destinationsView = (user, destinationsArray) => {
                               >
                                 Delete</button
                               >`
-                            : ''
-                        }
+          : ''
+        }
                       </div>
                     </div>`;
     });

@@ -8,6 +8,7 @@ import speciesDescription from '../../../assets/speciesDescription.png';
 const showReadSpecies = (speciesArray) => {
   const user = firebase.auth().currentUser;
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Species</h1>';
     document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewSpeciesBtn">Add Species</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
@@ -57,6 +58,7 @@ const showReadSpecies = (speciesArray) => {
 
 const noReadSpecies = (user) => {
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Species</h1>';
     document.querySelector('#addButton').innerHTML = '<button class="btn btn-sm mb-4" data-toggle="modal" data-target="#formModal" id="addNewSpeciesBtn">Add Species</button>';
   }
   document.querySelector('#cardContainer').innerHTML = '<h1>I seek the white whale.</h1>';

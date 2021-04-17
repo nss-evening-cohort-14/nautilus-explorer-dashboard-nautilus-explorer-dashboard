@@ -1,6 +1,7 @@
 const showCrew = (crewArray, user) => {
   // BUILD CREW CARDS
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Crew Members</h1>';
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton" data-toggle="modal" data-target="#formModal">Add Crew Member</button>';
   }
   document.querySelector('#formContainer').innerHTML = '';
@@ -27,6 +28,7 @@ const showCrew = (crewArray, user) => {
 
 const emptyCrew = (user) => {
   if (user) {
+    document.querySelector('#title').innerHTML = '<h1>Crew</h1>';
     document.querySelector('#addButton').innerHTML = '<button type="button" class="btn btn-primary" id="addCrewButton">Add Crew Member</button>';
   }
   document.querySelector('#cardContainer').innerHTML = '<h1>Abandon ship!</h1>';
