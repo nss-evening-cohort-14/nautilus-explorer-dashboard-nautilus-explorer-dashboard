@@ -15,7 +15,10 @@ function getListOfItemsToDisplay(arrayOfObjects, displayType) {
   } else if (displayType === 'enviromentalData') {
     buidString = '';
   } else if (displayType === 'species') {
-    buidString = '';
+    buidString = '<ul>';
+    arrayOfObjects.forEach((species) => {
+      buidString += `<li>${species.name}</li>`;
+    });
   }
   return buidString;
 }

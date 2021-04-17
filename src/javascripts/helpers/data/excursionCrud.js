@@ -4,6 +4,7 @@ import axios from 'axios';
 import firebaseConfig from '../auth/apiKeys';
 import { createExcursionDestination } from './excursionDestinations';
 import { createExcursionCrew } from './excursionCrew';
+// import { createExcursionSpecies } from './excursionSpecies';
 
 const dbUrl = firebaseConfig.databaseURL;
 
@@ -18,7 +19,7 @@ const getExcursions = () => new Promise((resolve, reject) => {
     }).catch((error) => reject(error));
 });
 
-const createExcursions = (excursionsObject, destinationID, crewID) => new Promise((resolve, reject) => {
+const createExcursions = (excursionsObject, destinationID, crewID, speciesID) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/excursions.json`, excursionsObject)
     .then((response) => {
       const body = { firebaseKey: response.data.name };
@@ -27,6 +28,7 @@ const createExcursions = (excursionsObject, destinationID, crewID) => new Promis
           const excursionID = body.firebaseKey;
           createExcursionDestination(excursionID, destinationID);
           createExcursionCrew(excursionID, crewID);
+          // createExcursionSpecies(excursionID, speciesID);
           getExcursions().then((excursionsArray) => resolve(excursionsArray));
         });
     }).catch((error) => reject(error));

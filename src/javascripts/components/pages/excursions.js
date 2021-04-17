@@ -42,7 +42,7 @@ const showReadExcursions = (speciesArray) => {
                      </button>
                      <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayLogEntries--${excursion.destinationId}"><img src="${log}"> Log Entries</p></button>
                      <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displayEnviromentalData--${excursion.destinationId}"><img src="${environmentalVariablesImg}"> Enviromental Data</button>
-                     <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displaySpecies--${excursion.destinationId}"><img src="${krakenIconImg}"> Species</button>
+                     <button class="btn btn-sm border-dark display-excursion-btn"><p class="card-text" id="displaySpecies--${excursion.firebaseKey}"><img src="${krakenIconImg}"> Species</button>
                   </div>
                   ${user ? `<button class="btn btn-sm border-dark view-excursion-btn" data-toggle="modal" data-target="#formModal" id="update-existing-excursion-btn--${excursion.firebaseKey}">Update Excursion</button>
                   <button class="btn btn-sm border-dark delete-excursion-btn" id="delete-excursion-btn--${excursion.firebaseKey}">Delete Excursion</button>` : ''}
